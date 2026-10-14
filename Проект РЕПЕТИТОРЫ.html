@@ -1,0 +1,1040 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Кейс: Проект «Репетиторы»</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  
+  :root {
+    --orange: #FF6B1A;
+    --orange-dark: #E55A0A;
+    --orange-light: #FFF3E0;
+    --orange-soft: #FFE4CC;
+    --white: #FFFFFF;
+    --text: #2D2D2D;
+    --text-light: #6B6B6B;
+    --border: #FFE0C2;
+  }
+  
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background: linear-gradient(135deg, #FFFAF5 0%, #FFFFFF 100%);
+    color: var(--text);
+    line-height: 1.6;
+    min-height: 100vh;
+  }
+  
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  /* HEADER */
+  .header {
+    background: linear-gradient(135deg, var(--orange) 0%, var(--orange-dark) 100%);
+    color: var(--white);
+    padding: 50px 40px;
+    border-radius: 24px;
+    margin-bottom: 30px;
+    box-shadow: 0 20px 60px rgba(255, 107, 26, 0.25);
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .header::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -10%;
+    width: 400px;
+    height: 400px;
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 50%;
+  }
+  
+  .header::after {
+    content: '';
+    position: absolute;
+    bottom: -30%;
+    left: 10%;
+    width: 250px;
+    height: 250px;
+    background: rgba(255, 255, 255, 0.06);
+    border-radius: 50%;
+  }
+  
+  .header-content {
+    position: relative;
+    z-index: 1;
+  }
+  
+  .header-tag {
+    display: inline-block;
+    background: rgba(255, 255, 255, 0.2);
+    padding: 6px 16px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    margin-bottom: 16px;
+    backdrop-filter: blur(10px);
+  }
+  
+  .header h1 {
+    font-size: 42px;
+    font-weight: 800;
+    margin-bottom: 12px;
+    letter-spacing: -0.5px;
+  }
+  
+  .header p {
+    font-size: 18px;
+    opacity: 0.95;
+    max-width: 700px;
+  }
+  
+  /* NAVIGATION */
+  .nav {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+    background: var(--white);
+    padding: 12px;
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    position: sticky;
+    top: 10px;
+    z-index: 100;
+    border: 1px solid var(--border);
+  }
+  
+  .nav-btn {
+    flex: 1;
+    min-width: 180px;
+    padding: 14px 20px;
+    border: none;
+    background: transparent;
+    color: var(--text-light);
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    border-radius: 12px;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+  }
+  
+  .nav-btn:hover {
+    background: var(--orange-light);
+    color: var(--orange);
+  }
+  
+  .nav-btn.active {
+    background: var(--orange);
+    color: var(--white);
+    box-shadow: 0 8px 20px rgba(255, 107, 26, 0.3);
+  }
+  
+  .nav-num {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.25);
+    font-size: 13px;
+    font-weight: 700;
+  }
+  
+  .nav-btn:not(.active) .nav-num {
+    background: var(--orange-light);
+    color: var(--orange);
+  }
+  
+  /* SECTIONS */
+  .section {
+    display: none;
+    animation: fadeIn 0.5s ease;
+  }
+  
+  .section.active {
+    display: block;
+  }
+  
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  
+  .section-title {
+    font-size: 32px;
+    font-weight: 800;
+    color: var(--text);
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+  
+  .section-title .num {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    background: var(--orange);
+    color: var(--white);
+    border-radius: 14px;
+    font-size: 22px;
+    font-weight: 800;
+    box-shadow: 0 8px 20px rgba(255, 107, 26, 0.3);
+  }
+  
+  .section-subtitle {
+    color: var(--text-light);
+    font-size: 17px;
+    margin-bottom: 30px;
+    margin-left: 64px;
+  }
+  
+  /* CONTEXT SECTION */
+  .context-intro {
+    background: var(--white);
+    padding: 28px;
+    border-radius: 18px;
+    border-left: 5px solid var(--orange);
+    margin-bottom: 30px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+  }
+  
+  .context-intro p {
+    font-size: 16px;
+    margin-bottom: 10px;
+  }
+  
+  .context-intro p:last-child {
+    margin-bottom: 0;
+    font-weight: 600;
+    color: var(--orange-dark);
+  }
+  
+  .problems-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 20px;
+  }
+  
+  .problem-card {
+    background: var(--white);
+    padding: 26px;
+    border-radius: 18px;
+    border: 2px solid transparent;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+  }
+  
+  .problem-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(90deg, var(--orange), var(--orange-dark));
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.4s ease;
+  }
+  
+  .problem-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(255, 107, 26, 0.15);
+    border-color: var(--orange-soft);
+  }
+  
+  .problem-card:hover::before {
+    transform: scaleX(1);
+  }
+  
+  .problem-icon {
+    width: 48px;
+    height: 48px;
+    background: var(--orange-light);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    margin-bottom: 16px;
+  }
+  
+  .problem-card h3 {
+    font-size: 17px;
+    font-weight: 700;
+    margin-bottom: 10px;
+    color: var(--text);
+  }
+  
+  .problem-card p {
+    font-size: 14px;
+    color: var(--text-light);
+    line-height: 1.6;
+  }
+  
+  /* WHAT WAS DONE */
+  .subsection {
+    background: var(--white);
+    padding: 32px;
+    border-radius: 20px;
+    margin-bottom: 24px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+  }
+  
+  .subsection-header {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 20px;
+    padding-bottom: 16px;
+    border-bottom: 2px dashed var(--orange-soft);
+  }
+  
+  .subsection-num {
+    background: var(--orange);
+    color: var(--white);
+    width: 38px;
+    height: 38px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    font-size: 16px;
+  }
+  
+  .subsection h2 {
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--text);
+  }
+  
+  /* TABLE */
+  .roles-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    margin: 20px 0;
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.04);
+  }
+  
+  .roles-table thead {
+    background: linear-gradient(135deg, var(--orange) 0%, var(--orange-dark) 100%);
+    color: var(--white);
+  }
+  
+  .roles-table th {
+    padding: 16px 20px;
+    text-align: left;
+    font-weight: 700;
+    font-size: 14px;
+    letter-spacing: 0.5px;
+  }
+  
+  .roles-table td {
+    padding: 16px 20px;
+    border-bottom: 1px solid var(--border);
+    font-size: 14px;
+    vertical-align: top;
+  }
+  
+  .roles-table tr:last-child td {
+    border-bottom: none;
+  }
+  
+  .roles-table tbody tr {
+    background: var(--white);
+    transition: background 0.2s ease;
+  }
+  
+  .roles-table tbody tr:hover {
+    background: var(--orange-light);
+  }
+  
+  .roles-table td:first-child {
+    font-weight: 700;
+    color: var(--orange-dark);
+  }
+  
+  .roles-table td:last-child {
+    font-weight: 600;
+    color: var(--text);
+  }
+  
+  /* BENEFITS */
+  .benefits {
+    background: var(--orange-light);
+    padding: 22px;
+    border-radius: 14px;
+    margin-top: 20px;
+    border-left: 4px solid var(--orange);
+  }
+  
+  .benefits-title {
+    font-weight: 700;
+    color: var(--orange-dark);
+    margin-bottom: 12px;
+    font-size: 15px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  
+  .benefits ul {
+    list-style: none;
+  }
+  
+  .benefits li {
+    padding: 8px 0 8px 28px;
+    position: relative;
+    font-size: 14px;
+    color: var(--text);
+  }
+  
+  .benefits li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    top: 8px;
+    width: 20px;
+    height: 20px;
+    background: var(--orange);
+    color: var(--white);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: 700;
+  }
+  
+  /* DOCUMENTS */
+  .docs-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 16px;
+    margin: 20px 0;
+  }
+  
+  .doc-block {
+    background: linear-gradient(135deg, var(--orange-light) 0%, var(--white) 100%);
+    padding: 20px;
+    border-radius: 14px;
+    border: 1px solid var(--border);
+  }
+  
+  .doc-block h4 {
+    color: var(--orange-dark);
+    font-size: 15px;
+    font-weight: 700;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  
+  .doc-block ul {
+    list-style: none;
+  }
+  
+  .doc-block li {
+    padding: 6px 0 6px 18px;
+    position: relative;
+    font-size: 13px;
+    color: var(--text);
+  }
+  
+  .doc-block li::before {
+    content: '•';
+    position: absolute;
+    left: 4px;
+    color: var(--orange);
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 1;
+  }
+  
+  /* SCALE FEATURES */
+  .scale-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 18px;
+    margin-top: 20px;
+  }
+  
+  .scale-card {
+    background: var(--white);
+    padding: 22px;
+    border-radius: 14px;
+    border: 2px solid var(--border);
+    transition: all 0.3s ease;
+  }
+  
+  .scale-card:hover {
+    border-color: var(--orange);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(255, 107, 26, 0.12);
+  }
+  
+  .scale-card-icon {
+    font-size: 28px;
+    margin-bottom: 10px;
+  }
+  
+  .scale-card h4 {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--orange-dark);
+    margin-bottom: 8px;
+  }
+  
+  .scale-card p {
+    font-size: 13px;
+    color: var(--text-light);
+    line-height: 1.6;
+  }
+  
+  /* RESULTS */
+  .results-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 20px;
+  }
+  
+  .result-card {
+    background: var(--white);
+    padding: 28px;
+    border-radius: 18px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+    border-top: 4px solid var(--orange);
+  }
+  
+  .result-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(255, 107, 26, 0.18);
+  }
+  
+  .result-card::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100px;
+    height: 100px;
+    background: radial-gradient(circle, var(--orange-light) 0%, transparent 70%);
+    border-radius: 50%;
+    transform: translate(30%, -30%);
+  }
+  
+  .result-icon {
+    width: 56px;
+    height: 56px;
+    background: linear-gradient(135deg, var(--orange) 0%, var(--orange-dark) 100%);
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 28px;
+    margin-bottom: 16px;
+    box-shadow: 0 8px 20px rgba(255, 107, 26, 0.3);
+    position: relative;
+    z-index: 1;
+  }
+  
+  .result-card h3 {
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 12px;
+    color: var(--text);
+    position: relative;
+    z-index: 1;
+  }
+  
+  .result-card p {
+    font-size: 14px;
+    color: var(--text-light);
+    line-height: 1.7;
+    position: relative;
+    z-index: 1;
+  }
+  
+  /* CONCLUSIONS */
+  .conclusions-list {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+  }
+  
+  .conclusion-item {
+    background: var(--white);
+    padding: 26px 28px;
+    border-radius: 18px;
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+    transition: all 0.3s ease;
+    border-left: 5px solid var(--orange);
+  }
+  
+  .conclusion-item:hover {
+    transform: translateX(8px);
+    box-shadow: 0 10px 30px rgba(255, 107, 26, 0.15);
+  }
+  
+  .conclusion-num {
+    flex-shrink: 0;
+    width: 48px;
+    height: 48px;
+    background: linear-gradient(135deg, var(--orange) 0%, var(--orange-dark) 100%);
+    color: var(--white);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    font-weight: 800;
+    box-shadow: 0 6px 16px rgba(255, 107, 26, 0.3);
+  }
+  
+  .conclusion-content h3 {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--orange-dark);
+    margin-bottom: 8px;
+  }
+  
+  .conclusion-content p {
+    font-size: 15px;
+    color: var(--text);
+    line-height: 1.7;
+  }
+  
+  /* FOOTER */
+  .footer {
+    text-align: center;
+    padding: 30px 20px;
+    color: var(--text-light);
+    font-size: 13px;
+    margin-top: 40px;
+  }
+  
+  .footer-accent {
+    color: var(--orange);
+    font-weight: 700;
+  }
+  
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    .header { padding: 35px 25px; }
+    .header h1 { font-size: 28px; }
+    .header p { font-size: 15px; }
+    .section-title { font-size: 24px; }
+    .section-subtitle { margin-left: 0; margin-top: 10px; }
+    .nav { position: static; }
+    .nav-btn { min-width: calc(50% - 5px); font-size: 13px; padding: 12px 10px; }
+    .subsection { padding: 22px; }
+    .roles-table { font-size: 12px; }
+    .roles-table th, .roles-table td { padding: 10px 12px; }
+    .conclusion-item { flex-direction: column; gap: 12px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+  
+  <!-- HEADER -->
+  <div class="header">
+    <div class="header-content">
+      <div class="header-tag">КЕЙС</div>
+      <h1>Проект «Репетиторы»</h1>
+      <p>Построение управляемой системы в школе математики: от хаоса к масштабированию</p>
+    </div>
+  </div>
+  
+  <!-- NAVIGATION -->
+  <div class="nav">
+    <button class="nav-btn active" data-section="context">
+      <span class="nav-num">1</span> Контекст
+    </button>
+    <button class="nav-btn" data-section="done">
+      <span class="nav-num">2</span> Что сделано
+    </button>
+    <button class="nav-btn" data-section="results">
+      <span class="nav-num">3</span> Результаты
+    </button>
+    <button class="nav-btn" data-section="conclusions">
+      <span class="nav-num">4</span> Выводы
+    </button>
+  </div>
+  
+  <!-- SECTION 1: CONTEXT -->
+  <div class="section active" id="context">
+    <div class="section-title">
+      <span class="num">1</span> Контекст
+    </div>
+    <p class="section-subtitle">Ситуация на старте проекта и ключевые проблемы</p>
+    
+    <div class="context-intro">
+      <p>«Школа математики» — быстрорастущая компания в сфере образовательных услуг. Модель работы — «частный репетитор с командой специалистов»: клиент взаимодействует напрямую с преподавателем, не видя внутренней структуры.</p>
+      <p>На момент старта компания обслуживала несколько сотен учеников силами более чем 100 репетиторов. Весь операционный контур держался на собственнике.</p>
+    </div>
+    
+    <h3 style="font-size: 20px; margin-bottom: 18px; color: var(--orange-dark);">🔥 Ключевые узкие места</h3>
+    
+    <div class="problems-grid">
+      <div class="problem-card">
+        <div class="problem-icon">📉</div>
+        <h3>Потеря контроля над пробными занятиями</h3>
+        <p>При росте команды конверсия из пробного в оплату упала почти вдвое. Некому стало проверять, как репетиторы проводят пробные уроки, высылают ли материалы, доводят ли клиента до решения.</p>
+      </div>
+      
+      <div class="problem-card">
+        <div class="problem-icon">👤</div>
+        <h3>Отсутствие владельца LTV</h3>
+        <p>После первой оплаты ученик «терялся»: за долгосрочное удержание, регулярность занятий, реакцию на отток никто не отвечал.</p>
+      </div>
+      
+      <div class="problem-card">
+        <div class="problem-icon">💭</div>
+        <h3>«Думающие» клиенты выпадали из воронки</h3>
+        <p>После пробного занятия часть клиентов брала паузу, и с ними не работали системно. Заявки оседали в CRM без движения.</p>
+      </div>
+      
+      <div class="problem-card">
+        <div class="problem-icon">🎯</div>
+        <h3>Размытые зоны ответственности</h3>
+        <p>Все занимались всем: менеджер подбирал репетиторов, репетитор дожимал клиента, собственник разгребал просроченные задачи. Спросить за результат было не с кого.</p>
+      </div>
+      
+      <div class="problem-card">
+        <div class="problem-icon">⚠️</div>
+        <h3>Неконтролируемая работа репетиторов</h3>
+        <p>Переносы и отмены занятий, потеря качества после первых уроков — система не позволяла выявлять проблемных преподавателей до того, как от них уходили ученики.</p>
+      </div>
+      
+      <div class="problem-card">
+        <div class="problem-icon">👥</div>
+        <h3>Найм «на глазок»</h3>
+        <p>Новые сотрудники вводились без регламентов, обучения и чёткого понимания своих задач.</p>
+      </div>
+    </div>
+  </div>
+  
+  <!-- SECTION 2: WHAT WAS DONE -->
+  <div class="section" id="done">
+    <div class="section-title">
+      <span class="num">2</span> Что сделано
+    </div>
+    <p class="section-subtitle">Три направления работы, которые изменили систему</p>
+    
+    <!-- 2.1 Org Structure -->
+    <div class="subsection">
+      <div class="subsection-header">
+        <div class="subsection-num">2.1</div>
+        <h2>Целевая оргструктура и зоны ответственности</h2>
+      </div>
+      <p style="margin-bottom: 16px; color: var(--text-light);">Спроектирована организационная модель, в которой каждая роль имеет чёткий контур ответственности и измеримый результат.</p>
+      
+      <table class="roles-table">
+        <thead>
+          <tr>
+            <th>Роль</th>
+            <th>Зона ответственности</th>
+            <th>Результат</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Менеджер по продажам</td>
+            <td>От отклика до назначения пробного</td>
+            <td>Проведённое пробное занятие</td>
+          </tr>
+          <tr>
+            <td>Тимлид</td>
+            <td>Контроль пробных, дожим «думающих», адаптация новых репетиторов</td>
+            <td>Первая оплата</td>
+          </tr>
+          <tr>
+            <td>Администратор</td>
+            <td>Сопровождение платных учеников, реакция на проблемные сигналы</td>
+            <td>Удержание клиента</td>
+          </tr>
+          <tr>
+            <td>HR-менеджер</td>
+            <td>Найм, обучение, ввод в работу репетиторов</td>
+            <td>Репетитор, готовый к нагрузке</td>
+          </tr>
+          <tr>
+            <td>Методолог</td>
+            <td>Банк заданий, тесты, шаблоны отчётов</td>
+            <td>Инструменты контроля прогресса</td>
+          </tr>
+        </tbody>
+      </table>
+      
+      <div class="benefits">
+        <div class="benefits-title">💡 Что это даёт</div>
+        <ul>
+          <li>Появляется явный ответственный за каждый этап работы с клиентом</li>
+          <li>Исключаются пересечения зон: никто не делает чужую работу, ничья работа не остаётся без владельца</li>
+          <li>Собственник выводится из операционных разбирательств — эскалации идут по цепочке, а не напрямую</li>
+        </ul>
+      </div>
+    </div>
+    
+    <!-- 2.2 Regulations -->
+    <div class="subsection">
+      <div class="subsection-header">
+        <div class="subsection-num">2.2</div>
+        <h2>Регламентация бизнес-процессов</h2>
+      </div>
+      <p style="margin-bottom: 20px; color: var(--text-light);">Разработан пакет документов, описывающих все ключевые процессы компании.</p>
+      
+      <div class="docs-grid">
+        <div class="doc-block">
+          <h4>📞 Отдел продаж</h4>
+          <ul>
+            <li>Положение об отделе продаж</li>
+            <li>Алгоритмы работы с Профи.ру и Авито</li>
+            <li>Стандарт квалификации клиента</li>
+            <li>Регламент пробного занятия</li>
+            <li>Регламент подбора репетитора</li>
+            <li>Скрипты коммуникаций</li>
+            <li>Книга откликов</li>
+          </ul>
+        </div>
+        
+        <div class="doc-block">
+          <h4>👨‍🏫 Управление репетиторами</h4>
+          <ul>
+            <li>Регламент взаимодействия тимлида</li>
+            <li>Стандарт проведения пробного</li>
+            <li>Система оценки и рейтингования</li>
+            <li>Процедура адаптации преподавателей</li>
+          </ul>
+        </div>
+        
+        <div class="doc-block">
+          <h4>🧑‍💼 HR-блок</h4>
+          <ul>
+            <li>Профиль кандидата</li>
+            <li>Стандарт собеседования</li>
+            <li>Программа обучения и аттестации</li>
+            <li>Регламент ввода в работу</li>
+          </ul>
+        </div>
+        
+        <div class="doc-block">
+          <h4>💰 Мотивация</h4>
+          <ul>
+            <li>Базовая ставка + коэффициенты</li>
+            <li>Привязка к метрикам влияния</li>
+            <li>Прозрачные сценарии заработка</li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="benefits">
+        <div class="benefits-title">🎯 Зачем нужна регламентация</div>
+        <ul>
+          <li>Знания о процессах перестают быть «в голове собственника» и становятся активом компании</li>
+          <li>Новый сотрудник вводится в работу по понятной программе, а не «на глазок»</li>
+          <li>Качество работы не зависит от конкретного человека — любой следующий сотрудник действует по стандарту</li>
+          <li>Появляется база для обучения и контроля исполнения</li>
+        </ul>
+      </div>
+    </div>
+    
+    <!-- 2.3 Scaling -->
+    <div class="subsection">
+      <div class="subsection-header">
+        <div class="subsection-num">2.3</div>
+        <h2>Подготовка к масштабированию</h2>
+      </div>
+      <p style="margin-bottom: 16px; color: var(--text-light);">Работа выстроена так, чтобы рост количества учеников и репетиторов не приводил к падению качества.</p>
+      
+      <div class="scale-grid">
+        <div class="scale-card">
+          <div class="scale-card-icon">🎯</div>
+          <h4>Контроль качества на критическом этапе</h4>
+          <p>Тимлид отсматривает пробные уроки новых репетиторов, оценивает по чек-листу, даёт обратную связь. Проблемные преподаватели выявляются до работы с платными учениками.</p>
+        </div>
+        
+        <div class="scale-card">
+          <div class="scale-card-icon">🔁</div>
+          <h4>Удержание как отдельный процесс</h4>
+          <p>Администратор работает с проблемным листом: отсутствие оплат, частые переносы, пропавшие ученики. Триггеры срабатывают заранее — проблема решается до ухода клиента.</p>
+        </div>
+        
+        <div class="scale-card">
+          <div class="scale-card-icon">⚡</div>
+          <h4>Систематизация продаж</h4>
+          <p>Менеджер работает по регламенту: отклик за минуту, перевод в мессенджер, квалификация, подбор, назначение. Каждая заявка движется по CRM с автоматическими задачами.</p>
+        </div>
+        
+        <div class="scale-card">
+          <div class="scale-card-icon">📈</div>
+          <h4>LTV-ориентированность</h4>
+          <p>Все процессы после первой оплаты направлены на продление жизненного цикла клиента: регулярные отчёты родителям, контроль прогресса, демонстрация результатов.</p>
+        </div>
+        
+        <div class="scale-card">
+          <div class="scale-card-icon">🔄</div>
+          <h4>Тиражируемость</h4>
+          <p>Документы и регламенты адаптированы для быстрого ввода новых сотрудников: короткие инструкции, чек-листы, видеообучение. Найм — процесс с понятным результатом.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- SECTION 3: RESULTS -->
+  <div class="section" id="results">
+    <div class="section-title">
+      <span class="num">3</span> Результаты
+    </div>
+    <p class="section-subtitle">Ключевые изменения после внедрения системы</p>
+    
+    <div class="results-grid">
+      <div class="result-card">
+        <div class="result-icon">🎛️</div>
+        <h3>Восстановление управляемости</h3>
+        <p>До проекта собственник лично разгребал просроченные задачи, дожимал клиентов, контролировал репетиторов. После внедрения каждый этап имеет ответственного, а эскалации идут по выстроенной цепочке. Операционная нагрузка на собственника кратно снизилась.</p>
+      </div>
+      
+      <div class="result-card">
+        <div class="result-icon">✨</div>
+        <h3>Рост качества пробных занятий</h3>
+        <p>Раньше репетиторы проводили пробные бесконтрольно. После внедрения роли тимлида и системы оценки качество пробных занятий вышло на уровень, который обеспечивает стабильную конверсию в первую оплату.</p>
+      </div>
+      
+      <div class="result-card">
+        <div class="result-icon">🚫</div>
+        <h3>Устранение потерь в воронке</h3>
+        <p>«Думающие» клиенты, которые раньше оседали в CRM без движения, теперь обрабатываются системно. Тимлид работает с ними по скрипту, выясняет причину сомнений, предлагает решение. Потери на этом этапе сократились.</p>
+      </div>
+      
+      <div class="result-card">
+        <div class="result-icon">🔒</div>
+        <h3>Контроль удержания</h3>
+        <p>Впервые появился процесс сопровождения платных учеников. Проблемные сигналы выявляются заранее, а не постфактум. Ученик, который начал заниматься, с высокой вероятностью доходит до цели — экзамена или устойчивого улучшения успеваемости.</p>
+      </div>
+      
+      <div class="result-card" style="grid-column: 1 / -1; max-width: 700px; margin: 0 auto;">
+        <div class="result-icon">🚀</div>
+        <h3>Система, готовая к росту</h3>
+        <p>Компания получила пакет документов, регламентов и программ обучения, который позволяет нанимать и вводить в работу новых сотрудников без потери качества. Рост количества менеджеров, тимлидов и репетиторов больше не означает хаос — система рассчитана на масштабирование.</p>
+      </div>
+    </div>
+  </div>
+  
+  <!-- SECTION 4: CONCLUSIONS -->
+  <div class="section" id="conclusions">
+    <div class="section-title">
+      <span class="num">4</span> Ключевые выводы
+    </div>
+    <p class="section-subtitle">Главные инсайты проекта, применимые в любой компании</p>
+    
+    <div class="conclusions-list">
+      <div class="conclusion-item">
+        <div class="conclusion-num">1</div>
+        <div class="conclusion-content">
+          <h3>Порядок в процессах — это управляемость</h3>
+          <p>Когда зоны ответственности закреплены документально, собственник перестаёт быть единственным «пожарным» и начинает управлять системой.</p>
+        </div>
+      </div>
+      
+      <div class="conclusion-item">
+        <div class="conclusion-num">2</div>
+        <div class="conclusion-content">
+          <h3>Качество пробных занятий — фундамент бизнеса</h3>
+          <p>Контроль на этом этапе напрямую влияет на конверсию и окупаемость привлечения.</p>
+        </div>
+      </div>
+      
+      <div class="conclusion-item">
+        <div class="conclusion-num">3</div>
+        <div class="conclusion-content">
+          <h3>Удержание — отдельная функция</h3>
+          <p>Нельзя полагаться на репетитора в вопросах долгосрочного сопровождения клиента. Нужен владелец процесса.</p>
+        </div>
+      </div>
+      
+      <div class="conclusion-item">
+        <div class="conclusion-num">4</div>
+        <div class="conclusion-content">
+          <h3>Регламентация — это тиражируемость</h3>
+          <p>Когда процессы описаны, рост компании — это вопрос найма и обучения по готовым стандартам, а не личного участия собственника во всём.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="footer">
+    <p>Кейс проекта <span class="footer-accent">«Репетиторы»</span> · Построение управляемой системы</p>
+  </div>
+  
+</div>
+
+<script>
+  // Navigation
+  const navButtons = document.querySelectorAll('.nav-btn');
+  const sections = document.querySelectorAll('.section');
+  
+  navButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const targetId = btn.dataset.section;
+      
+      navButtons.forEach(b => b.classList.remove('active'));
+      sections.forEach(s => s.classList.remove('active'));
+      
+      btn.classList.add('active');
+      document.getElementById(targetId).classList.add('active');
+      
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  });
+  
+  // Keyboard navigation
+  document.addEventListener('keydown', (e) => {
+    const currentIndex = Array.from(navButtons).findIndex(b => b.classList.contains('active'));
+    
+    if (e.key === 'ArrowRight' || e.key === 'ArrowDown') {
+      e.preventDefault();
+      const nextIndex = (currentIndex + 1) % navButtons.length;
+      navButtons[nextIndex].click();
+    } else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
+      e.preventDefault();
+      const prevIndex = (currentIndex - 1 + navButtons.length) % navButtons.length;
+      navButtons[prevIndex].click();
+    }
+  });
+</script>
+
+</body>
+</html>

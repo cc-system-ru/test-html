@@ -1,0 +1,1157 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ОНИКС — AS IS → TO BE · Презентация результатов</title>
+<style>
+
+:root{
+  --navy:#1F364D;
+  --navy-2:#2E5A88;
+  --blue:#3B7DD8;
+  --blue-l:#EDF2F8;
+  --blue-l2:#DCE7F5;
+  --gray:#5A6B7C;
+  --gray-l:#F5F7FA;
+  --line:#D8E0E8;
+  --red:#C0392B;
+  --red-l:#FDECEA;
+  --green:#2E7D32;
+  --green-l:#E8F5E9;
+  --amber:#E67E22;
+  --amber-l:#FFF4E5;
+  --violet:#6C4AB6;
+  --violet-l:#F1ECFB;
+  --shadow:0 2px 6px rgba(31,54,77,.07), 0 8px 24px rgba(31,54,77,.06);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0; font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  color:var(--navy); background:#F0F3F7; font-size:15px; line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+}
+.wrap{display:flex; min-height:100vh}
+
+/* ============ NAV ============ */
+nav{
+  width:266px; flex:0 0 266px; background:var(--navy); color:#fff;
+  position:sticky; top:0; align-self:flex-start; height:100vh; overflow-y:auto;
+  padding:26px 0 40px;
+}
+nav .brand{padding:0 22px 20px; border-bottom:1px solid rgba(255,255,255,.13); margin-bottom:16px}
+nav .brand .t{font-size:16px; font-weight:800; letter-spacing:.2px}
+nav .brand .s{font-size:11.5px; color:#9FB3C8; margin-top:5px; line-height:1.45}
+nav .grp{font-size:10px; text-transform:uppercase; letter-spacing:1.3px; color:#7C93AB; padding:16px 22px 6px; font-weight:700}
+nav a{
+  display:block; padding:8px 22px 8px 24px; color:#D6E1EC; text-decoration:none;
+  font-size:13.5px; border-left:3px solid transparent; transition:.15s;
+}
+nav a:hover{background:rgba(255,255,255,.07); color:#fff; border-left-color:var(--blue)}
+nav a.sub{padding-left:38px; font-size:12.8px; color:#AFC2D4}
+
+/* ============ MAIN ============ */
+main{flex:1; min-width:0; padding:0 0 80px}
+section{padding:46px 52px 10px; max-width:1180px}
+.sec-head{display:flex; align-items:center; gap:16px; margin-bottom:6px}
+.sec-num{
+  flex:0 0 auto; width:44px; height:44px; border-radius:12px; background:var(--navy); color:#fff;
+  display:flex; align-items:center; justify-content:center; font-weight:800; font-size:17px;
+}
+.sec-head h2{margin:0; font-size:26px; letter-spacing:-.4px; line-height:1.2}
+.sec-sub{color:var(--gray); font-size:14px; margin:2px 0 26px 60px; font-style:italic}
+h3{font-size:18px; margin:34px 0 12px; padding-bottom:8px; border-bottom:2px solid var(--blue-l2)}
+h4{font-size:15px; margin:22px 0 9px; color:var(--navy-2)}
+p{margin:0 0 12px}
+ul{margin:0 0 14px; padding-left:22px}
+li{margin-bottom:7px}
+strong{font-weight:700}
+
+/* ============ COVER ============ */
+.cover{
+  background:linear-gradient(135deg,#16293D 0%,#1F364D 45%,#2E5A88 100%);
+  color:#fff; padding:70px 52px 60px; position:relative; overflow:hidden;
+}
+.cover:after{
+  content:""; position:absolute; right:-130px; top:-130px; width:430px; height:430px;
+  border-radius:50%; background:rgba(255,255,255,.045);
+}
+.cover .kick{
+  display:inline-block; font-size:11px; letter-spacing:2.4px; text-transform:uppercase;
+  color:#8FC0F0; border:1px solid rgba(143,192,240,.4); padding:5px 14px; border-radius:20px; margin-bottom:24px;
+}
+.cover h1{font-size:44px; margin:0 0 14px; letter-spacing:-1px; line-height:1.1; font-weight:800}
+.cover h1 span{color:#7FB3EC}
+.cover .lead{font-size:17px; color:#C3D5E6; max-width:700px; margin-bottom:34px}
+.cover-meta{display:flex; flex-wrap:wrap; gap:12px}
+.cover-meta div{
+  background:rgba(255,255,255,.09); border:1px solid rgba(255,255,255,.14);
+  border-radius:10px; padding:11px 17px; font-size:13px;
+}
+.cover-meta b{display:block; font-size:10px; letter-spacing:1.2px; text-transform:uppercase; color:#8FC0F0; margin-bottom:4px; font-weight:700}
+
+/* ============ KPI TILES ============ */
+.tiles{display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:15px; margin:24px 0 8px}
+.tile{
+  background:#fff; border-radius:13px; padding:19px 19px 17px; box-shadow:var(--shadow);
+  border-top:4px solid var(--blue);
+}
+.tile.warn{border-top-color:var(--red)}
+.tile.ok{border-top-color:var(--green)}
+.tile.mid{border-top-color:var(--amber)}
+.tile .v{font-size:27px; font-weight:800; letter-spacing:-.8px; line-height:1.1}
+.tile .l{font-size:12.3px; color:var(--gray); margin-top:6px; line-height:1.4}
+.tile.warn .v{color:var(--red)}
+.tile.ok .v{color:var(--green)}
+.tile.mid .v{color:var(--amber)}
+
+/* ============ CARDS ============ */
+.card{background:#fff; border-radius:13px; padding:22px 24px; box-shadow:var(--shadow); margin:16px 0}
+.card.tight{padding:16px 18px}
+.card h4{margin-top:0}
+.grid2{display:grid; grid-template-columns:1fr 1fr; gap:16px}
+.grid3{display:grid; grid-template-columns:repeat(3,1fr); gap:16px}
+@media(max-width:1080px){.grid2,.grid3{grid-template-columns:1fr}}
+
+/* ============ CALLOUTS ============ */
+.call{border-left:4px solid var(--blue); background:var(--blue-l); padding:15px 19px; border-radius:0 10px 10px 0; margin:14px 0}
+.call.red{border-left-color:var(--red); background:var(--red-l)}
+.call.green{border-left-color:var(--green); background:var(--green-l)}
+.call.amber{border-left-color:var(--amber); background:var(--amber-l)}
+.call.violet{border-left-color:var(--violet); background:var(--violet-l)}
+.call .ct{font-weight:800; font-size:13px; text-transform:uppercase; letter-spacing:.7px; margin-bottom:6px; display:block}
+.call.red .ct{color:var(--red)} .call.green .ct{color:var(--green)}
+.call.amber .ct{color:var(--amber)} .call.violet .ct{color:var(--violet)}
+.call.blue .ct, .call .ct{color:var(--navy-2)}
+
+/* ============ TABLES ============ */
+table{width:100%; border-collapse:collapse; background:#fff; border-radius:11px; overflow:hidden; box-shadow:var(--shadow); margin:14px 0; font-size:13.5px}
+th{
+  background:var(--navy); color:#fff; text-align:left; padding:11px 14px;
+  font-size:11.5px; text-transform:uppercase; letter-spacing:.7px; font-weight:700;
+}
+td{padding:11px 14px; border-bottom:1px solid var(--line); vertical-align:top}
+tr:last-child td{border-bottom:none}
+tbody tr:nth-child(even){background:var(--gray-l)}
+tbody tr:hover{background:var(--blue-l)}
+td.c{text-align:center} td.b{font-weight:700}
+
+/* ============ BADGES ============ */
+.bdg{display:inline-block; padding:3px 9px; border-radius:20px; font-size:11px; font-weight:700; white-space:nowrap}
+.bdg.red{background:var(--red-l); color:var(--red)}
+.bdg.green{background:var(--green-l); color:var(--green)}
+.bdg.amber{background:var(--amber-l); color:var(--amber)}
+.bdg.blue{background:var(--blue-l); color:var(--navy-2)}
+.bdg.gray{background:#ECEFF3; color:var(--gray)}
+.bdg.violet{background:var(--violet-l); color:var(--violet)}
+
+/* ============ BPMN ============ */
+.bpmn{background:#fff; border-radius:13px; box-shadow:var(--shadow); overflow:hidden; margin:18px 0}
+.bpmn-top{background:var(--navy); color:#fff; padding:12px 20px; font-weight:700; font-size:14px; display:flex; justify-content:space-between; align-items:center; gap:12px; flex-wrap:wrap}
+.bpmn-top small{font-weight:400; color:#9FB3C8; font-size:12px}
+.lane{display:flex; border-bottom:1px solid var(--line)}
+.lane:last-child{border-bottom:none}
+.lane-label{
+  flex:0 0 176px; background:var(--gray-l); padding:15px 13px; font-size:12px; font-weight:700;
+  border-right:3px solid var(--blue); display:flex; align-items:flex-start; line-height:1.35;
+  position:sticky; left:0; z-index:2;
+}
+.lane-label span{position:relative; padding-left:11px}
+.lane-label span:before{content:""; position:absolute; left:0; top:5px; width:6px; height:6px; border-radius:50%; background:var(--blue)}
+.lane-label.g span:before{background:var(--violet)} .lane-label.g{border-right-color:var(--violet)}
+.lane-label.o span:before{background:var(--amber)} .lane-label.o{border-right-color:var(--amber)}
+.lane-label.p span:before{background:var(--green)} .lane-label.p{border-right-color:var(--green)}
+.lane-label.k span:before{background:#8899AA} .lane-label.k{border-right-color:#8899AA}
+.lane-flow{padding:15px 18px; display:flex; flex-wrap:wrap; align-items:center; gap:7px; background:#fff; flex:1}
+.step{
+  background:#fff; border:1.5px solid var(--navy-2); color:var(--navy); border-radius:8px;
+  padding:7px 12px; font-size:12.3px; font-weight:600; line-height:1.3; max-width:230px;
+}
+.step.prob{border-color:var(--red); background:var(--red-l); color:#8E2B20; border-style:dashed; position:relative; padding-right:24px}
+.step.prob:after{content:"⚠"; position:absolute; right:7px; top:50%; transform:translateY(-50%); font-size:12px; opacity:.85}
+.step.fix{border-color:var(--green); background:var(--green-l); color:#1E5B22}
+.step.auto{border-color:var(--violet); background:var(--violet-l); color:#4A2E86}
+.gw{
+  background:var(--amber-l); border:1.5px solid var(--amber); color:#9A5510; border-radius:8px;
+  padding:7px 12px 7px 26px; font-size:12.3px; font-weight:700; position:relative; max-width:230px; line-height:1.3;
+}
+.gw:before{content:"◆"; position:absolute; left:8px; top:50%; transform:translateY(-50%); font-size:10px}
+.ev{border-radius:20px; padding:6px 14px; font-size:12px; font-weight:700; border:1.5px solid}
+.ev.start{background:var(--green-l); border-color:var(--green); color:#1E5B22}
+.ev.end{background:var(--red-l); border-color:var(--red); color:#8E2B20}
+.ev.mid{background:var(--gray-l); border-color:#8899AA; color:var(--gray)}
+.arw{color:#93A6B8; font-size:15px; font-weight:700; line-height:1}
+@media(max-width:760px){
+  nav{position:static; width:100%; height:auto; flex:none}
+  .wrap{flex-direction:column}
+  .lane{flex-direction:column}
+  .lane-label{flex:none; border-right:none; border-bottom:2px solid var(--blue); position:static}
+  section,.cover{padding-left:20px; padding-right:20px}
+}
+
+/* ============ FUNNEL / SCHEDULE ============ */
+.funnel{display:flex; flex-direction:column; align-items:center; gap:6px; margin:16px 0}
+.funnel div{
+  background:linear-gradient(90deg,var(--navy-2),var(--blue)); color:#fff; border-radius:7px;
+  padding:9px 16px; font-size:12.6px; font-weight:600; text-align:center;
+}
+.sched{display:grid; grid-template-columns:88px repeat(8,1fr); gap:3px; font-size:11.3px; margin:14px 0; min-width:640px}
+.sched .h{font-weight:800; color:var(--navy); text-align:center; padding:7px 2px; font-size:10.5px}
+.sched .rl{font-weight:700; color:var(--gray); padding:8px 4px; font-size:11px; display:flex; align-items:center}
+.sched .cell{border-radius:5px; padding:8px 2px; text-align:center; font-weight:700; font-size:10.7px}
+.sched .on1{background:#DCE7F5; color:var(--navy-2); border:1px solid #B9D0EA}
+.sched .on2{background:#F1ECFB; color:var(--violet); border:1px solid #D9CBF3}
+.sched .off{background:#F2F4F7; color:#AAB6C2; border:1px dashed #DCE1E7}
+.scroll-x{overflow-x:auto; padding-bottom:6px}
+
+/* ============ REGISTRY ============ */
+.reg-row td:first-child{font-weight:700; white-space:nowrap}
+.reg-sec td{background:var(--blue-l2) !important; font-weight:800; color:var(--navy); font-size:12.5px; letter-spacing:.4px}
+.legend{display:flex; flex-wrap:wrap; gap:16px; margin:14px 0 0; font-size:12.5px; color:var(--gray); background:#fff; padding:15px 19px; border-radius:11px; box-shadow:var(--shadow)}
+.legend span{display:flex; align-items:center; gap:7px}
+.legend i{display:inline-block; width:22px; height:14px; border-radius:4px}
+.chip{display:inline-block; background:var(--blue-l); color:var(--navy-2); border-radius:6px; padding:3px 9px; font-size:11.5px; font-weight:700; margin:0 5px 5px 0}
+footer{background:var(--navy); color:#9FB3C8; padding:34px 52px; font-size:12.5px; text-align:center; margin-top:50px}
+footer b{color:#fff}
+
+/* дополнительные стили проекта */
+.step.ok{border-color:var(--green); background:var(--green-l); color:#1E5B22}
+.step.half{border-color:var(--amber); background:var(--amber-l); color:#9A5510; border-style:dashed}
+.call .ct.mono{text-transform:none; letter-spacing:0}
+.kpi-row{display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:11px; margin:12px 0}
+.kpi-row div{background:var(--gray-l); border-radius:9px; padding:11px 13px; border-left:3px solid var(--blue)}
+.kpi-row .k{font-size:11px; color:var(--gray); text-transform:uppercase; letter-spacing:.6px; font-weight:700}
+.kpi-row .v2{font-size:17px; font-weight:800; margin-top:3px}
+.quote{border-left:3px solid var(--line); padding:2px 0 2px 13px; color:var(--gray); font-style:italic; margin:9px 0}
+.two-col{display:grid; grid-template-columns:1fr 1fr; gap:16px}
+@media(max-width:1080px){.two-col{grid-template-columns:1fr}}
+.risk-note{background:var(--red-l); border:1px solid #F3C9C4; border-radius:10px; padding:14px 17px; margin:14px 0; font-size:13.5px}
+.risk-note b{color:var(--red)}
+.stage-flow{display:flex; flex-wrap:wrap; gap:9px; margin:16px 0}
+.stage-flow .st{flex:1 1 155px; background:#fff; border-radius:10px; padding:13px 15px; box-shadow:var(--shadow); border-top:3px solid var(--blue)}
+.stage-flow .st .n{font-size:11px; color:var(--gray); font-weight:700; letter-spacing:.5px}
+.stage-flow .st .t{font-weight:700; font-size:13.5px; margin:4px 0 3px}
+.stage-flow .st .d{font-size:12px; color:var(--gray); line-height:1.4}
+.diag{display:grid; grid-template-columns:repeat(auto-fit,minmax(230px,1fr)); gap:12px; margin:16px 0}
+.diag .d{background:#fff; border-radius:11px; padding:15px 17px; box-shadow:var(--shadow); border-left:4px solid var(--red)}
+.diag .d.g{border-left-color:var(--green)}
+.diag .d.a{border-left-color:var(--amber)}
+.diag .d .h{font-weight:800; font-size:13.5px; margin-bottom:5px}
+.diag .d .p{font-size:12.5px; color:var(--gray); line-height:1.45}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<nav>
+  <div class="brand">
+    <div class="t">Оникс</div>
+    <div class="s">Кредитный брокеридж<br>диагностика и целевая модель</div>
+  </div>
+
+  <div class="grp">Проект</div>
+  <a href="#cover">Титул и ключевые цифры</a>
+
+  <div class="grp">Этап 1 — AS IS</div>
+  <a href="#asis">Отчёт «AS IS»</a>
+  <a href="#asis-org" class="sub">Структура и роли</a>
+  <a href="#asis-proc" class="sub">Путь клиента и разрывы</a>
+  <a href="#calls-audit" class="sub">Отчёт по звонкам</a>
+  <a href="#asis-mgmt" class="sub">Управление и мотивация</a>
+  <a href="#asis-problems" class="sub">Проблемы и точки потери денег</a>
+  <a href="#asis-risk" class="sub">Юридические риски</a>
+  <a href="#bpmn-asis" class="sub">BPMN — процесс AS IS</a>
+
+  <div class="grp">Этап 2 — TO BE</div>
+  <a href="#tobe">Отчёт «TO BE»</a>
+  <a href="#tobe-princ" class="sub">Принципы и целевые цифры</a>
+  <a href="#tobe-org" class="sub">Структура, роли, KPI</a>
+  <a href="#tobe-path" class="sub">Целевой путь клиента</a>
+  <a href="#tobe-motiv" class="sub">Мотивация и финансы</a>
+  <a href="#bpmn-tobe" class="sub">BPMN — процесс TO BE</a>
+
+  <div class="grp">Итоги</div>
+  <a href="#compare">Сравнение AS IS → TO BE</a>
+  <a href="#registry">Реестр документов</a>
+  <a href="#decisions">Решения и риски</a>
+</nav>
+
+<main>
+
+<header class="cover" id="cover">
+  <div class="kick">Консалтинговый проект · Презентация результатов</div>
+  <h1>Диагностика кредитного<br>брокериджа и целевая модель<br><span>AS IS → TO BE</span></h1>
+  <p class="lead">ООО «Оникс», Москва, Нижняя Красносельская. Результаты этапа диагностики: карта текущего процесса, отчёт по прослушанным звонкам, целевая модель компании и реестр документов для стандартизации.</p>
+  <div class="cover-meta">
+    <div><b>Объект</b>Продажи, партнёрская сеть, финансы, данные</div>
+    <div><b>Метод</b>Пять интервью + аудит звонков + разбор бюджета</div>
+    <div><b>Модель</b>AS IS и TO BE, BPMN, реестр документов</div>
+    <div><b>Период</b>5–7 октября 2026</div>
+  </div>
+</header>
+
+<section>
+  <h3 style="border:none;margin-top:20px">Компания в цифрах — как это выглядит сегодня</h3>
+  <div class="tiles">
+    <div class="tile warn"><div class="v">3 из 12</div><div class="l">сделок в месяц против плана. Фактическая комиссия ~1,2 млн ₽</div></div>
+    <div class="tile warn"><div class="v">0,03%</div><div class="l">конверсия «лид → сделка»: из ~10 000 лидов доходят ~3</div></div>
+    <div class="tile mid"><div class="v">40–45%</div><div class="l">доля ФОТ в комиссии, платится «с любого рубля»</div></div>
+    <div class="tile mid"><div class="v">222 659 ₽</div><div class="l">телефония и номера в месяц при оценке нормы до 80 000 ₽</div></div>
+    <div class="tile warn"><div class="v">≈ −0,5…0,8</div><div class="l">млн ₽ в месяц. Точка безубыточности — ~2,5 млн ₽ комиссии</div></div>
+    <div class="tile"><div class="v">7 + 4</div><div class="l">человек в штате и исполнителей на аутсорсе</div></div>
+  </div>
+
+  <div class="call red">
+    <span class="ct">Главный вывод диагностики</span>
+    Продажи держатся на «героях», а не на системе. Единственный канал — холодная база; управленческий контур (РОП, план по этапам, аналитика воронки) отсутствует; знания о партнёрах и стоп-факторах лежат в голове аналитика. Компания теряет 0,5–0,8 млн ₽ в месяц и не может выйти на план 5 млн ₽ без изменений в процессе и мотивации.
+  </div>
+  <div class="call amber">
+    <span class="ct">Три зависимости, которые нужно снять</span>
+    <b>1.</b> Лидогенерация — только холодная база номеров без ФИО.<br>
+    <b>2.</b> Партнёрская сеть — личные связи собственника и ГД.<br>
+    <b>3.</b> Стоп-факторы партнёров — знания в голове аналитика (описано ~30% из ≈60).
+  </div>
+</section>
+
+<section id="asis">
+  <div class="sec-head"><div class="sec-num">1</div><h2>Отчёт «AS IS»</h2></div>
+  <div class="sec-sub">Текущее состояние компании: что происходит сейчас, как устроен процесс и где теряются деньги</div>
+
+  <h3>Что за компания</h3>
+  <p><b>ООО «Оникс» — кредитный брокер для «проблемных» заёмщиков:</b> отказы банков, просрочки, займы в МФО, банкротство, неофициальный доход. Продукт — подбор и одобрение кредита под залог, почти всегда недвижимости; компания сопровождает клиента до выдачи.</p>
+  <div class="grid3">
+    <div class="card tight"><h4>Партнёры</h4><p style="margin:0;font-size:13px">Коммерческие банки — <b>~80%</b>. КПК и частные инвесторы — <b>по ~10%</b>. Всего около 60 партнёров.</p></div>
+    <div class="card tight"><h4>Деньги</h4><p style="margin:0;font-size:13px">Только комиссия по факту выдачи, <b>от 3%</b>, без предоплаты. Клиент платит наличными в переговорной банка.</p></div>
+    <div class="card tight"><h4>Цикл сделки</h4><p style="margin:0;font-size:13px">От встречи до выдачи — <b>1 день–1,5 недели</b>, на сложных кейсах <b>4–5 недель</b>.</p></div>
+  </div>
+
+  <h3 id="asis-org">Структура и роли</h3>
+  <p>В компании <b>7 человек в штате и 4 исполнителя на аутсорсе</b>. Чётких полномочий нет: ГД прямо говорит — «нету прям чёткой дорожной карты каждого… полномочия каждого». Всё критичное замкнуто на двух людей.</p>
+  <table>
+    <tr><th style="width:190px">Роль</th><th>Что делает на самом деле</th><th style="width:280px">Проблемы</th></tr>
+    <tr><td class="b">Собственник — Карим</td><td>Стратегия, база и маркетинг, связи с банками, крупные сделки «по сарафану». Финальное слово по всем ключевым вопросам. Около 2 месяцев назад вышел из работы с клиентами</td><td>Держит в себе связи, базу и маркетинг — без него модель обрушится. Управляет через личное участие, а не через систему. Не следил за расходами</td></tr>
+    <tr><td class="b">Генеральный директор — Никита</td><td>Подпись, учёт, утверждение итоговой комиссии. Дожимает клиентов на встречах МОП. Ведёт юрлиц и чеки от 20–25 млн, ищет кредиторов</td><td>По факту — старший продавец, а не управленец. Не разбирается в лидогенерации, не звонит по холодной базе. Конфликт с аналитиком. 25% со своих сделок — конкурирует с командой</td></tr>
+    <tr><td class="b">МОП — Сергей Кузяков</td><td>Звонки по холодной базе, обработка лидов от КЦ. Проводит встречи, подписывает договор, собирает документы, продаёт условия, ездит на сделку, забирает комиссию</td><td>Своих метрик не считает. Работает циклами с провалами. Квалификация в анкетах поверхностная. Комиссию поднимает «по ощущению»</td></tr>
+    <tr><td class="b">МОП — Глеб Воропаев</td><td>То же. Анкеты содержательнее, чем у Сергея</td><td>Собственник: «в силу возраста… тяжеловато». В его кейсе сумма выросла с 1 до 5 млн у клиентки без дохода — нужно разобрать</td></tr>
+    <tr><td class="b">Оператор КЦ — Людмила</td><td>Обзвон базы, квалификация по 13 вопросам, передача лида МОП, подтверждение встреч. Аудит: уверенно ведёт анкету</td><td>Процент 3% за переданный лид без показателей качества. Проверок ФССП и банкротства на входе нет</td></tr>
+    <tr><td class="b">Аналитик — Кристина</td><td>Проверки (ФССП, налоги, арбитраж), выбор партнёров, подача и согласование, расчёт в Excel, постановка сделки в банке. Пишет «легенду» для звонка андеррайтера</td><td>Знания о партнёрах держатся на ней одной — описано 18–19 из ≈60. Доход падает из-за малого числа заявок. Конфликт с ГД</td></tr>
+    <tr><td class="b">HR — Лена</td><td>Подбор персонала, офис, IT</td><td>5% от комиссии — процент без показателей качества. Результаты найма при бюджете HH 75 тыс. ₽ в месяц неизвестны</td></tr>
+    <tr><td class="b">Аутсорс</td><td>Маркетолог делает сайт и Директ и частично настраивает CRM. Бухгалтер — учёт. Юристы работают разово</td><td>Маркетолог получает 3% комиссии со своих лидов; стоимость лида и сделки не считается</td></tr>
+  </table>
+  <div class="call amber"><span class="ct">Риск концентрации</span>Собственник — связи с банками, база, маркетинг, финальные решения; планировал уехать в Дубай. ГД — единственная подпись, учёт и налоговая. Аналитик — знания о партнёрах. Второй учредитель выходит из бизнеса, выкуп доли запланирован на 15-е.</div>
+</section>
+
+<section>
+  <h3 id="asis-proc">Путь клиента (воронка AS IS)</h3>
+  <table>
+    <tr><th style="width:32px">№</th><th style="width:180px">Этап</th><th style="width:170px">Кто делает</th><th>Инструмент и срок</th><th style="width:260px">Дыры и ручная работа</th></tr>
+    <tr><td>1</td><td class="b">Получение базы</td><td>собственник и подрядчик</td><td>номера попадают в amoCRM, по 200 контактов на человека в день</td><td><span class="bdg red">только номер без ФИО</span> качество базы не контролируется</td></tr>
+    <tr><td>2</td><td class="b">Холодный звонок</td><td>оператор КЦ; МОП, когда нет сделок</td><td>телефония Space, звонок КЦ до 5 минут; отказавшимся — 4 касания</td><td>КЦ и МОП звонят по одной и той же базе</td></tr>
+    <tr><td>3</td><td class="b">Квалификация в КЦ</td><td>оператор КЦ</td><td>скрипт из 13 вопросов, шаблон комментария</td><td>3% за лид без оценки качества; <span class="bdg red">нет проверок ФССП и банкротства</span></td></tr>
+    <tr><td>4</td><td class="b">Повторная квалификация</td><td>МОП</td><td>скрипт, запрос кредитной истории</td><td>обязательного набора проверок нет</td></tr>
+    <tr><td>5</td><td class="b">Встреча в офисе</td><td>МОП, со сложным клиентом плюс ГД</td><td>анкета, беседа</td><td><span class="bdg red">ЕГРН и кредитная история не выгружаются на месте</span></td></tr>
+    <tr><td>6</td><td class="b">Договор</td><td>МОП; подпись и комиссию утверждает ГД</td><td>агентский договор на 2 страницы, эксклюзив на 31 день</td><td>договор не удерживает клиента — он уходит к другим брокерам</td></tr>
+    <tr><td>7</td><td class="b">Сбор документов</td><td>МОП</td><td>amoCRM, от суток до недель</td><td>неполные пакеты; в комментариях не указана цель кредита</td></tr>
+    <tr><td>8</td><td class="b">Подача и одобрение</td><td>аналитик</td><td>почта, личные кабинеты банков, Telegram; ответ за 1–1,5 суток</td><td><span class="bdg red">стоп-факторы в голове аналитика</span>, ~70% партнёров не описаны</td></tr>
+    <tr><td>9</td><td class="b">Расчёт и продажа условий</td><td>аналитик считает, МОП продаёт</td><td>Excel, несколько вариантов</td><td>комиссия растёт по ходу сделки</td></tr>
+    <tr><td>10</td><td class="b">Постановка сделки</td><td>аналитик с банком, МОП с клиентом</td><td>звонки, 1–2 дня</td><td>у КПК и инвесторов добавляются зум, юр. проверка и выезд на объект</td></tr>
+    <tr><td>11</td><td class="b">Выдача и комиссия</td><td>МОП, ГД</td><td>наличные в переговорной банка, акт</td><td>МОП тратят день на выезд вместо звонков</td></tr>
+    <tr><td>12</td><td class="b">После сделки</td><td><span class="bdg gray">никто системно</span></td><td>—</td><td>отзывы «только начали собирать»; повторные продажи случаются сами собой</td></tr>
+  </table>
+
+  <h4>Воронка в цифрах — расчёт по словам собственника</h4>
+  <div class="kpi-row">
+    <div><div class="k">Лиды из базы</div><div class="v2">≈10 000</div></div>
+    <div><div class="k">Взято в работу</div><div class="v2">≈30 &nbsp;<span class="bdg red">0,3%</span></div></div>
+    <div><div class="k">Одобрено</div><div class="v2">≈10 &nbsp;<span class="bdg amber">33%</span></div></div>
+    <div><div class="k">Сделки</div><div class="v2">≈3 &nbsp;<span class="bdg red">30%</span></div></div>
+    <div><div class="k">Выручка</div><div class="v2">≈1,2 млн ₽</div></div>
+    <div><div class="k">Безубыточность</div><div class="v2">≈2,5 млн ₽</div></div>
+  </div>
+  <p style="font-size:13px;color:var(--gray)">Формула: комиссия = лиды × «лид → работа» × «работа → одобрение» × «одобрение → выдача» × средняя комиссия. <b>Конверсия «лид → сделка» ≈0,03%.</b> Средний чек 400 тыс. ₽ («это низ» по оценке собственника).</p>
+
+  <h3>Ключевые разрывы процесса</h3>
+  <div class="diag">
+    <div class="d"><div class="h">Нет проверок на входе</div><div class="p">Проблемы клиента всплывают поздно, уже на встрече или в банке. Аналитик: «менеджер не проверил… наобещал 3 короба»</div></div>
+    <div class="d"><div class="h">Документы не собирают на встрече</div><div class="p">Клиент уезжает и «пропадает»: «клиент уехал домой и потом… не шлёт»</div></div>
+    <div class="d"><div class="h">Комиссия меняется по ходу</div><div class="p">Прайса за сложность нет: «смотря стоимость его лжи». Противоречит заявленному УТП</div></div>
+    <div class="d a"><div class="h">Эксклюзив не работает</div><div class="p">Договор не удерживает клиента — он уходит к другим брокерам</div></div>
+    <div class="d a"><div class="h">Нет постпродажи</div><div class="p">Повторные продажи и рекомендации не системны</div></div>
+    <div class="d a"><div class="h">МОП теряют дни на выезды</div><div class="p">Собственник: «это неправильно, но оно пока так»</div></div>
+    <div class="d"><div class="h">Набор клиентов циклами</div><div class="p">Месяц набирают, потом «снимают сливки», потом спад: «в июне собираешь сливки… в июле идёт падение»</div></div>
+    <div class="d a"><div class="h">Плана по этапам нет</div><div class="p">Контроль — только эфирное время и правило «2 полезных действия в день»</div></div>
+  </div>
+</section>
+
+<section id="calls-audit">
+  <div class="sec-head"><div class="sec-num">2</div><h2>Отчёт по прослушанным звонкам</h2></div>
+  <div class="sec-sub">Аудит звонков менеджеров и оператора КЦ за 2–7 октября 2026 года · 8 этапов продаж</div>
+
+  <div class="call red"><span class="ct">Итог аудита</span>Разговор не строится по структуре продаж: этапы пропускаются или идут не по порядку. Из 8 этапов <b>5 не отрабатываются совсем</b>, 3 — частично. Клиент теряется в начале и середине разговора.</div>
+
+  <table>
+    <tr><th style="width:220px">Этап звонка</th><th style="width:130px">Оценка</th><th>Что происходит</th></tr>
+    <tr><td class="b">1. Подготовка к звонку</td><td><span class="bdg amber">частично</span></td><td>Менеджер не изучает историю клиента в CRM перед повторным звонком, путается в прошлых цифрах (комиссия 3,5 млн: сначала «нет», потом «да»)</td></tr>
+    <tr><td class="b">2. Установление контакта</td><td><span class="bdg red">не получается</span></td><td>Не называют одновременно имя, компанию, чем занимается и повод звонка; при повторном звонке не напоминают контекст</td></tr>
+    <tr><td class="b">3. Программирование разговора</td><td><span class="bdg red">не получается</span></td><td>Не объясняют, как пойдёт разговор и зачем вопросы, — квалификация звучит как допрос. Клиентка: «очень много вопросов уже задают»</td></tr>
+    <tr><td class="b">4. Выявление потребности</td><td><span class="bdg red">не получается</span></td><td>Вопросы анкеты задают, но не выясняют боль: зачем клиенту деньги, почему рефинансирование</td></tr>
+    <tr><td class="b">5. Презентация решения</td><td><span class="bdg red">не получается</span></td><td>Комиссию называют «в лоб» до того, как продана ценность, и меняют по ходу (2 млн → «плюс 500 тыс. за инвестора»)</td></tr>
+    <tr><td class="b">6. Работа с возражениями</td><td><span class="bdg amber">переменный успех</span></td><td>Возражение «не работаю с брокерами» отработано профессионально (С. Кузяков); сложный кейс закрывается отказом (доля 30%, квартира из 4 студий)</td></tr>
+    <tr><td class="b">7. Договорённость о следующем шаге</td><td><span class="bdg amber">частично</span></td><td>Звонок часто заканчивается без конкретного шага с датой и временем: «пришлите на почту», «скорее всего нужна встреча»</td></tr>
+    <tr><td class="b">8. Фиксация итога</td><td><span class="bdg amber">частично</span></td><td>По проверенному звонку итог зафиксирован в CRM (лид закрыт как нецелевой, комментарий в карточке); правило не закреплено</td></tr>
+  </table>
+
+  <h3>Где именно теряется клиент</h3>
+  <div class="grid2">
+    <div class="card"><h4 style="color:var(--red)">Потери в разговоре</h4>
+      <ul style="margin-bottom:0">
+        <li><b>В начале разговора</b> — не называют компанию, клиент настораживается: «а что за компания и что вы делаете?»</li>
+        <li><b>При выяснении потребности</b> — нет программирования, вопросы как допрос</li>
+        <li><b>При сложной ситуации</b> — менеджер не ищет решение и не передаёт кейс аналитику, а отказывает</li>
+        <li><b>При разговоре о цене</b> — комиссия «в лоб», меняется по ходу; ставки обещают на первом звонке</li>
+        <li><b>Когда клиент устал или обжёгся</b> — менеджер оправдывается за компанию, перекладывает ответственность на коллег</li>
+        <li><b>Речь менеджера</b> — сленг («шабашка», «тестить») и обсуждение коллег («забавный голосок», «свои проблемы»)</li>
+      </ul>
+    </div>
+    <div class="card"><h4 style="color:var(--green)">Что уже работает</h4>
+      <ul style="margin-bottom:0">
+        <li>Оператор КЦ <b>уверенно ведёт анкету</b> из 13 вопросов, задаёт правильные квалификационные вопросы</li>
+        <li>Сергей Кузяков <b>профессионально отработал возражение</b> «не работаю с брокерами»</li>
+        <li>Есть практика <b>фиксации итога</b> в CRM по отработанным звонкам</li>
+        <li>Сергей Кузяков <b>умеет отказать нецелевому клиенту</b> — свой стоп-лист сформулировал сам</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="call amber"><span class="ct">Отдельное наблюдение</span>Зафиксирован звонок длительностью <b>4 минуты 39 секунд без разговора</b> (С. Кузяков, 06.10, 14:02) — возможная накрутка эфирного времени. Сегодня эфирное время — один из немногих показателей, по которым оцениваются менеджеры, поэтому такие случаи искажают управленческие решения.</div>
+</section>
+<section>
+  <h3 id="asis-mgmt">Управление, продажи и мотивация</h3>
+  <div class="grid2">
+    <div class="card"><h4>Продажи</h4>
+      <ul style="margin-bottom:0">
+        <li><b>Плана по этапам и функции РОПа нет.</b> Бывший РОП ушёл, его скрипты и методички остались только на бумаге</li>
+        <li>Задумана двухуровневая модель: КЦ ищет и сортирует, МОП продаёт. На деле МОП тоже звонят по холодной базе</li>
+        <li>Работа идёт <b>циклами</b>: месяц набора клиентов, потом «сливки», потом спад</li>
+        <li>Комиссия <b>от 3%</b>, итоговую согласует ГД, закладывается в тело кредита. Прайса за сложность нет</li>
+        <li>Портрет клиента по 6 анкетам: 4 из 6 — физлица с отказами и просрочками, чаще по МФО. Запросы от 1,9 до 14 млн</li>
+      </ul>
+    </div>
+    <div class="card"><h4>Маркетинг</h4>
+      <ul style="margin-bottom:0">
+        <li>Холодная база — <b>250 тыс. ₽</b> в месяц. На Директ заложено <b>300 тыс. ₽</b> в месяц</li>
+        <li>Старый сайт с сентября 2025 года дал <b>около 3 заявок</b>. Новый сайт обещан в октябре</li>
+        <li>Маркетолог получает 3% комиссии со своих лидов</li>
+        <li>Собственник ищет новый офис: 140 м², 2 минуты от метро, с вывеской</li>
+        <li><b>Стоимость лида и сделки по источникам не считается</b></li>
+      </ul>
+    </div>
+  </div>
+
+  <h3>Мотивация и ФОТ</h3>
+  <table>
+    <tr><th style="width:170px">Роль</th><th style="width:300px">Как платят сейчас</th><th>Что с этим не так</th></tr>
+    <tr><td class="b">МОП</td><td>20% со своих сделок, без оклада. Доход ~128 тыс. ₽ в месяц, один месяц был с нулём</td><td>Нет оклада на адаптацию; при этом метрики не считаются</td></tr>
+    <tr><td class="b">Генеральный директор</td><td>100 тыс. ₽ + 5% со всего + <b>25% со своих сделок</b></td><td>Процент со своих сделок тянет ГД в личные продажи — он конкурирует с командой вместо управления</td></tr>
+    <tr><td class="b">Аналитик</td><td>100 тыс. ₽ + 4% со всего</td><td>Процент не связан с планом; доход падает из-за малого числа заявок</td></tr>
+    <tr><td class="b">Оператор КЦ</td><td>60 тыс. ₽ + <b>3% за переданный лид</b></td><td>Платится за любой переданный лид, качество и результат не влияют</td></tr>
+    <tr><td class="b">HR</td><td>120 тыс. ₽ + 5% со всего</td><td>Сервисная роль получает процент от продаж без связи с результатом найма</td></tr>
+    <tr><td class="b">Маркетолог</td><td>3% с комиссии по его лидам</td><td>Нет потолка по стоимости сделки: реклама может не окупаться, а бонус всё равно платится</td></tr>
+  </table>
+  <div class="call red"><span class="ct">Ключевая проблема ФОТ</span>Проценты сотрудников — <b>40–45% комиссии и платятся «с любого рубля»</b>, независимо от выполнения плана. Собственник сам называет это «провалом». При этом часть процентов уходит сервисным ролям, которые напрямую на продажи не влияют.</div>
+
+  <h3 id="asis-problems">Проблемы и точки потери денег</h3>
+  <p>Больше всего денег теряется <b>на входе воронки и в мотивации</b>: у базы слабая конверсия, квалификация поздняя, а проценты платятся независимо от плана.</p>
+  <table>
+    <tr><th style="width:130px">Блок</th><th>Проблема</th><th style="width:100px">Влияние</th><th style="width:160px">Корневая причина</th></tr>
+    <tr><td class="b">Маркетинг</td><td>Единственный канал — база номеров без ФИО, конверсия около 0,03%</td><td><span class="bdg red">высокое</span></td><td>управление, собственник</td></tr>
+    <tr><td class="b">Маркетинг</td><td>Тёплого канала нет: 300 тыс. ₽ заложены на Директ, а посадочной страницы ещё нет</td><td><span class="bdg amber">среднее</span></td><td>процесс</td></tr>
+    <tr><td class="b">Продажи</td><td>Нет обязательных проверок на входе, проблемы клиента всплывают поздно</td><td><span class="bdg red">высокое</span></td><td>процесс, инструменты</td></tr>
+    <tr><td class="b">Продажи</td><td>Нарушаются 8 этапов продаж, звонки теряют клиента в начале и середине</td><td><span class="bdg red">высокое</span></td><td>процесс, обучение</td></tr>
+    <tr><td class="b">Продажи</td><td>Около 30% клиентов врут, и это выясняется поздно</td><td><span class="bdg red">высокое</span></td><td>процесс</td></tr>
+    <tr><td class="b">Продажи</td><td>Нет функции РОПа, плана по этапам и адаптации новичков</td><td><span class="bdg red">высокое</span></td><td>управление</td></tr>
+    <tr><td class="b">Продажи</td><td>Набор клиентов идёт циклами, между ними провалы</td><td><span class="bdg amber">среднее</span></td><td>управление, структура</td></tr>
+    <tr><td class="b">Продажи</td><td>На встрече не собирают документы, клиент уезжает и «пропадает»</td><td><span class="bdg amber">среднее</span></td><td>процесс</td></tr>
+    <tr><td class="b">Продажи</td><td>Клиенты уходят к другим брокерам, эксклюзив не работает</td><td><span class="bdg amber">среднее</span></td><td>продукт, договор</td></tr>
+    <tr><td class="b">Продажи</td><td>Комиссия растёт по ходу сделки без правил</td><td><span class="bdg amber">среднее</span></td><td>процесс</td></tr>
+    <tr><td class="b">Продажи</td><td>Сленг, обсуждение коллег, оправдания за компанию</td><td><span class="bdg amber">среднее</span></td><td>культура, обучение</td></tr>
+    <tr><td class="b">Контроль</td><td>Возможная накрутка эфирного времени</td><td><span class="bdg amber">среднее</span></td><td>контроль</td></tr>
+    <tr><td class="b">Услуга</td><td>Стоп-факторы в голове аналитика, описано около 30% партнёров</td><td><span class="bdg red">высокое</span></td><td>процесс, люди</td></tr>
+    <tr><td class="b">Услуга</td><td>Конфликт ГД с аналитиком, собственник хочет упразднить должность</td><td><span class="bdg red">высокое</span></td><td>управление</td></tr>
+    <tr><td class="b">Услуга</td><td>МОП сами ездят на сделки и теряют дни звонков</td><td><span class="bdg amber">среднее</span></td><td>структура</td></tr>
+    <tr><td class="b">Финансы</td><td>Проценты сотрудников — 40–45% комиссии, платятся «с любого рубля»</td><td><span class="bdg red">высокое</span></td><td>управление, собственник</td></tr>
+    <tr><td class="b">Финансы</td><td>ГД берёт 25% со своих сделок и конкурирует с командой</td><td><span class="bdg red">высокое</span></td><td>управление</td></tr>
+    <tr><td class="b">Финансы</td><td>У КЦ и HR процент без показателей качества работы</td><td><span class="bdg amber">среднее</span></td><td>управление</td></tr>
+    <tr><td class="b">Финансы</td><td>Телефония стоит более 200 тыс. ₽ в месяц</td><td><span class="bdg amber">до 140 тыс. ₽/мес</span></td><td>контроль расходов</td></tr>
+    <tr><td class="b">Финансы</td><td>Нет управленческой отчётности и данных по воронке, в таблице бюджета ошибки</td><td><span class="bdg red">высокое</span></td><td>инструменты, управление</td></tr>
+    <tr><td class="b">Сервис</td><td>Нет работы с клиентом после сделки: повторных продаж и рекомендаций по системе</td><td><span class="bdg amber">среднее</span></td><td>процесс</td></tr>
+    <tr><td class="b">Собственник</td><td>Кассовый разрыв, личные долги, выкуп доли: нет денег на рост</td><td><span class="bdg red">высокое</span></td><td>собственник</td></tr>
+  </table>
+
+  <h4>Финансовая картина</h4>
+  <div class="grid2">
+    <div><table>
+      <tr><th>Статья (факт)</th><th style="width:120px">₽/мес</th></tr>
+      <tr><td>Аренда</td><td class="b">170 000</td></tr>
+      <tr><td>Телефония, номера, интернет</td><td class="b">222 659</td></tr>
+      <tr><td>Холодная база</td><td class="b">250 000</td></tr>
+      <tr><td>HH (подбор)</td><td class="b">75 000</td></tr>
+      <tr><td>Оклады: КЦ, ГД, аналитик, HR, 2 МОП</td><td class="b">480 000</td></tr>
+      <tr><td>Директ</td><td class="b">300 000</td></tr>
+      <tr><td><b>Итого постоянные</b></td><td class="b">1 497 659</td></tr>
+      <tr><td>Переменная часть, доля комиссии</td><td class="b">40–45%</td></tr>
+    </table></div>
+    <div class="card">
+      <h4>Как считается безубыточность</h4>
+      <p style="font-size:13.5px">Точка безубыточности = постоянные расходы / (1 − доля переменной части).</p>
+      <div class="call red" style="margin:10px 0 0"><span class="ct">Результат</span>≈2,5 млн ₽ комиссии, то есть <b>примерно 6 сделок</b> в месяц. Фактически выходит около 3 сделок — компания теряет <b>0,5–0,8 млн ₽ в месяц</b>.</div>
+      <p style="font-size:12.5px;color:var(--gray);margin:12px 0 0">В таблице бюджета есть расхождения: итоги (840 тыс. ₽ и 45%) не сходятся с суммой строк (780 тыс. ₽ и 40%), а 25% ГД в них не вошли. Данных из amoCRM и бухгалтерии не было — цифры названы участниками «с головы».</p>
+    </div>
+  </div>
+</section>
+
+<section id="asis-risk">
+  <div class="sec-head"><div class="sec-num">3</div><h2>Юридические и комплаенс-риски</h2></div>
+  <div class="sec-sub">Критично: часть практик нельзя масштабировать и вписывать в регламенты до оценки юристом</div>
+
+  <div class="risk-note">
+    <b>Важно понимать.</b> Ниже — то, что прозвучало на встречах, как <b>факт со слов участников</b>. Часть фраз может быть разговорной бравадой, а «легенда» может означать обычную подготовку клиента к звонку без искажения фактов. Делать по транскрипциям вывод о систематических нарушениях нельзя. Но до юридической оценки эти практики нельзя ни масштабировать, ни описывать в регламентах.
+  </div>
+
+  <table>
+    <tr><th style="width:210px">Риск</th><th>Что прозвучало</th><th style="width:250px">Чем опасно</th></tr>
+    <tr><td class="b">Вознаграждение сотрудникам банков</td><td>«Условия, которых нет на рынке… за конвертик», «забрали 2 млн комиссии… договорена в рамках слов конверт» (ГД); сотрудники банка «могут закрыть глаза на очень многие вещи» (собственник)</td><td><span class="bdg red">коммерческий подкуп (ст. 204 УК РФ)</span></td></tr>
+    <tr><td class="b">Источник базы</td><td>«Перехват трафика»: номера людей, которые говорили с банком (собственник); база отказников «за деньги» (ГД)</td><td><span class="bdg red">152-ФЗ, банковская тайна, блокировка телефонии</span></td></tr>
+    <tr><td class="b">Подготовка клиента к звонку банка и выдачи без дохода</td><td>«Пишу текст… легенда для клиента» (аналитик); «я без дохода делаю… я его подготовлю к этому звонку» (собственник)</td><td><span class="bdg red">мошенничество в кредитовании (ст. 159.1 УК РФ) и соучастие</span></td></tr>
+    <tr><td class="b">Скрытие документов от банка</td><td>«Ряд документов отрезать… которые мы показывать банку не хотим», например о прописанных иждивенцах (аналитик)</td><td><span class="bdg red">то же, плюс потеря доверия партнёров</span></td></tr>
+    <tr><td class="b">Способность клиента платить</td><td>«Конечно, нам не важно», платит ли клиент банку (собственник). Кейс Глеба Воропаева: клиентка без дохода и с регулярными просрочками просила 0,8–1 млн, а получила 5 млн на 15 лет</td><td><span class="bdg red">клиент может потерять залог, компания — репутацию и претензии</span></td></tr>
+    <tr><td class="b">Наличная комиссия и брокер «невидимка»</td><td>«На камерах присутствуем как ближние родственники» (МОП, Сергей); агентский договор без предоплаты</td><td><span class="bdg amber">налоговый риск, претензии банка</span></td></tr>
+    <tr><td class="b">Запросы «нарисовать справку»</td><td>«Таких, думаете, умников мало? Много»; «я поэтому не так сильно развиваюсь… не всех контролируешь» (собственник)</td><td><span class="bdg amber">при росте штата нужен жёсткий стоп-регламент</span></td></tr>
+  </table>
+</section>
+
+<section id="bpmn-asis">
+  <div class="sec-head"><div class="sec-num">4</div><h2>BPMN — процесс AS IS</h2></div>
+  <div class="sec-sub">Сквозной процесс «от лида до комиссии» · 4 дорожки · красным отмечены проблемные шаги</div>
+
+  <div class="scroll-x"><div class="bpmn" style="min-width:900px">
+    <div class="bpmn-top">Сквозной процесс «Оникс» — от лида до комиссии <small>AS IS · 4 дорожки · 9 точек ветвления</small></div>
+
+    <div class="lane">
+      <div class="lane-label o"><span>Оператор КЦ<br>Людмила</span></div>
+      <div class="lane-flow">
+        <div class="step">Позвонить клиенту по холодной базе</div>
+        <div class="arw">→</div>
+        <div class="gw">Клиент взял трубку?</div>
+        <div class="arw">→</div>
+        <div class="step prob">Отправить СМС / повторить звонок</div>
+        <div class="arw">→</div>
+        <div class="step">Представиться</div>
+        <div class="arw">→</div>
+        <div class="step">Задать 13 вопросов анкеты</div>
+        <div class="arw">→</div>
+        <div class="step auto">Зафиксировать лида в amoCRM</div>
+        <div class="arw">→</div>
+        <div class="gw">Лид целевой?</div>
+        <div class="arw">→</div>
+        <div class="step prob">Вежливый отказ / лид закрыт</div>
+        <div class="arw">→</div>
+        <div class="step">Передать лид МОП</div>
+      </div>
+    </div>
+
+    <div class="lane">
+      <div class="lane-label"><span>Менеджер по продажам<br>Сергей · Глеб</span></div>
+      <div class="lane-flow">
+        <div class="step">Получить лид от КЦ</div>
+        <div class="arw">→</div>
+        <div class="step">Позвонить клиенту</div>
+        <div class="arw">→</div>
+        <div class="step prob">Провести повторную квалификацию</div>
+        <div class="arw">→</div>
+        <div class="step prob">Запросить кредитную историю</div>
+        <div class="arw">→</div>
+        <div class="step prob">Программировать разговор</div>
+        <div class="arw">→</div>
+        <div class="step prob">Выяснить боль клиента</div>
+        <div class="arw">→</div>
+        <div class="step">Пригласить клиента в офис</div>
+        <div class="arw">→</div>
+        <div class="gw">Клиент готов прийти?</div>
+        <div class="arw">→</div>
+        <div class="step">Назначить дату и время встречи</div>
+        <div class="arw">→</div>
+        <div class="step auto">Зафиксировать встречу в amoCRM</div>
+        <div class="arw">→</div>
+        <div class="step prob">Дожать по телефону</div>
+        <div class="arw">→</div>
+        <div class="step">Встретить клиента в офисе</div>
+        <div class="arw">→</div>
+        <div class="step">Дать клиенту анкету</div>
+        <div class="arw">→</div>
+        <div class="step">Провести встречу, выяснить потребность</div>
+        <div class="arw">→</div>
+        <div class="gw">Сложный клиент?</div>
+        <div class="arw">→</div>
+        <div class="step prob">Запросить документы</div>
+        <div class="arw">→</div>
+        <div class="step">Подписать договор с клиентом</div>
+        <div class="arw">→</div>
+        <div class="step auto">Зафиксировать договор в amoCRM</div>
+        <div class="arw">→</div>
+        <div class="step prob">Собрать сканы в единые файлы</div>
+        <div class="arw">→</div>
+        <div class="step auto">Загрузить документы в amoCRM</div>
+        <div class="arw">→</div>
+        <div class="step">Получить таблицу от аналитика</div>
+        <div class="arw">→</div>
+        <div class="step prob">Передать условия клиенту</div>
+        <div class="arw">→</div>
+        <div class="gw">Клиент согласен?</div>
+        <div class="arw">→</div>
+        <div class="step prob">Уточнить бюджет, предложить альтернативу</div>
+        <div class="arw">→</div>
+        <div class="step auto">Зафиксировать выбор клиента в amoCRM</div>
+        <div class="arw">→</div>
+        <div class="step">Подготовить клиента к сделке</div>
+        <div class="arw">→</div>
+        <div class="step prob">Поехать с клиентом в банк</div>
+        <div class="arw">→</div>
+        <div class="step">Сопроводить сделку</div>
+        <div class="arw">→</div>
+        <div class="step">Получить комиссию от клиента</div>
+        <div class="arw">→</div>
+        <div class="step">Подписать акт</div>
+      </div>
+    </div>
+
+    <div class="lane">
+      <div class="lane-label g"><span>Генеральный директор<br>Никита</span></div>
+      <div class="lane-flow">
+        <div class="step">Подключиться к сложному клиенту</div>
+        <div class="arw">→</div>
+        <div class="step">Продолжить работу с клиентом</div>
+        <div class="arw">→</div>
+        <div class="step">Согласовать условия</div>
+        <div class="arw">→</div>
+        <div class="step prob">Утвердить итоговую комиссию</div>
+        <div class="arw">→</div>
+        <div class="step prob">Проконтролировать получение комиссии</div>
+      </div>
+    </div>
+
+    <div class="lane">
+      <div class="lane-label p"><span>Аналитик<br>Кристина</span></div>
+      <div class="lane-flow">
+        <div class="step">Получить документы от МОП</div>
+        <div class="arw">→</div>
+        <div class="step">Проверить комплектность пакета</div>
+        <div class="arw">→</div>
+        <div class="gw">Пакет полный?</div>
+        <div class="arw">→</div>
+        <div class="step prob">Запросить недостающие документы</div>
+        <div class="arw">→</div>
+        <div class="step">Провести проверки: ФССП, налоги, арбитраж</div>
+        <div class="arw">→</div>
+        <div class="step">Определить правоустановку</div>
+        <div class="arw">→</div>
+        <div class="step prob">Определить стоп-факторы</div>
+        <div class="arw">→</div>
+        <div class="step prob">Выбрать партнёров по базе</div>
+        <div class="arw">→</div>
+        <div class="step">Отправить заявки партнёрам</div>
+        <div class="arw">→</div>
+        <div class="step">Получить решения от партнёров</div>
+        <div class="arw">→</div>
+        <div class="step">Собрать 2–3 одобрения</div>
+        <div class="arw">→</div>
+        <div class="step auto">Рассчитать варианты в Excel</div>
+        <div class="arw">→</div>
+        <div class="step">Сформировать таблицу вариантов</div>
+        <div class="arw">→</div>
+        <div class="step">Получить выбор клиента</div>
+        <div class="arw">→</div>
+        <div class="step">Позвонить в банк, узнать окошки</div>
+        <div class="arw">→</div>
+        <div class="step">Согласовать дату сделки с банком</div>
+        <div class="arw">→</div>
+        <div class="step">Согласовать дату с клиентом</div>
+        <div class="arw">→</div>
+        <div class="step">Поставить сделку в банке</div>
+        <div class="arw">→</div>
+        <div class="step prob">Дозапросить документы</div>
+        <div class="arw">→</div>
+        <div class="step auto">Зафиксировать выдачу в amoCRM</div>
+        <div class="arw">→</div>
+        <div class="step prob">Закрыть сделку в amoCRM</div>
+        <div class="arw">→</div>
+        <div class="step prob">Позвонить клиенту через 1, 6, 12 месяцев</div>
+        <div class="arw">→</div>
+        <div class="ev end">Комиссия получена</div>
+      </div>
+    </div>
+  </div></div>
+
+  <div class="legend">
+    <span><i style="background:#fff;border:1.5px solid var(--navy-2)"></i> шаг процесса</span>
+    <span><i style="background:var(--red-l);border:1.5px dashed var(--red)"></i> проблемный шаг (разрыв)</span>
+    <span><i style="background:var(--amber-l);border:1.5px solid var(--amber)"></i> точка ветвления</span>
+    <span><i style="background:var(--violet-l);border:1.5px solid var(--violet)"></i> фиксация в системе</span>
+    <span><i style="background:var(--green-l);border:1.5px solid var(--green);border-radius:20px"></i> начало / конец</span>
+  </div>
+</section>
+
+<section id="tobe">
+  <div class="sec-head"><div class="sec-num">5</div><h2>Отчёт «TO BE»</h2></div>
+  <div class="sec-sub">Какой должна стать компания, чтобы выйти на план 5 млн ₽ комиссии в месяц и снизить долю ФОТ до ~28%</div>
+
+  <h3 id="tobe-princ">Принципы целевой модели</h3>
+  <div class="diag">
+    <div class="d g"><div class="h">Процесс, а не люди</div><div class="p">Любой клиент проходит путь по регламенту. Знания о партнёрах, стоп-факторах и скриптах лежат в документах, а не в головах</div></div>
+    <div class="d g"><div class="h">Ценность раньше цены</div><div class="p">Комиссию и ставку называем после выяснения боли и ситуации клиента — один раз и с объяснением</div></div>
+    <div class="d g"><div class="h">Оплата за результат команды</div><div class="p">Переменная часть платится при выполнении плана, а не «с любого рубля»</div></div>
+    <div class="d g"><div class="h">Разделение ролей</div><div class="p">Собственник — стратегия и партнёры; ГД — коммерческий директор; МОП — продажи; аналитик — документы и партнёры; КЦ — квалификация; «чемодан» — выдачи</div></div>
+    <div class="d g"><div class="h">Данные вместо ощущений</div><div class="p">Воронка, конверсии, комиссия и стоимость лида считаются в CRM, а не «с головы»</div></div>
+  </div>
+
+  <h3>Целевые показатели</h3>
+  <table>
+    <tr><th>Показатель</th><th style="width:170px">AS IS</th><th style="width:170px">TO BE</th></tr>
+    <tr><td class="b">Комиссия в месяц</td><td><span class="bdg red">~1,2 млн ₽</span></td><td><span class="bdg green">5 млн ₽</span></td></tr>
+    <tr><td class="b">Сделок в месяц</td><td><span class="bdg red">3</span></td><td><span class="bdg green">12</span></td></tr>
+    <tr><td class="b">Точка безубыточности</td><td><span class="bdg red">2,5 млн ₽ (6 сделок)</span></td><td><span class="bdg green">1,8 млн ₽ (4,5 сделки)</span></td></tr>
+    <tr><td class="b">Доля ФОТ в комиссии</td><td><span class="bdg red">40–45%</span></td><td><span class="bdg green">≤30%</span></td></tr>
+    <tr><td class="b">Доля лидов из холодной базы</td><td><span class="bdg red">100%</span></td><td><span class="bdg green">≤60%</span></td></tr>
+  </table>
+
+  <h3 id="tobe-org">Структура, роли и KPI</h3>
+  <div class="card" style="font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:12.6px;line-height:1.75;white-space:pre-wrap">Собственник (Карим)
+├── Стратегия, партнёры, крупные сделки, бюджет
+│
+├── Генеральный директор — коммерческий директор по функциям
+│   ├── Подпись, учёт, налоги
+│   ├── Управление командой продаж: план, воронка, разбор звонков
+│   ├── Адаптация новичков, наставничество
+│   └── Крупные сделки и юрлица
+│
+├── Отдел продаж
+│   ├── МОП
+│   └── «Чемодан» — выдачи (при &gt;8 сделок/мес)
+│
+├── Оператор КЦ
+│   ├── Обзвон базы, квалификация по 13 вопросам
+│   └── Передача лида аналитику на проверку
+│
+├── Аналитик
+│   ├── Проверки ФССП, банкротство, налоги, арбитраж, Росреестр
+│   ├── Проверка документов, выбор партнёров
+│   ├── Подача, согласование, расчёт вариантов
+│   ├── База партнёров (60+ строк)
+│   └── Постановка сделки в банке
+│
+├── HR / офис-менеджер / сисадмин (Лена)
+│   ├── Подбор, офис, IT
+│   └── Бонус за нанятого сотрудника, прошедшего испытательный срок
+│
+└── Аутсорс
+    ├── Маркетолог — сайт, Директ, партнёрский канал
+    └── Бухгалтер — учёт, наличная комиссия, налоги</div>
+
+  <div class="call blue"><span class="ct">Роль генерального директора</span>ГД выполняет функции коммерческого директора, но сохраняет название «генеральный директор». За ним: <b>подпись и учёт</b> (единственная подпись, налоговая, контроль оплат); <b>управление командой продаж</b> (план, воронка, разбор звонков, адаптация); <b>крупные сделки и юрлица</b> (чеки от 20 млн, сложные кейсы). <b>Не продаёт сам по мелким и средним сделкам.</b> Критерий успеха — команда выполняет план без личного участия ГД в каждой сделке.</div>
+
+  <table>
+    <tr><th style="width:210px">Роль</th><th>Отвечает за</th><th style="width:320px">KPI</th></tr>
+    <tr><td class="b">Собственник</td><td>Стратегия, партнёры, крупные сделки, бюджет</td><td>Выполнение плана, доля ФОТ, выход на безубыточность</td></tr>
+    <tr><td class="b">ГД (коммерческий директор по функциям)</td><td>Подпись, учёт, команда продаж, крупные сделки</td><td>План команды, доля ФОТ, качество регламентов</td></tr>
+    <tr><td class="b">МОП</td><td>Продажи, встречи, документы, дожим</td><td>Личный план, конверсия «встреча → сделка»</td></tr>
+    <tr><td class="b">Оператор КЦ</td><td>Квалификация, передача лида</td><td>Конверсия «лид → встреча», качество анкеты</td></tr>
+    <tr><td class="b">Аналитик</td><td>Проверки, документы, партнёры, подача, расчёт</td><td>Время подачи, доля одобрений, заполнение базы партнёров</td></tr>
+    <tr><td class="b">«Чемодан»</td><td>Выдачи, сопровождение сделки</td><td>Число выдач, соблюдение сроков</td></tr>
+    <tr><td class="b">HR</td><td>Подбор, офис, IT</td><td>Число нанятых, прошедших испытательный срок</td></tr>
+    <tr><td class="b">Маркетолог</td><td>Сайт, Директ, партнёрский канал</td><td>Стоимость лида, стоимость сделки</td></tr>
+    <tr><td class="b">Бухгалтер</td><td>Учёт, налоги, наличная комиссия</td><td>Своевременность, корректность</td></tr>
+  </table>
+
+  <h3 id="tobe-path">Целевой путь клиента</h3>
+  <table>
+    <tr><th style="width:200px">Этап</th><th style="width:170px">Кто</th><th>Критерий готовности</th></tr>
+    <tr><td class="b">Лид</td><td>КЦ / МОП</td><td>Лид в CRM, источник указан</td></tr>
+    <tr><td class="b">Квалификация</td><td>КЦ</td><td>13 вопросов + уточняющие, комментарий заполнен</td></tr>
+    <tr><td class="b">Проверки на входе</td><td>Аналитик</td><td><span class="bdg green">ФССП, банкротство, налоги, арбитраж, Росреестр</span> — клиент без проверок на встречу не идёт</td></tr>
+    <tr><td class="b">Дозвон</td><td>МОП</td><td>Встреча назначена (дата, время)</td></tr>
+    <tr><td class="b">Встреча</td><td>МОП</td><td>Анкета заполнена, <b>электронные документы выгружены</b>, боль выяснена</td></tr>
+    <tr><td class="b">Договор</td><td>МОП + ГД</td><td>Комиссия зафиксирована, оговорка о пересмотре</td></tr>
+    <tr><td class="b">Полный пакет</td><td>МОП</td><td>Все документы в CRM, статус «полный пакет»</td></tr>
+    <tr><td class="b">Подача</td><td>Аналитик</td><td>Заявки отправлены, партнёры выбраны по базе</td></tr>
+    <tr><td class="b">Одобрения</td><td>Аналитик</td><td>2–3 одобрения, расчёт в Excel</td></tr>
+    <tr><td class="b">Продажа условий</td><td>МОП</td><td>Клиент выбрал вариант</td></tr>
+    <tr><td class="b">Постановка сделки</td><td>Аналитик</td><td>Дата согласована с банком и клиентом</td></tr>
+    <tr><td class="b">Выдача</td><td>«Чемодан» / МОП</td><td>Комиссия получена, акт подписан</td></tr>
+    <tr><td class="b">Повторные продажи</td><td>МОП / КЦ</td><td>Звонок через 1, 6, 12 месяцев</td></tr>
+  </table>
+</section>
+
+<section>
+  <h3 id="tobe-motiv">Мотивация TO BE</h3>
+  <div class="call green"><span class="ct">Принцип</span>Переменная часть платится за результат, а не «с любого рубля». Проценты от общей комиссии выплачиваются <b>только при выполнении плана</b>. Доля переменной части при 100% плана — <b>не больше 30% комиссии</b>, то есть около 26–28% против нынешних 40–45%.</div>
+  <table>
+    <tr><th style="width:170px">Роль</th><th style="width:290px">Сейчас</th><th>Предложение</th></tr>
+    <tr><td class="b">МОП</td><td>20% со своих сделок, без оклада</td><td>Небольшая окладная часть на период адаптации + ставка от выполнения личного плана</td></tr>
+    <tr><td class="b">Оператор КЦ</td><td>60 тыс. ₽ + 3% за переданный лид</td><td>Оклад + фикс за проведённую встречу, прошедшую проверки + 1–2% при выдаче</td></tr>
+    <tr><td class="b">ГД (коммерческий директор)</td><td>100 тыс. ₽ + 5% со всего + 25% со своих сделок</td><td>Оклад + командный бонус за выполнение плана команды. <b>Без 25% со своих сделок</b></td></tr>
+    <tr><td class="b">Аналитик</td><td>100 тыс. ₽ + 4% со всего</td><td>Оклад + процент при выполнении плана + бонус за сроки подачи и заполнение базы партнёров</td></tr>
+    <tr><td class="b">HR</td><td>120 тыс. ₽ + 5% со всего</td><td>Оклад + бонус за нанятого сотрудника, прошедшего испытательный срок</td></tr>
+    <tr><td class="b">Маркетолог</td><td>3% с комиссии по его лидам</td><td>То же, но с потолком по стоимости сделки: если реклама не окупается, бонуса нет</td></tr>
+  </table>
+  <div class="call amber"><span class="ct">Переход</span>Лучше сделать в два шага: сначала привязка к плану, потом снижение ставок. Резкое снижение в два раза нереалистично — это признал и сам собственник.</div>
+
+  <h3 id="tobe-fin">Финансы TO BE</h3>
+  <div class="grid2">
+    <div>
+      <h4>Панель показателей собственника (еженедельно)</h4>
+      <table>
+        <tr><th>Показатель</th><th style="width:100px">Источник</th><th style="width:110px">Цель</th></tr>
+        <tr><td>Лиды по источникам</td><td>CRM</td><td class="b">10 000+</td></tr>
+        <tr><td>Назначенные встречи</td><td>CRM</td><td class="b">40+</td></tr>
+        <tr><td>Проведённые встречи</td><td>CRM</td><td class="b">30+</td></tr>
+        <tr><td>Договоры</td><td>CRM</td><td class="b">20+</td></tr>
+        <tr><td>Полные пакеты</td><td>CRM</td><td class="b">15+</td></tr>
+        <tr><td>Одобрения</td><td>CRM</td><td class="b">10–12</td></tr>
+        <tr><td>Выдачи</td><td>CRM</td><td class="b">10–12</td></tr>
+        <tr><td>Комиссия фактом</td><td>CRM + бух.</td><td class="b">5 млн ₽</td></tr>
+        <tr><td>Стоимость сделки по каналам</td><td>CRM + бух.</td><td class="b">≤30%</td></tr>
+      </table>
+    </div>
+    <div>
+      <h4>Ежемесячная отчётность</h4>
+      <div class="card tight" style="box-shadow:none;border:1px solid var(--line)">
+        <ul style="margin-bottom:0">
+          <li>P&amp;L</li>
+          <li>Фактическая доля ФОТ в комиссии</li>
+          <li>Маржа по типам сделок: физлица, юрлица, КПК, инвесторы</li>
+          <li>Причины отказов по этапам</li>
+          <li>Доля повторных клиентов</li>
+        </ul>
+      </div>
+      <h4 style="margin-top:20px">Целевая структура расходов</h4>
+      <table>
+        <tr><th>Статья</th><th style="width:100px">Сейчас</th><th style="width:100px">Цель</th></tr>
+        <tr><td>Постоянные расходы</td><td>1 497 659 ₽</td><td class="b">1 310 000 ₽</td></tr>
+        <tr><td>Телефония, номера</td><td>222 659 ₽</td><td class="b">80 000 ₽</td></tr>
+        <tr><td>Переменная часть</td><td>40–45%</td><td class="b">28%</td></tr>
+        <tr><td>Безубыточность</td><td>≈2,5 млн ₽</td><td class="b">≈1,8 млн ₽</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <h3>Управление и культура TO BE</h3>
+  <table>
+    <tr><th style="width:200px">Мероприятие</th><th style="width:150px">Частота</th><th style="width:190px">Участники</th><th>Результат</th></tr>
+    <tr><td class="b">Планёрка</td><td>ежедневно, 15 мин</td><td>ГД, МОП, КЦ</td><td>план и факт по этапам</td></tr>
+    <tr><td class="b">Разбор звонков</td><td>раз в неделю</td><td>ГД, МОП</td><td>корректировка скриптов, обучение</td></tr>
+    <tr><td class="b">Разбор проигранных сделок</td><td>раз в неделю</td><td>ГД, МОП, аналитик</td><td>причины отказов, улучшение подачи</td></tr>
+    <tr><td class="b">Итоги месяца</td><td>раз в месяц</td><td>собственник, ГД</td><td>P&amp;L, выполнение плана, корректировка</td></tr>
+  </table>
+
+  <h4>Документы, которые нужно создать</h4>
+  <p><span class="chip">Должностные инструкции по ролям</span><span class="chip">Регламент передач между ролями</span><span class="chip">Скрипты по 4 сегментам</span><span class="chip">Чек-лист проверок</span><span class="chip">Правила комиссии</span><span class="chip">Стоп-лист клиентов</span><span class="chip">Тест по продукту для новичков</span><span class="chip">Комплаенс-регламент</span></p>
+  <p style="font-size:13px;color:var(--gray)">Скрипты разрабатываются по четырём сегментам: физлица с МФО и просрочками; банкроты; предприниматели, которым банки режут сумму; те, кто сам не искал рефинансирование.</p>
+</section>
+
+<section id="bpmn-tobe">
+  <div class="sec-head"><div class="sec-num">6</div><h2>BPMN — процесс TO BE</h2></div>
+  <div class="sec-sub">Тот же сквозной процесс, но с проверками на входе, документами на встрече и без выездов МОП</div>
+
+  <div class="scroll-x"><div class="bpmn" style="min-width:900px">
+    <div class="bpmn-top">Сквозной процесс «Оникс» — от лида до комиссии <small>TO BE · 5 дорожек · ключевые изменения выделены зелёным</small></div>
+
+    <div class="lane">
+      <div class="lane-label o"><span>Оператор КЦ</span></div>
+      <div class="lane-flow">
+        <div class="ev start">Лид из канала</div>
+        <div class="arw">→</div>
+        <div class="step">Квалификация по 13 вопросам + уточняющие</div>
+        <div class="arw">→</div>
+        <div class="step fix">Проверки на входе: ФССП, банкротство, налоги, арбитраж</div>
+        <div class="arw">→</div>
+        <div class="gw">Проверки пройдены?</div>
+        <div class="arw">→</div>
+        <div class="step prob">Вежливый отказ по стоп-листу</div>
+        <div class="arw">→</div>
+        <div class="step">Передача лида МОП с комментарием</div>
+      </div>
+    </div>
+
+    <div class="lane">
+      <div class="lane-label"><span>Менеджер по продажам</span></div>
+      <div class="lane-flow">
+        <div class="step fix">Изучить карточку клиента в CRM</div>
+        <div class="arw">→</div>
+        <div class="step fix">Представиться: имя, компания, повод</div>
+        <div class="arw">→</div>
+        <div class="step fix">Программировать разговор: «5–7 вопросов, 3–4 минуты»</div>
+        <div class="arw">→</div>
+        <div class="step fix">Выяснить боль: зачем деньги, почему рефинансирование</div>
+        <div class="arw">→</div>
+        <div class="step auto">Зафиксировать в CRM</div>
+        <div class="arw">→</div>
+        <div class="step">Встреча в офисе: анкета + боль</div>
+        <div class="arw">→</div>
+        <div class="step fix">Выгрузить электронные документы на встрече</div>
+        <div class="arw">→</div>
+        <div class="step">Подписать договор, комиссия зафиксирована</div>
+        <div class="arw">→</div>
+        <div class="step fix">Продажа условий один раз, с объяснением</div>
+        <div class="arw">→</div>
+        <div class="gw">Клиент выбрал вариант?</div>
+        <div class="arw">→</div>
+        <div class="step">Передать клиента на выдачу</div>
+      </div>
+    </div>
+
+    <div class="lane">
+      <div class="lane-label p"><span>Аналитик</span></div>
+      <div class="lane-flow">
+        <div class="step">Проверить полный пакет</div>
+        <div class="arw">→</div>
+        <div class="step fix">Определить стоп-факторы по базе партнёров</div>
+        <div class="arw">→</div>
+        <div class="step fix">Выбрать партнёров точечно, без «веерной рассылки»</div>
+        <div class="arw">→</div>
+        <div class="step">Подать в срок 24 часа</div>
+        <div class="arw">→</div>
+        <div class="step">Собрать 2–3 одобрения</div>
+        <div class="arw">→</div>
+        <div class="step auto">Рассчитать варианты, расчёт за 48 часов</div>
+        <div class="arw">→</div>
+        <div class="step">Согласовать дату сделки за 24 часа</div>
+        <div class="arw">→</div>
+        <div class="step auto">Зафиксировать решение в CRM: куда подали, куда нет и почему</div>
+      </div>
+    </div>
+
+    <div class="lane">
+      <div class="lane-label k"><span>«Чемодан» / выдача</span></div>
+      <div class="lane-flow">
+        <div class="step fix">Выехать на сделку вместо МОП</div>
+        <div class="arw">→</div>
+        <div class="step">Сопроводить сделку в банке</div>
+        <div class="arw">→</div>
+        <div class="step">Получить комиссию, подписать акт</div>
+        <div class="arw">→</div>
+        <div class="ev mid">Выдача зафиксирована в CRM</div>
+      </div>
+    </div>
+
+    <div class="lane">
+      <div class="lane-label g"><span>ГД / коммерческий<br>директор</span></div>
+      <div class="lane-flow">
+        <div class="step">Подключиться к крупным сделкам и юрлицам</div>
+        <div class="arw">→</div>
+        <div class="step fix">Управлять командой: план, воронка, разбор звонков</div>
+        <div class="arw">→</div>
+        <div class="step fix">Разбор 2–3 звонков и проигранных сделок в неделю</div>
+        <div class="arw">→</div>
+        <div class="ev end">План команды выполнен</div>
+      </div>
+    </div>
+
+    <div class="lane">
+      <div class="lane-label k"><span>Постпродажа</span></div>
+      <div class="lane-flow">
+        <div class="step fix">Звонок через 1, 6, 12 месяцев</div>
+        <div class="arw">→</div>
+        <div class="step fix">Рефинансирование, доп. сумма, отзыв</div>
+        <div class="arw">→</div>
+        <div class="step fix">Вознаграждение за рекомендацию</div>
+      </div>
+    </div>
+  </div></div>
+
+  <div class="legend">
+    <span><i style="background:#fff;border:1.5px solid var(--navy-2)"></i> шаг без изменений</span>
+    <span><i style="background:var(--green-l);border:1.5px solid var(--green)"></i> новое / изменённое</span>
+    <span><i style="background:var(--amber-l);border:1.5px solid var(--amber)"></i> точка ветвления</span>
+    <span><i style="background:var(--violet-l);border:1.5px solid var(--violet)"></i> фиксация в системе</span>
+  </div>
+</section>
+
+<section id="compare">
+  <div class="sec-head"><div class="sec-num">7</div><h2>Сравнение AS IS → TO BE</h2></div>
+  <div class="sec-sub">Что меняется: процесс, экономика, роли и управление</div>
+
+  <table>
+    <tr><th style="width:270px">Параметр</th><th>AS IS — как сейчас</th><th>TO BE — как должно быть</th></tr>
+    <tr><td class="b">Управление продажами</td><td>Функции РОПа нет. План по этапам отсутствует, контроль — эфирное время</td><td><span class="bdg green">РОП по функциям у ГД</span> План по этапам, ежедневная планёрка, разбор звонков</td></tr>
+    <tr><td class="b">Квалификация клиента</td><td>Единой нет. Проблемы всплывают на встрече или в банке</td><td><span class="bdg green">Чек-лист проверок до встречи</span> ФССП, банкротство, налоги, арбитраж, Росреестр</td></tr>
+    <tr><td class="b">Документы</td><td>Клиент уезжает и «пропадает», пакет собирается неделями</td><td><span class="bdg green">Электронные документы на встрече</span> Остаток — за 48 часов с напоминанием из CRM</td></tr>
+    <tr><td class="b">Цена</td><td>Комиссия «в лоб», растёт по ходу сделки, прайса нет</td><td><span class="bdg green">Ставка по сегментам</span> Надбавки за скрытые факты, фиксация в договоре</td></tr>
+    <tr><td class="b">Партнёры</td><td>Стоп-факторы в голове аналитика, описано ~30% из ≈60</td><td><span class="bdg green">База партнёров 60+ строк</span> Точечная подача, решение фиксируется в CRM</td></tr>
+    <tr><td class="b">Выдачи</td><td>МОП тратят день на выезд вместо звонков</td><td><span class="bdg green">«Чемодан» при &gt;8 сделок/мес</span> МОП остаются на телефоне</td></tr>
+    <tr><td class="b">Мотивация</td><td>40–45% комиссии, платится «с любого рубля»; ГД берёт 25% со своих сделок</td><td><span class="bdg green">≤30% и только при выполнении плана</span> ГД — командный бонус без 25%</td></tr>
+    <tr><td class="b">Каналы</td><td>Только холодная база. Сайт дал ~3 заявки за год</td><td><span class="bdg green">Холодная база ≤60%</span> Плюс сайт, Директ под тестом, партнёрские потоки</td></tr>
+    <tr><td class="b">Данные</td><td>Управленческой отчётности нет, цифры «с головы»</td><td><span class="bdg green">CRM — единый источник</span> Панель показателей еженедельно, P&amp;L ежемесячно</td></tr>
+    <tr><td class="b">Постпродажа</td><td>Никто системно не работает</td><td><span class="bdg green">Звонки через 1, 6, 12 месяцев</span> Вознаграждение за рекомендацию</td></tr>
+    <tr><td class="b">Расходы</td><td>Телефония 222 659 ₽, постоянные 1 497 659 ₽</td><td><span class="bdg green">Телефония 80 000 ₽, постоянные 1 310 000 ₽</span></td></tr>
+    <tr><td class="b">Результат</td><td>3 сделки, ~1,2 млн ₽ комиссии, минус 0,5–0,8 млн ₽/мес</td><td><span class="bdg green">12 сделок, 5 млн ₽ комиссии</span></td></tr>
+  </table>
+</section>
+
+<section id="registry">
+  <div class="sec-head"><div class="sec-num">8</div><h2>Реестр документов для стандартизации</h2></div>
+  <div class="sec-sub">Перечень регламентов и положений, которые переводят работу компании с людей на процесс</div>
+
+  <table>
+    <tr><th style="width:250px">Раздел</th><th style="width:300px">Документ</th><th>Что описывает</th></tr>
+    <tr class="reg-sec"><td colspan="3">Положения о компании и продукте</td></tr>
+    <tr class="reg-row"><td>Продукт</td><td>Положение о компании и продуктах</td><td>Миссия, продукт (кредит под залог для «проблемных» заёмщиков), партнёры, целевые сегменты, УТП</td></tr>
+    <tr class="reg-row"><td>Цена</td><td>Положение о ценообразовании</td><td>Правила формирования комиссии, базовые ставки по сегментам, надбавки за скрытые факты</td></tr>
+    <tr class="reg-row"><td>Цена</td><td>Матрица скидок и порядок согласования</td><td>Кто и на сколько может снизить комиссию, порядок согласования с ГД</td></tr>
+
+    <tr class="reg-sec"><td colspan="3">Организационная структура и роли</td></tr>
+    <tr class="reg-row"><td>Структура</td><td>Организационная структура и зоны ответственности</td><td>Целевая структура: собственник, ГД (коммерческий директор по функциям), МОП, аналитик, КЦ, «чемодан», HR, аутсорс</td></tr>
+    <tr class="reg-row"><td>Роли</td><td>Должностная инструкция МОП</td><td>Обязанности, права, KPI, подчинённость менеджера по продажам</td></tr>
+    <tr class="reg-row"><td>Роли</td><td>Должностная инструкция аналитика</td><td>Проверки, документы, партнёры, подача, расчёт, постановка сделки</td></tr>
+    <tr class="reg-row"><td>Роли</td><td>Должностная инструкция оператора КЦ</td><td>Обзвон, квалификация, передача лида аналитику</td></tr>
+    <tr class="reg-row"><td>Роли</td><td>Должностная инструкция ГД</td><td>Подпись, учёт, управление командой, крупные сделки</td></tr>
+    <tr class="reg-row"><td>Роли</td><td>Положение о подмене и взаимозаменяемости</td><td>Кто кого замещает при отпуске, болезни, выезде на сделку</td></tr>
+
+    <tr class="reg-sec"><td colspan="3">Продажи и работа с клиентом</td></tr>
+    <tr class="reg-row"><td>Продажи</td><td>Положение об отделе продаж</td><td>Структура, цели, KPI, взаимодействие с КЦ и аналитикой</td></tr>
+    <tr class="reg-row"><td>Продажи</td><td>Регламент обработки входящих обращений</td><td>Как принимается и фиксируется лид из любого канала</td></tr>
+    <tr class="reg-row"><td>Продажи</td><td>Стандарт квалификации клиента + чек-лист</td><td>13 вопросов анкеты, уточняющие по правоустановке, выявление боли</td></tr>
+    <tr class="reg-row"><td>Продажи</td><td>Стандарт коммуникации с клиентом</td><td>Представление, программирование разговора, tone of voice, речевые правила</td></tr>
+    <tr class="reg-row"><td>Продажи</td><td>Скрипты продаж + работа с возражениями</td><td>Скрипты по 4 сегментам: физлица с МФО, банкроты, предприниматели, рефинансирование</td></tr>
+    <tr class="reg-row"><td>Продажи</td><td>Библиотека типовых возражений и ответов</td><td>«Не работаю с брокерами», «пойду в Сбербанк», «дорого»</td></tr>
+    <tr class="reg-row"><td>Продажи</td><td>Стандарт презентации условий сделки</td><td>Как передаются условия: один раз, с объяснением, без «в лоб»</td></tr>
+    <tr class="reg-row"><td>Расчёт</td><td>Регламент расчёта стоимости заказа</td><td>Как аналитик считает варианты: сумма, ставка, срок, платёж, расходы, комиссия</td></tr>
+    <tr class="reg-row"><td>Договор</td><td>Регламент подготовки и заключения договора</td><td>Агентский договор, фиксация комиссии, оговорка о пересмотре, эксклюзив</td></tr>
+    <tr class="reg-row"><td>Договор</td><td>Регламент выставления счёта и контроля оплаты</td><td>Фиксация комиссии в договоре, порядок оплаты при выдаче</td></tr>
+    <tr class="reg-row"><td>Клиент</td><td>Регламент касаний с клиентом</td><td>Сколько и когда звонить, писать, напоминать</td></tr>
+    <tr class="reg-row"><td>Клиент</td><td>Регламент работы с отказами и реанимации</td><td>Что делать, если клиент ушёл, «гуляет по рынку», не отвечает</td></tr>
+    <tr class="reg-row"><td>Клиент</td><td>Регламент закрытия сделки и повторных продаж</td><td>Выдача, акт, комиссия, звонки через 1, 6, 12 месяцев</td></tr>
+    <tr class="reg-row"><td>Клиент</td><td>Регламент постпродажи</td><td>Поздравление, кросс-продажи, запрос отзыва и рекомендации</td></tr>
+    <tr class="reg-row"><td>Клиент</td><td>Регламент работы с рекламациями</td><td>Порядок обработки жалоб клиентов</td></tr>
+    <tr class="reg-row"><td>Культура</td><td>Политика коммуникации от имени компании</td><td>Что можно и нельзя говорить клиенту, запрет на сленг и обсуждение коллег</td></tr>
+    <tr class="reg-row"><td>Стоп-лист</td><td>Стоп-лист клиентов</td><td>Критерии отказа: нет залога, не сказал цель, просит подделать документы, «гуляет по рынку», 70+</td></tr>
+
+    <tr class="reg-sec"><td colspan="3">Работа с партнёрами и оказание услуги</td></tr>
+    <tr class="reg-row"><td>Партнёры</td><td>Регламент работы с партнёрами</td><td>Аккредитация, личный кабинет, почта, Telegram, сроки ответа</td></tr>
+    <tr class="reg-row"><td>Партнёры</td><td>База партнёров (реестр)</td><td>60+ строк: стоп-факторы, ставки, требования, контакты, сроки</td></tr>
+    <tr class="reg-row"><td>Партнёры</td><td>Регламент подачи заявок партнёрам</td><td>Точечная подача по базе стоп-факторов, запрет «веерной рассылки»</td></tr>
+
+    <tr class="reg-sec"><td colspan="3">CRM, данные и IT</td></tr>
+    <tr class="reg-row"><td>CRM</td><td>Стандарт работы в CRM (amoCRM)</td><td>Воронка «Продажи», воронка «Повторные продажи», обязательные поля</td></tr>
+    <tr class="reg-row"><td>CRM</td><td>Справочник этапов воронки и статусов</td><td>новый → квалифицирован → проверки пройдены → дозвон → встреча → договор → полный пакет → подано → одобрено → условия приняты → сделка → выдано</td></tr>
+    <tr class="reg-row"><td>CRM</td><td>Требования к обязательным полям карточки</td><td>Источник, сегмент, сумма, цель, объект, стоп-факторы, комиссия, партнёр, кто закрыл</td></tr>
+    <tr class="reg-row"><td>CRM</td><td>ТЗ на доработку CRM (целевая модель)</td><td>Автоматические задачи, распределение лидов, отчёты, интеграция с 1С</td></tr>
+    <tr class="reg-row"><td>CRM</td><td>Регламент автоматического распределения лидов</td><td>Как лиды попадают к МОП</td></tr>
+    <tr class="reg-row"><td>CRM</td><td>Регламент автоматических задач</td><td>Какие задачи создаются автоматически и когда</td></tr>
+    <tr class="reg-row"><td>IT</td><td>Инструкция по работе с телефонией и мессенджерами</td><td>Space/Билайн, запись звонков, Telegram для уведомлений</td></tr>
+    <tr class="reg-row"><td>Безопасность</td><td>Политика защиты клиентской базы</td><td>Кто имеет доступ, запрет на выгрузку, 152-ФЗ</td></tr>
+
+    <tr class="reg-sec"><td colspan="3">Финансы и учёт</td></tr>
+    <tr class="reg-row"><td>Отчётность</td><td>Регламент управленческой отчётности</td><td>Ежедневные, недельные, месячные отчёты отдела продаж</td></tr>
+    <tr class="reg-row"><td>Отчётность</td><td>Форма ежедневного отчёта менеджера</td><td>План и факт по этапам воронки</td></tr>
+    <tr class="reg-row"><td>Отчётность</td><td>Форма отчёта по итогам недели и месяца</td><td>Воронка, комиссия, причины отказов</td></tr>
+    <tr class="reg-row"><td>Экономика</td><td>Регламент расчёта маржинальности заказа</td><td>Маржа по типам сделок: физлица, юрлица, КПК, инвесторы</td></tr>
+    <tr class="reg-row"><td>Наличные</td><td>Регламент учёта наличной комиссии</td><td>Приходование с актом и чеком, порядок с бухгалтером</td></tr>
+    <tr class="reg-row"><td>KPI</td><td>Таблица KPI коммерческого отдела</td><td>Лиды, встречи, договоры, одобрения, выдачи, комиссия</td></tr>
+
+    <tr class="reg-sec"><td colspan="3">Мотивация и персонал</td></tr>
+    <tr class="reg-row"><td>Мотивация</td><td>Система мотивации МОП</td><td>Оклад на адаптацию + ставка от выполнения личного плана</td></tr>
+    <tr class="reg-row"><td>Мотивация</td><td>Система мотивации аналитика</td><td>Оклад + процент при выполнении плана + бонус за сроки и базу партнёров</td></tr>
+    <tr class="reg-row"><td>Мотивация</td><td>Система мотивации оператора КЦ</td><td>Оклад + фикс за проведённую встречу, прошедшую проверки + процент при выдаче</td></tr>
+    <tr class="reg-row"><td>Мотивация</td><td>Система мотивации ГД</td><td>Оклад + командный бонус за выполнение плана, без 25% со своих сделок</td></tr>
+    <tr class="reg-row"><td>Мотивация</td><td>Система мотивации HR и маркетолога</td><td>HR — бонус за нанятого; маркетолог — процент с потолком по стоимости сделки</td></tr>
+    <tr class="reg-row"><td>Мотивация</td><td>Система мотивации «чемодана»</td><td>Оклад + фикс за выдачу</td></tr>
+    <tr class="reg-row"><td>Найм</td><td>Портрет кандидата: менеджер по продажам</td><td>Требования к кандидату</td></tr>
+    <tr class="reg-row"><td>Найм</td><td>Стандарт проведения интервью</td><td>Как проводить собеседование</td></tr>
+    <tr class="reg-row"><td>Адаптация</td><td>Программа адаптации МОП</td><td>План на 1–3 месяца, наставник, тест по продукту</td></tr>
+    <tr class="reg-row"><td>Адаптация</td><td>Аттестационный лист МОП</td><td>Критерии прохождения испытательного срока</td></tr>
+    <tr class="reg-row"><td>Планирование</td><td>Алгоритм работы МОП (день/неделя/месяц)</td><td>Распорядок дня, целевые действия, отчёты</td></tr>
+    <tr class="reg-row"><td>Планирование</td><td>Регламент планирования продаж</td><td>Как ставится план на месяц и декомпозируется по этапам</td></tr>
+
+    <tr class="reg-sec"><td colspan="3">Управление и контроль</td></tr>
+    <tr class="reg-row"><td>Управление</td><td>Регламент проведения планёрок и летучек</td><td>Ежедневно 15 минут: план и факт по этапам</td></tr>
+    <tr class="reg-row"><td>Управление</td><td>Регламент планёрок коммерческого отдела</td><td>Разбор звонков, проигранных сделок, итогов</td></tr>
+    <tr class="reg-row"><td>Контроль</td><td>Чек-лист аудита работы менеджера</td><td>Что проверяется: звонки, анкеты, CRM, конверсии</td></tr>
+    <tr class="reg-row"><td>Контроль</td><td>Положение о контроле качества звонков</td><td>Как слушаются звонки, критерии оценки, обратная связь</td></tr>
+    <tr class="reg-row"><td>Комплаенс</td><td>Комплаенс-регламент</td><td>Что запрещено сотрудникам, как отказывать клиенту, который просит «нарисовать» документы</td></tr>
+    <tr class="reg-row"><td>Безопасность</td><td>Политика информационной безопасности</td><td>Доступ к CRM, защита базы, запрет на «серые» схемы</td></tr>
+
+    <tr class="reg-sec"><td colspan="3">Обучение и база знаний</td></tr>
+    <tr class="reg-row"><td>Обучение</td><td>База знаний по продукту</td><td>Что такое кредит под залог, кто партнёры, какие сегменты</td></tr>
+    <tr class="reg-row"><td>Обучение</td><td>База знаний по стоп-факторам партнёров</td><td>60+ строк: банкротство, просрочки, возраст, иждивенцы, правоустановка</td></tr>
+    <tr class="reg-row"><td>Обучение</td><td>Обучающие материалы по скриптам</td><td>4 сегмента, разбор звонков</td></tr>
+    <tr class="reg-row"><td>Обучение</td><td>Тест по продукту для новичков</td><td>Проверка знаний перед выходом на работу</td></tr>
+    <tr class="reg-row"><td>Обучение</td><td>Библиотека кейсов</td><td>Успешные и провальные сделки, разбор</td></tr>
+  </table>
+</section>
+
+<section id="decisions">
+  <div class="sec-head"><div class="sec-num">9</div><h2>Решения и риски</h2></div>
+  <div class="sec-sub">Что должен решить собственник и что может помешать</div>
+
+  <div class="grid2">
+    <div class="card">
+      <h4>Решения собственника</h4>
+      <p style="font-size:13.5px;margin-bottom:10px">Отмеченные пункты — то, что нужно согласовать до старта изменений.</p>
+      <ul style="margin-bottom:0">
+        <li>Сохранить роль аналитика, оценка человека через 2 месяца по показателям</li>
+        <li>Новая схема мотивации и дата перехода на неё</li>
+        <li>Найм «чемодана» — при выходе на 8+ сделок в месяц</li>
+        <li>Найм второго оператора КЦ и 1–2 МОП — после готовности регламентов</li>
+        <li>Платятся ли командные проценты со сделок, которые собственник закрывает лично</li>
+        <li>Какие практики работы с банками и базой остаются после юридической оценки</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h4>Что нужно получить от клиента</h4>
+      <p style="font-size:13.5px;margin-bottom:10px"><b>Критично — меняет выводы:</b></p>
+      <ul>
+        <li>Доступ в amoCRM и выгрузка сделок за 12 месяцев</li>
+        <li>Помесячная выручка и фактические выплаты за 6 месяцев</li>
+        <li>Доля комиссии со сделок собственника и ГД</li>
+        <li>Как устроены договорённости с банками, «легенда» и источник базы</li>
+        <li>Структура долгов и кассового разрыва, сумма на выкуп доли</li>
+      </ul>
+      <p style="font-size:13.5px;margin:14px 0 10px"><b>Встречи, которых не хватает:</b> МОП (Глеб Воропаев), оператор КЦ (Людмила), HR (Лена), маркетолог, бухгалтер.</p>
+    </div>
+  </div>
+
+  <h3>Ключевые риски</h3>
+  <table>
+    <tr><th style="width:250px">Риск</th><th>В чём опасность</th><th style="width:140px">Приоритет</th></tr>
+    <tr><td class="b">Юридические практики</td><td>«Конверт», «легенда», выдачи без дохода, скрытие документов от банка, источник базы. Нельзя ни масштабировать, ни описывать в регламентах до оценки юристом</td><td><span class="bdg red">критично</span></td></tr>
+    <tr><td class="b">Зависимость от людей</td><td>Уход собственника, ГД или аналитика обрушит продажи, подпись или подачу</td><td><span class="bdg red">критично</span></td></tr>
+    <tr><td class="b">Нет данных</td><td>Решения принимаются «с головы»: конверсии, стоимость лида и результаты сотрудников неизвестны</td><td><span class="bdg red">критично</span></td></tr>
+    <tr><td class="b">Кассовый разрыв</td><td>Личные долги собственника и выкуп доли: нет денег на рост и найм</td><td><span class="bdg red">критично</span></td></tr>
+    <tr><td class="b">Уход сотрудников</td><td>Новая мотивация снижает доход: Сергей и Глеб могут уйти, а на них держатся продажи</td><td><span class="bdg amber">важно</span></td></tr>
+    <tr><td class="b">Директ и сайт</td><td>300 тыс. ₽ заложены в бюджет, а посадочной страницы и теста ещё нет — реклама может не окупиться</td><td><span class="bdg amber">важно</span></td></tr>
+    <tr><td class="b">Скорость изменений</td><td>Резкое снижение ставок нереалистично. Переход нужен в два шага</td><td><span class="bdg amber">важно</span></td></tr>
+    <tr><td class="b">Найм под сырую систему</td><td>Если нанимать до готовности регламентов, сильный МОП уйдёт в обучение новичков</td><td><span class="bdg amber">важно</span></td></tr>
+  </table>
+
+  <div class="call green" style="margin-top:26px">
+    <span class="ct">Что даёт переход</span>
+    Компания выходит с 3 на <b>12 сделок в месяц</b> и с ~1,2 на <b>5 млн ₽ комиссии</b>. Точка безубыточности снижается с 2,5 до <b>1,8 млн ₽</b>, доля ФОТ — с 40–45% до <b>≤30%</b>. Вместо зависимости от «героев» появляется процесс, который может вести сотрудник с меньшей квалификацией — то, что собственник и ставил целью.
+  </div>
+
+  <div class="call amber">
+    <span class="ct">Оговорка по данным</span>
+    Все цифры в презентации получены из пяти интервью 5–7 октября 2026 года, таблицы бюджета, анкет по шести клиентским кейсам и экспресс-аудита звонков. Данных из amoCRM и бухгалтерии не было — участники называли цифры «с головы». Транскрипции автоматические, метки спикеров перепутаны: роли восстановлены по смыслу и подтверждены заказчиком. Расчёты экономики и целевые конверсии требуют пересчёта по фактическим данным.
+  </div>
+</section>
+
+</main>
+</div>
+
+<footer>
+  <b>ООО «Оникс»</b> — диагностика и целевая модель · AS IS → TO BE<br>
+  Подготовлено по материалам встреч 5–7 октября 2026 года, таблицы бюджета, анкет по клиентским кейсам и аудита звонков
+</footer>
+
+</body>
+</html>

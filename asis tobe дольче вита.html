@@ -1,0 +1,1664 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Дольче Вита — Презентация проекта: AS IS → TO BE</title>
+<style>
+:root{
+  --navy:#1F364D;
+  --navy-2:#2E5A88;
+  --blue:#3B7DD8;
+  --blue-l:#EDF2F8;
+  --blue-l2:#DCE7F5;
+  --gray:#5A6B7C;
+  --gray-l:#F5F7FA;
+  --line:#D8E0E8;
+  --red:#C0392B;
+  --red-l:#FDECEA;
+  --green:#2E7D32;
+  --green-l:#E8F5E9;
+  --amber:#E67E22;
+  --amber-l:#FFF4E5;
+  --violet:#6C4AB6;
+  --violet-l:#F1ECFB;
+  --shadow:0 2px 6px rgba(31,54,77,.07), 0 8px 24px rgba(31,54,77,.06);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0; font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  color:var(--navy); background:#F0F3F7; font-size:15px; line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+}
+.wrap{display:flex; min-height:100vh}
+
+/* ============ NAV ============ */
+nav{
+  width:266px; flex:0 0 266px; background:var(--navy); color:#fff;
+  position:sticky; top:0; align-self:flex-start; height:100vh; overflow-y:auto;
+  padding:26px 0 40px;
+}
+nav .brand{padding:0 22px 20px; border-bottom:1px solid rgba(255,255,255,.13); margin-bottom:16px}
+nav .brand .t{font-size:16px; font-weight:800; letter-spacing:.2px}
+nav .brand .s{font-size:11.5px; color:#9FB3C8; margin-top:5px; line-height:1.45}
+nav .grp{font-size:10px; text-transform:uppercase; letter-spacing:1.3px; color:#7C93AB; padding:16px 22px 6px; font-weight:700}
+nav a{
+  display:block; padding:8px 22px 8px 24px; color:#D6E1EC; text-decoration:none;
+  font-size:13.5px; border-left:3px solid transparent; transition:.15s;
+}
+nav a:hover{background:rgba(255,255,255,.07); color:#fff; border-left-color:var(--blue)}
+nav a.sub{padding-left:38px; font-size:12.8px; color:#AFC2D4}
+
+/* ============ MAIN ============ */
+main{flex:1; min-width:0; padding:0 0 80px}
+section{padding:46px 52px 10px; max-width:1180px}
+.sec-head{display:flex; align-items:center; gap:16px; margin-bottom:6px}
+.sec-num{
+  flex:0 0 auto; width:44px; height:44px; border-radius:12px; background:var(--navy); color:#fff;
+  display:flex; align-items:center; justify-content:center; font-weight:800; font-size:17px;
+}
+.sec-head h2{margin:0; font-size:26px; letter-spacing:-.4px; line-height:1.2}
+.sec-sub{color:var(--gray); font-size:14px; margin:2px 0 26px 60px; font-style:italic}
+h3{font-size:18px; margin:34px 0 12px; padding-bottom:8px; border-bottom:2px solid var(--blue-l2)}
+h4{font-size:15px; margin:22px 0 9px; color:var(--navy-2)}
+p{margin:0 0 12px}
+ul{margin:0 0 14px; padding-left:22px}
+li{margin-bottom:7px}
+strong{font-weight:700}
+
+/* ============ COVER ============ */
+.cover{
+  background:linear-gradient(135deg,#16293D 0%,#1F364D 45%,#2E5A88 100%);
+  color:#fff; padding:70px 52px 60px; position:relative; overflow:hidden;
+}
+.cover:after{
+  content:""; position:absolute; right:-130px; top:-130px; width:430px; height:430px;
+  border-radius:50%; background:rgba(255,255,255,.045);
+}
+.cover .kick{
+  display:inline-block; font-size:11px; letter-spacing:2.4px; text-transform:uppercase;
+  color:#8FC0F0; border:1px solid rgba(143,192,240,.4); padding:5px 14px; border-radius:20px; margin-bottom:24px;
+}
+.cover h1{font-size:44px; margin:0 0 14px; letter-spacing:-1px; line-height:1.1; font-weight:800}
+.cover h1 span{color:#7FB3EC}
+.cover .lead{font-size:17px; color:#C3D5E6; max-width:700px; margin-bottom:34px}
+.cover-meta{display:flex; flex-wrap:wrap; gap:12px}
+.cover-meta div{
+  background:rgba(255,255,255,.09); border:1px solid rgba(255,255,255,.14);
+  border-radius:10px; padding:11px 17px; font-size:13px;
+}
+.cover-meta b{display:block; font-size:10px; letter-spacing:1.2px; text-transform:uppercase; color:#8FC0F0; margin-bottom:4px; font-weight:700}
+
+/* ============ KPI TILES ============ */
+.tiles{display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:15px; margin:24px 0 8px}
+.tile{
+  background:#fff; border-radius:13px; padding:19px 19px 17px; box-shadow:var(--shadow);
+  border-top:4px solid var(--blue);
+}
+.tile.warn{border-top-color:var(--red)}
+.tile.ok{border-top-color:var(--green)}
+.tile.mid{border-top-color:var(--amber)}
+.tile .v{font-size:27px; font-weight:800; letter-spacing:-.8px; line-height:1.1}
+.tile .l{font-size:12.3px; color:var(--gray); margin-top:6px; line-height:1.4}
+.tile.warn .v{color:var(--red)}
+.tile.ok .v{color:var(--green)}
+.tile.mid .v{color:var(--amber)}
+
+/* ============ CARDS ============ */
+.card{background:#fff; border-radius:13px; padding:22px 24px; box-shadow:var(--shadow); margin:16px 0}
+.card.tight{padding:16px 18px}
+.card h4{margin-top:0}
+.grid2{display:grid; grid-template-columns:1fr 1fr; gap:16px}
+.grid3{display:grid; grid-template-columns:repeat(3,1fr); gap:16px}
+@media(max-width:1080px){.grid2,.grid3{grid-template-columns:1fr}}
+
+/* ============ CALLOUTS ============ */
+.call{border-left:4px solid var(--blue); background:var(--blue-l); padding:15px 19px; border-radius:0 10px 10px 0; margin:14px 0}
+.call.red{border-left-color:var(--red); background:var(--red-l)}
+.call.green{border-left-color:var(--green); background:var(--green-l)}
+.call.amber{border-left-color:var(--amber); background:var(--amber-l)}
+.call.violet{border-left-color:var(--violet); background:var(--violet-l)}
+.call .ct{font-weight:800; font-size:13px; text-transform:uppercase; letter-spacing:.7px; margin-bottom:6px; display:block}
+.call.red .ct{color:var(--red)} .call.green .ct{color:var(--green)}
+.call.amber .ct{color:var(--amber)} .call.violet .ct{color:var(--violet)}
+.call.blue .ct, .call .ct{color:var(--navy-2)}
+
+/* ============ TABLES ============ */
+table{width:100%; border-collapse:collapse; background:#fff; border-radius:11px; overflow:hidden; box-shadow:var(--shadow); margin:14px 0; font-size:13.5px}
+th{
+  background:var(--navy); color:#fff; text-align:left; padding:11px 14px;
+  font-size:11.5px; text-transform:uppercase; letter-spacing:.7px; font-weight:700;
+}
+td{padding:11px 14px; border-bottom:1px solid var(--line); vertical-align:top}
+tr:last-child td{border-bottom:none}
+tbody tr:nth-child(even){background:var(--gray-l)}
+tbody tr:hover{background:var(--blue-l)}
+td.c{text-align:center} td.b{font-weight:700}
+
+/* ============ BADGES ============ */
+.bdg{display:inline-block; padding:3px 9px; border-radius:20px; font-size:11px; font-weight:700; white-space:nowrap}
+.bdg.red{background:var(--red-l); color:var(--red)}
+.bdg.green{background:var(--green-l); color:var(--green)}
+.bdg.amber{background:var(--amber-l); color:var(--amber)}
+.bdg.blue{background:var(--blue-l); color:var(--navy-2)}
+.bdg.gray{background:#ECEFF3; color:var(--gray)}
+.bdg.violet{background:var(--violet-l); color:var(--violet)}
+
+/* ============ BPMN ============ */
+.bpmn{background:#fff; border-radius:13px; box-shadow:var(--shadow); overflow:hidden; margin:18px 0}
+.bpmn-top{background:var(--navy); color:#fff; padding:12px 20px; font-weight:700; font-size:14px; display:flex; justify-content:space-between; align-items:center; gap:12px; flex-wrap:wrap}
+.bpmn-top small{font-weight:400; color:#9FB3C8; font-size:12px}
+.lane{display:flex; border-bottom:1px solid var(--line)}
+.lane:last-child{border-bottom:none}
+.lane-label{
+  flex:0 0 176px; background:var(--gray-l); padding:15px 13px; font-size:12px; font-weight:700;
+  border-right:3px solid var(--blue); display:flex; align-items:flex-start; line-height:1.35;
+  position:sticky; left:0; z-index:2;
+}
+.lane-label span{position:relative; padding-left:11px}
+.lane-label span:before{content:""; position:absolute; left:0; top:5px; width:6px; height:6px; border-radius:50%; background:var(--blue)}
+.lane-label.g span:before{background:var(--violet)} .lane-label.g{border-right-color:var(--violet)}
+.lane-label.o span:before{background:var(--amber)} .lane-label.o{border-right-color:var(--amber)}
+.lane-label.p span:before{background:var(--green)} .lane-label.p{border-right-color:var(--green)}
+.lane-label.k span:before{background:#8899AA} .lane-label.k{border-right-color:#8899AA}
+.lane-flow{padding:15px 18px; display:flex; flex-wrap:wrap; align-items:center; gap:7px; background:#fff; flex:1}
+.step{
+  background:#fff; border:1.5px solid var(--navy-2); color:var(--navy); border-radius:8px;
+  padding:7px 12px; font-size:12.3px; font-weight:600; line-height:1.3; max-width:230px;
+}
+.step.prob{border-color:var(--red); background:var(--red-l); color:#8E2B20; border-style:dashed; position:relative; padding-right:24px}
+.step.prob:after{content:"⚠"; position:absolute; right:7px; top:50%; transform:translateY(-50%); font-size:12px; opacity:.85}
+.step.fix{border-color:var(--green); background:var(--green-l); color:#1E5B22}
+.step.auto{border-color:var(--violet); background:var(--violet-l); color:#4A2E86}
+.gw{
+  background:var(--amber-l); border:1.5px solid var(--amber); color:#9A5510; border-radius:8px;
+  padding:7px 12px 7px 26px; font-size:12.3px; font-weight:700; position:relative; max-width:230px; line-height:1.3;
+}
+.gw:before{content:"◆"; position:absolute; left:8px; top:50%; transform:translateY(-50%); font-size:10px}
+.ev{border-radius:20px; padding:6px 14px; font-size:12px; font-weight:700; border:1.5px solid}
+.ev.start{background:var(--green-l); border-color:var(--green); color:#1E5B22}
+.ev.end{background:var(--red-l); border-color:var(--red); color:#8E2B20}
+.ev.mid{background:var(--gray-l); border-color:#8899AA; color:var(--gray)}
+.arw{color:#93A6B8; font-size:15px; font-weight:700; line-height:1}
+@media(max-width:760px){
+  nav{position:static; width:100%; height:auto; flex:none}
+  .wrap{flex-direction:column}
+  .lane{flex-direction:column}
+  .lane-label{flex:none; border-right:none; border-bottom:2px solid var(--blue); position:static}
+  section,.cover{padding-left:20px; padding-right:20px}
+}
+
+/* ============ FUNNEL / SCHEDULE ============ */
+.funnel{display:flex; flex-direction:column; align-items:center; gap:6px; margin:16px 0}
+.funnel div{
+  background:linear-gradient(90deg,var(--navy-2),var(--blue)); color:#fff; border-radius:7px;
+  padding:9px 16px; font-size:12.6px; font-weight:600; text-align:center;
+}
+.sched{display:grid; grid-template-columns:88px repeat(8,1fr); gap:3px; font-size:11.3px; margin:14px 0; min-width:640px}
+.sched .h{font-weight:800; color:var(--navy); text-align:center; padding:7px 2px; font-size:10.5px}
+.sched .rl{font-weight:700; color:var(--gray); padding:8px 4px; font-size:11px; display:flex; align-items:center}
+.sched .cell{border-radius:5px; padding:8px 2px; text-align:center; font-weight:700; font-size:10.7px}
+.sched .on1{background:#DCE7F5; color:var(--navy-2); border:1px solid #B9D0EA}
+.sched .on2{background:#F1ECFB; color:var(--violet); border:1px solid #D9CBF3}
+.sched .off{background:#F2F4F7; color:#AAB6C2; border:1px dashed #DCE1E7}
+.scroll-x{overflow-x:auto; padding-bottom:6px}
+
+/* ============ REGISTRY ============ */
+.reg-row td:first-child{font-weight:700; white-space:nowrap}
+.reg-sec td{background:var(--blue-l2) !important; font-weight:800; color:var(--navy); font-size:12.5px; letter-spacing:.4px}
+.legend{display:flex; flex-wrap:wrap; gap:16px; margin:14px 0 0; font-size:12.5px; color:var(--gray); background:#fff; padding:15px 19px; border-radius:11px; box-shadow:var(--shadow)}
+.legend span{display:flex; align-items:center; gap:7px}
+.legend i{display:inline-block; width:22px; height:14px; border-radius:4px}
+.chip{display:inline-block; background:var(--blue-l); color:var(--navy-2); border-radius:6px; padding:3px 9px; font-size:11.5px; font-weight:700; margin:0 5px 5px 0}
+footer{background:var(--navy); color:#9FB3C8; padding:34px 52px; font-size:12.5px; text-align:center; margin-top:50px}
+footer b{color:#fff}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<nav>
+  <div class="brand">
+    <div class="t">Дольче Вита</div>
+    <div class="s">Диагностика и целевая модель<br>отдела продаж</div>
+  </div>
+  <div class="grp">Обзор</div>
+  <a href="#cover">Титул и ключевые цифры</a>
+  <div class="grp">Этап 1 — AS IS</div>
+  <a href="#asis">Отчёт «AS IS»</a>
+  <a href="#asis-org" class="sub">Организация и роли</a>
+  <a href="#asis-proc" class="sub">Процесс и разрывы</a>
+  <a href="#calls-audit" class="sub">Отчёт по прослушанным звонкам</a>
+  <a href="#asis-mgmt" class="sub">Управление и мотивация</a>
+  <a href="#asis-swot" class="sub">SWOT и корневые проблемы</a>
+  <a href="#bpmn-asis" class="sub">BPMN — процесс AS IS</a>
+  <div class="grp">Этап 2 — TO BE</div>
+  <a href="#tobe">Отчёт «TO BE»</a>
+  <a href="#tobe-changes" class="sub">Четыре ключевых изменения</a>
+  <a href="#tobe-org" class="sub">Структура, роли, KPI</a>
+  <a href="#tobe-sched" class="sub">График пар и воронки</a>
+  <a href="#bpmn-tobe" class="sub">BPMN — процесс TO BE</a>
+  <div class="grp">Итоги</div>
+  <a href="#compare">Сравнение AS IS → TO BE</a>
+  <a href="#registry">Реестр документов</a>
+  <a href="#results">Результаты и риски</a>
+</nav>
+
+<main>
+
+<header class="cover" id="cover">
+  <div class="kick">Консалтинговый проект · Презентация результатов</div>
+  <h1>Аудит отдела продаж<br>и целевая модель<br><span>AS IS → TO BE</span></h1>
+  <p class="lead">Компания «Дольче Вита» — ювелирная студия, Санкт-Петербург. Результаты этапа диагностики, карта текущего процесса, целевая модель и перечень документов для стандартизации.</p>
+  <div class="cover-meta">
+    <div><b>Объект</b>Отдел продаж и смежные контуры</div>
+    <div><b>Метод</b>Диагностические интервью и процессный анализ</div>
+    <div><b>Модель</b>AS IS и TO BE, BPMN</div>
+    <div><b>Результат</b>Реестр из 44 документов</div>
+  </div>
+</header>
+
+<section>
+  <h3 style="border:none;margin-top:20px">Компания в цифрах — как это выглядит сегодня</h3>
+  <div class="tiles">
+    <div class="tile"><div class="v">100–120</div><div class="l">заказов в месяц</div></div>
+    <div class="tile"><div class="v">5–6 млн ₽</div><div class="l">выручка в месяц</div></div>
+    <div class="tile mid"><div class="v">40–50 тыс. ₽</div><div class="l">фактический средний чек <br>(менеджеры называют 95–150 тыс.)</div></div>
+    <div class="tile ok"><div class="v">5.0</div><div class="l">рейтинг на Яндексе, 259 оценок</div></div>
+    <div class="tile warn"><div class="v">0</div><div class="l">действующих планов продаж и KPI</div></div>
+  </div>
+  <div class="call red">
+    <span class="ct">Главный вывод диагностики</span>
+    Компания выросла из «ручного» управления в системный кризис. Продажи, производство, ценообразование и контроль заказов замкнуты на собственнике — при текущей модели невозможно ни удвоить объём, ни удержать качество.
+  </div>
+</section>
+
+
+<!-- ==================== AS IS ==================== -->
+<section id="asis">
+  <div class="sec-head"><div class="sec-num">1</div><h2>Отчёт «AS IS»</h2></div>
+  <p class="sec-sub">По итогам диагностических интервью с собственником, менеджерами отдела продаж и помощником собственника</p>
+
+  <div class="grid3">
+    <div class="card tight">
+      <h4>Цель этапа</h4>
+      <ul style="font-size:13.5px;margin-bottom:0">
+        <li>Зафиксировать текущую картину отдела продаж и смежных контуров</li>
+        <li>Определить ключевые показатели и выявить системные проблемы</li>
+        <li>Обозначить точки потери клиентов и денег</li>
+        <li>Сформировать перечень приоритетных изменений для «TO BE»</li>
+      </ul>
+    </div>
+    <div class="card tight">
+      <h4>Методы анализа</h4>
+      <ul style="font-size:13.5px;margin-bottom:0">
+        <li>Процессный — сквозной путь клиента</li>
+        <li>Организационный — роли и функции</li>
+        <li>Данные — CRM (Битрикс24), 1С, Excel, бумага</li>
+        <li>Управленческий — планирование, мотивация, контроль</li>
+      </ul>
+    </div>
+    <div class="card tight">
+      <h4>Источник и ограничения</h4>
+      <p style="font-size:13.5px;margin-bottom:0">
+        Источник — диагностические интервью. Часть данных отсутствует или расходится: CRM, аналитика и
+        финансовые показатели не консолидированы. Ряд оценок дан со слов участников и требует верификации
+        выгрузками из учётных систем.
+      </p>
+    </div>
+  </div>
+
+  <div class="call red">
+    <span class="ct">Резюме для собственника</span>
+    <ul style="margin-bottom:0">
+      <li><strong>Отдел продаж не управляется как система.</strong> Нет плановых показателей, воронки с понятными этапами, единых правил квалификации и прозрачной мотивации. Каждый менеджер работает «сам на себя».</li>
+      <li><strong>CRM используется фрагментарно и формально.</strong> Часть лидов не заводится, сделки дублируются, этапы заполняются произвольно — аналитика невозможна.</li>
+      <li><strong>Производство и продажи разорваны.</strong> Менеджер вручную сопровождает заказ на всех этапах — от 3D-модели до пробирного надзора.</li>
+      <li><strong>Конфликтность в коллективе</strong> — следствие отсутствия прозрачных правил распределения лидов и мотивации, а не «личностная проблема».</li>
+    </ul>
+  </div>
+
+  <h3 id="asis-org">Организационная структура и роли (фактически)</h3>
+  <table>
+    <thead><tr><th style="width:23%">Роль</th><th style="width:44%">Функции (фактически)</th><th>Проблемы</th></tr></thead>
+    <tbody>
+      <tr>
+        <td class="b">Тигран<br><span class="bdg red">Собственник</span><br><span style="font-weight:400;font-size:12px;color:var(--gray)">директор по производству</span></td>
+        <td>Приёмка заказов от менеджеров, распределение модельеров и ювелиров, ценообразование, скидки, контроль производства, решение всех нестандартных вопросов</td>
+        <td><span class="bdg red">Бутылочное горлышко</span> Без него останавливается производство и ценообразование; перегружен операционкой</td>
+      </tr>
+      <tr>
+        <td class="b">Дарина<br><span style="font-weight:400;font-size:12px;color:var(--gray)">помощник собственника</span></td>
+        <td>Оплаты, кассовая дисциплина, счета, контроль финансовых операций</td>
+        <td><span class="bdg amber">Размыто</span> Функции не формализованы; пересечение с бухгалтерией и менеджерами</td>
+      </tr>
+      <tr>
+        <td class="b">Мария Молодцова<br><span style="font-weight:400;font-size:12px;color:var(--gray)">старший менеджер</span></td>
+        <td>Ведёт постоянных клиентов, помогает собственнику, частично администрирует, ведёт таблицы по менеджерам</td>
+        <td><span class="bdg amber">Не управляет</span> Указания игнорируются; в отпуске данные недоступны</td>
+      </tr>
+      <tr>
+        <td class="b">Мария (админ)</td>
+        <td>Ответы на звонки, помощь с Telegram, таблицами, маркетингом</td>
+        <td><span class="bdg gray">Роль размыта</span></td>
+      </tr>
+      <tr>
+        <td class="b">3 менеджера ОП<br><span style="font-weight:400;font-size:12px;color:var(--gray)">Алёна, Ольга, Мария</span></td>
+        <td>Обработка лидов, квалификация, расчёты, договоры, сопровождение заказов, выдача</td>
+        <td><span class="bdg red">Каждый за себя</span> Нет общих правил; конфликты из-за лидов</td>
+      </tr>
+      <tr>
+        <td class="b">Производство<br><span style="font-weight:400;font-size:12px;color:var(--gray)">4 ювелира, 2 товароведа</span></td>
+        <td>Производство и ремонт; работа с камнями, бирками, журналами</td>
+        <td><span class="bdg amber">Обход управления</span> Менеджеры вовлекают напрямую; функции дублируются</td>
+      </tr>
+      <tr>
+        <td class="b">Зара<br><span style="font-weight:400;font-size:12px;color:var(--gray)">подбор камней</span></td>
+        <td>Подбор камней, цены, взаимодействие с поставщиками</td>
+        <td><span class="bdg red">Нет прайса</span> Запросы вручную через Telegram; зависимость от одного человека</td>
+      </tr>
+      <tr>
+        <td class="b">Бен · Вячеслав · Кристина<br><span style="font-weight:400;font-size:12px;color:var(--gray)">IT, CRM, аналитика</span></td>
+        <td>Администрирование Битрикс24, техническая настройка, учёт лидов и статистика</td>
+        <td><span class="bdg amber">Не вовлечены</span> Не участвуют в проектировании процессов; данные расходятся с CRM</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3 id="asis-proc">Процесс продажи и производства — сквозной путь клиента</h3>
+  <div class="grid2">
+    <div class="card">
+      <h4>Как проходит сделка сегодня</h4>
+      <ul style="margin-bottom:0;font-size:13.5px">
+        <li><strong>Обращение</strong> — звонок, мессенджер, сайт, визит. Лид попадает в Битрикс24 <em>не всегда</em>.</li>
+        <li><strong>Квалификация</strong> — потребность, металл, камни, размер, бюджет, срочность. Фиксация частичная.</li>
+        <li><strong>КП</strong> — около 70% расчётов менеджер делает сам по прайсам; сложные уходят через Telegram к собственнику или Заре.</li>
+        <li><strong>Согласование</strong> — переписка с клиентом, фото и артикулы, уточнение бюджета.</li>
+        <li><strong>Договор</strong> — менеджер вручную заполняет типовой договор, сканирует, отправляет клиенту.</li>
+        <li><strong>Предоплата</strong> — 50% или меньше; ссылка на оплату, чек, внесение в 1С.</li>
+        <li><strong>3D-моделирование</strong> — менеджер → собственник → модельер → согласование с клиентом.</li>
+        <li><strong>Производство</strong> — собственник распределяет этапы. Менеджер вручную контролирует статус.</li>
+        <li><strong>Готовность</strong> — менеджер проверяет изделие, печатает бирки, подписывает журнал.</li>
+        <li><strong>Выдача</strong> — шоурум или СДЭК; вторая оплата, чек, акт, закрытие сделки в Битриксе и 1С.</li>
+        <li><strong>Постпродажа</strong> — поздравления, кросс-продажи, напоминания.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h4>Ключевые разрывы процесса</h4>
+      <ul style="margin-bottom:0;font-size:13.5px">
+        <li><span class="bdg red">Разрыв</span> <strong>Нет единого владельца заказа</strong> после передачи в производство: менеджер контролирует ювелиров, товароведов и модельеров.</li>
+        <li><span class="bdg red">Разрыв</span> <strong>Нет передачи сделки между сменами</strong>: клиент «привязан» к менеджеру, в выходные сделка «зависает».</li>
+        <li><span class="bdg red">Разрыв</span> <strong>Долгий ответ новому клиенту</strong>: входящий трафик обрабатывается с задержкой, особенно когда менеджер занят в шоуруме или в выходном.</li>
+        <li><span class="bdg amber">Риск</span> <strong>Нет единого канала коммуникации</strong>: Telegram, WhatsApp, VK, Avito, бумага, 1С, Excel и Битрикс — информация разбросана.</li>
+        <li><span class="bdg amber">Риск</span> <strong>Нет чек-листа квалификации</strong>: каждый спрашивает по-своему, часть данных теряется.</li>
+        <li><span class="bdg amber">Риск</span> <strong>Нет стандарта скидок.</strong> Решение принимает собственник вручную.</li>
+        <li><span class="bdg amber">Риск</span> <strong>Нет автоматического распределения лидов:</strong> деление «по столам».</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3 id="asis-mgmt">Управление, планирование и мотивация</h3>
+  <div class="grid2">
+    <div class="card">
+      <h4>Планирование</h4>
+      <p style="font-size:13.5px"><strong>Плановый показатель отсутствует</strong> — как в компании в целом, так и в отделе продаж. Попытка внедрить план около 1,5 лет назад провалилась.</p>
+      <p style="font-size:13.5px;margin-bottom:5px"><strong>Причины со слов участников:</strong></p>
+      <div>
+        <span class="chip">непредсказуемость заказов</span>
+        <span class="chip">сезонность</span>
+        <span class="chip">нет достоверной аналитики</span>
+        <span class="chip">страх потерять менеджеров</span>
+        <span class="chip">«бутиковость» продукции</span>
+      </div>
+      <p style="font-size:13px;color:var(--gray);margin:8px 0 0">Разброс заказов — от 5 тыс. до 30 млн ₽.</p>
+    </div>
+    <div class="card">
+      <h4>Мотивация менеджеров</h4>
+      <table style="box-shadow:none;margin:0;font-size:13px">
+        <tbody>
+          <tr><td style="width:42%"><strong>Оклад</strong></td><td>50 000 ₽</td></tr>
+          <tr><td><strong>Процент</strong></td><td>3% от продаж — от полной стоимости закрытого и отгруженного заказа</td></tr>
+          <tr><td><strong>Выплата</strong></td><td>После полной оплаты и подписания акта</td></tr>
+          <tr><td><strong>KPI</strong></td><td><span class="bdg red">Отсутствуют</span> — по конверсии, квалификации, работе в CRM</td></tr>
+          <tr><td><strong>Командные показатели</strong></td><td><span class="bdg red">Отсутствуют</span> — каждый работает на свой процент</td></tr>
+          <tr><td><strong>Прозрачность</strong></td><td><span class="bdg red">Нет</span> — менеджеры не знают общих цифр и не видят плана</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <h4>IT-ландшафт и данные</h4>
+  <table>
+    <thead><tr><th style="width:26%">Система</th><th style="width:37%">Назначение</th><th>Проблемы</th></tr></thead>
+    <tbody>
+      <tr><td class="b">Битрикс24</td><td>CRM, лиды, сделки, частично задачи</td><td>Дубли лидов, не все лиды заводятся, этапы заполняются произвольно, нет аналитики</td></tr>
+      <tr><td class="b">1С</td><td>Оплаты, склад камней, бирки, частично производство</td><td>Нет интеграции с Битриксом; данные вводятся вручную</td></tr>
+      <tr><td class="b">Telegram, WhatsApp, VK, Avito</td><td>Коммуникация с клиентами, модельерами, поставщиками</td><td>Информация не фиксируется в CRM; риск потери</td></tr>
+      <tr><td class="b">Excel</td><td>Таблицы продаж, производства и финансов</td><td>Разрозненность, ручной ввод, ошибки</td></tr>
+    </tbody>
+  </table>
+  <div class="call amber">
+    <span class="ct">Ключевая проблема контура данных</span>
+    Данные не собираются в едином центре, не консолидируются и не используются для управления. Решения принимаются по ощущениям, а не по цифрам.
+  </div>
+
+  <h3 id="asis-swot">SWOT-анализ и корневые проблемы</h3>
+  <div class="grid2">
+    <table style="margin-top:0">
+      <thead><tr><th style="background:var(--green)">Сильные стороны</th><th style="background:var(--red)">Слабые стороны</th></tr></thead>
+      <tbody>
+        <tr><td>Уникальный продукт — бутиковое производство</td><td>Отсутствие системы управления продажами</td></tr>
+        <tr><td>Опытный собственник-производственник</td><td>Зависимость от одного человека</td></tr>
+        <tr><td>Лояльные постоянные клиенты</td><td>Непрозрачная аналитика</td></tr>
+        <tr><td>Высокое качество, индивидуальный подход</td><td>Конфликты в коллективе</td></tr>
+        <tr><td>Репутация: 259 оценок, 5.0</td><td>Потеря лидов и клиентов</td></tr>
+        <tr><td>Гибкость производства</td><td>Ручное управление ценообразованием</td></tr>
+        <tr><td>—</td><td>Слабая CRM-дисциплина, нет планов и KPI, нет маркетинга как системы</td></tr>
+      </tbody>
+    </table>
+    <table style="margin-top:0">
+      <thead><tr><th style="background:var(--blue)">Возможности</th><th style="background:var(--amber)">Угрозы</th></tr></thead>
+      <tbody>
+        <tr><td>Рост среднего чека и объёма продаж</td><td>Уход менеджеров с клиентской базой</td></tr>
+        <tr><td>Автоматизация расчётов и CRM</td><td>Рост конкуренции и демпинг</td></tr>
+        <tr><td>Внедрение планов и KPI</td><td>Выгорание собственника</td></tr>
+        <tr><td>Развитие маркетинга и аналитики</td><td>Потеря ключевых сотрудников</td></tr>
+        <tr><td>Создание отдела продаж как системы</td><td>Экономическая нестабильность</td></tr>
+        <tr><td>Развитие онлайн-канала и личного кабинета</td><td>—</td></tr>
+        <tr><td>Стандартизация прайсов и процессов</td><td>—</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h4>Корневые системные проблемы</h4>
+  <table>
+    <thead><tr><th style="width:34%">Корневая проблема</th><th>Суть</th></tr></thead>
+    <tbody>
+      <tr><td class="b">Отсутствие управленческой модели</td><td>Компания управляется вручную собственником; нет разделения ролей, регламентов и планов</td></tr>
+      <tr><td class="b">Отсутствие плановой политики в продажах</td><td>Нет плана, KPI, воронки и стандартов</td></tr>
+      <tr><td class="b">CRM не является источником правды</td><td>Данные неполные, дублируются, не анализируются</td></tr>
+      <tr><td class="b">Процессы не формализованы</td><td>Каждый менеджер работает по-своему; нет чек-листов и должностных инструкций</td></tr>
+      <tr><td class="b">Мотивация не связана с результатом компании</td><td>Только личный процент; нет командной ответственности</td></tr>
+      <tr><td class="b">Производство и продажи не интегрированы</td><td>Менеджер — «курьер» между клиентом и производством</td></tr>
+      <tr><td class="b">Нет единого владельца заказа</td><td>Ответственность размыта после предоплаты</td></tr>
+      <tr><td class="b">Клиент привязан к менеджеру, а не к компании</td><td>Риск потери клиента при уходе сотрудника</td></tr>
+    </tbody>
+  </table>
+
+  <h4>Точки потери клиентов и денег</h4>
+  <div class="grid2">
+    <table style="margin-top:0">
+      <thead><tr><th>Точка</th><th style="width:34%">Оценка</th></tr></thead>
+      <tbody>
+        <tr><td>Необработанные лиды в выходные дни менеджеров</td><td><span class="bdg red">Высокая</span></td></tr>
+        <tr><td>Потеря входящего трафика, когда менеджер занят в шоуруме</td><td><span class="bdg red">Высокая</span></td></tr>
+        <tr><td>Долгий ответ новому клиенту</td><td><span class="bdg red">Высокая</span></td></tr>
+        <tr><td>Отсутствие предоплаты по крупным заказам</td><td><span class="bdg red">Высокая</span></td></tr>
+      </tbody>
+    </table>
+    <table style="margin-top:0">
+      <thead><tr><th>Точка</th><th style="width:34%">Оценка</th></tr></thead>
+      <tbody>
+        <tr><td>Дубли в Битриксе и незаведённые лиды</td><td><span class="bdg amber">Средняя</span></td></tr>
+        <tr><td>Долгий расчёт: ожидание цены камня или сложного изделия</td><td><span class="bdg amber">Средняя</span></td></tr>
+        <tr><td>Отсутствие кросс-продаж и системной постпродажи</td><td><span class="bdg amber">Средняя</span></td></tr>
+        <tr><td>Нет личного кабинета: клиент не видит статус заказа</td><td><span class="bdg gray">Низкая / средняя</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ==================== CALL AUDIT AS IS ==================== -->
+<section id="calls-audit">
+  <div class="sec-head"><div class="sec-num">1A</div><h2>Отчёт по прослушанным звонкам</h2></div>
+  <p class="sec-sub">Экспресс-аудит живых звонков менеджеров: что мешает продавать и с чего начать улучшения</p>
+
+  <div class="grid3">
+    <div class="card tight">
+      <h4>Параметры аудита</h4>
+      <p style="font-size:13.5px;margin-bottom:5px"><strong>Консультант:</strong> Виктория Сташевская</p>
+      <p style="font-size:13.5px;margin-bottom:5px"><strong>Дата прослушивания и отчёта:</strong> 07.10.2026</p>
+      <p style="font-size:13.5px;margin-bottom:0"><strong>Менеджеры:</strong> Мария Молодцова, Мария (в CRM без фамилии), Алёна Вересова</p>
+    </div>
+    <div class="card tight">
+      <h4>Выборка</h4>
+      <div style="font-size:29px;font-weight:800;color:var(--navy-2);line-height:1.1">6 звонков</div>
+      <p style="font-size:12.8px;color:var(--gray);margin:7px 0 0">Малый объём выборки: выводы показывают тенденции, не являются точной статистикой по всем коммуникациям</p>
+    </div>
+    <div class="card tight">
+      <h4>Ограничение наблюдаемости</h4>
+      <p style="font-size:13.5px;margin-bottom:0">Менеджеры редко принимают звонки через телефонию: у Алёны за 2026 год зафиксировано два звонка, у Марии (без фамилии в CRM) — в среднем около одного звонка в три месяца. Возможности регулярного контроля качества ограничены.</p>
+    </div>
+  </div>
+
+  <div class="call red">
+    <span class="ct">Главный вывод аудита звонков</span>
+    Менеджеры вежливо отвечают клиентам и хорошо знают изделия, но часто не ведут разговор как продажу: потребность
+    выясняется неполно, цена называется без объяснения, из чего она складывается, а в завершении разговора обычно
+    нет зафиксированного следующего шага с датой и временем. Клиент уходит «подумать», а у студии нет согласованного
+    плана продолжения контакта.
+  </div>
+
+  <h3>Что услышали в шести звонках</h3>
+  <table>
+    <thead><tr><th style="width:5%">№</th><th style="width:15%">Дата</th><th style="width:20%">Менеджер</th><th style="width:10%">Длительность</th><th>Содержание и итог разговора</th></tr></thead>
+    <tbody>
+      <tr><td class="c">1</td><td>20.02.2025</td><td>Мария (в CRM без фамилии)</td><td>3:51</td><td>Клиент уточнял наличие изделия по артикулу с сайта. Потребность не квалифицирована, презентации не было. Итог — «подумаю и напишу»; следующий шаг не назначен.</td></tr>
+      <tr><td class="c">2</td><td>10.02.2026</td><td>Алёна Вересова</td><td>3:14</td><td>Клиент описал желаемый дизайн и спросил стоимость золота. Разговор не переведён в структурированную квалификацию и презентацию; клиенту предложено прислать информацию в WhatsApp.</td></tr>
+      <tr><td class="c">3</td><td>18.09.2026</td><td>Алёна Вересова</td><td>5:05</td><td>Клиент спросил о сроках изготовления. Менеджер выяснила дату события, размер и город, объяснила процесс заказа. Итог — клиент должен собрать и прислать отпечатки пальцев; дальнейший контакт не зафиксирован.</td></tr>
+      <tr><td class="c">4</td><td>28.09.2026</td><td>Мария (в CRM без фамилии)</td><td>3:57</td><td>Звонил ассистент руководителя; назван ориентир бюджета 500 тыс. ₽. Менеджер не предложила портфолио работ, сославшись на большой объём фотографий. Ассистент обещал передать контакты руководителю; дата следующего контакта не назначена.</td></tr>
+      <tr><td class="c">5</td><td>03.10.2026</td><td>Мария Молодцова</td><td>5:24</td><td>Звонок по заявке с сайта. При озвучивании цены 30 тыс. ₽ клиент удивился; разговор закончился без согласованного следующего шага.</td></tr>
+      <tr><td class="c">6</td><td>04.10.2026</td><td>Мария Молодцова</td><td>9:02</td><td>Клиентка назвала подбор камней «трудным и муторным» и завершила разговор. Менеджер не перехватила инициативу и не упростила путь выбора готовыми вариантами.</td></tr>
+    </tbody>
+  </table>
+  <p style="font-size:12px;color:var(--gray)">Даты и длительность приведены по материалам аудита. Телефонные номера клиентов в презентацию не включены.</p>
+
+  <h3>Оценка основных элементов разговора</h3>
+  <table>
+    <thead><tr><th style="width:31%">Что должен делать менеджер</th><th style="width:14%">Картина по звонкам</th><th>Наблюдение</th></tr></thead>
+    <tbody>
+      <tr><td class="b">Поздороваться, назвать студию и своё имя</td><td><span class="bdg amber">Частично</span></td><td>Студию называют; своё имя в начале разговора звучит не всегда.</td></tr>
+      <tr><td class="b">Узнать имя клиента</td><td><span class="bdg red">Слабое место</span></td><td>Имя спрашивают в конце разговора или не спрашивают.</td></tr>
+      <tr><td class="b">Вести диалог и удерживать инициативу</td><td><span class="bdg red">Слабое место</span></td><td>Чаще инициативу удерживает клиент; менеджер отвечает на вопросы, но не всегда направляет разговор.</td></tr>
+      <tr><td class="b">Выяснить потребность и повод</td><td><span class="bdg red">Не системно</span></td><td>В большинстве прослушанных звонков потребность и мотив покупки не раскрыты.</td></tr>
+      <tr><td class="b">Уточнить срок и бюджет</td><td><span class="bdg amber">Непоследовательно</span></td><td>Вопросы о сроке либо отсутствуют, либо звучат общо («нет срочности?»); бюджет не используется для подбора релевантного решения.</td></tr>
+      <tr><td class="b">Объяснить стоимость</td><td><span class="bdg red">Слабое место</span></td><td>Цена звучит без объяснения её состава и факторов, влияющих на расчёт. В одном звонке клиент явно удивился названной сумме.</td></tr>
+      <tr><td class="b">Отработать сомнение</td><td><span class="bdg red">Не системно</span></td><td>Нет явного алгоритма, который помогает уточнить причину сомнения, предложить альтернативу и проверить реакцию клиента.</td></tr>
+      <tr><td class="b">Закрыть на следующий шаг</td><td><span class="bdg red">Не выполняется</span></td><td>В звонках с известным итогом клиент уходит без даты и времени повторного контакта или другого конкретного действия.</td></tr>
+    </tbody>
+  </table>
+
+  <h3>Где именно теряется клиент</h3>
+  <div class="grid2">
+    <div class="card tight">
+      <h4>В начале разговора</h4>
+      <p style="font-size:13.3px;margin-bottom:0">Менеджер не всегда называет своё имя и не узнаёт имя клиента. Инициатива сразу переходит к клиенту, разговор строится как консультация по его вопросам.</p>
+    </div>
+    <div class="card tight">
+      <h4>При выяснении потребности</h4>
+      <p style="font-size:13.3px;margin-bottom:0">Недостаточно вопросов о поводе, сроке, бюджете и примере желаемого изделия. Менеджер может перейти к цене до того, как понятно, что именно важно клиенту.</p>
+    </div>
+    <div class="card tight">
+      <h4>При разговоре о цене</h4>
+      <p style="font-size:13.3px;margin-bottom:0">Стоимость остаётся отдельной цифрой, а не частью презентации решения. Не объясняется, что в неё входят металл, работа и камни, и как параметры заказа меняют итог.</p>
+    </div>
+    <div class="card tight">
+      <h4>В конце разговора</h4>
+      <p style="font-size:13.3px;margin-bottom:0">Вместо договорённости с датой и временем звучат открытые приглашения «пишите, звоните» или просьба прислать информацию. Ответственность за следующий контакт остаётся у клиента.</p>
+    </div>
+    <div class="card tight">
+      <h4>Когда запрос сложный</h4>
+      <p style="font-size:13.3px;margin-bottom:0">Если подбор камней кажется клиенту трудным, менеджер не всегда упрощает задачу до нескольких вопросов и готовых вариантов, из-за чего клиент может прекратить разговор.</p>
+    </div>
+    <div class="card tight">
+      <h4>До разговора: ожидания с сайта</h4>
+      <p style="font-size:13.3px;margin-bottom:0">Клиенты звонят проверить наличие изделия по артикулу, хотя значительная часть ассортимента изготавливается под заказ. На сайте и в первой фразе следует яснее обозначить этот формат.</p>
+    </div>
+  </div>
+
+  <h3>Что оставить и что изменить</h3>
+  <div class="grid2">
+    <div class="call green" style="margin:0">
+      <span class="ct">Сильные стороны — повторять</span>
+      <ul style="margin-bottom:0">
+        <li>В звонке Алёны 18.09 выяснены дата события, размер пальцев и город клиента, объяснены этапы заказа — согласование модели и эскизов.</li>
+        <li>Мария Молодцова в начале одного из звонков чётко представила студию.</li>
+        <li>Менеджеры дают грамотные технические ответы; слышно знание изделий и процесса изготовления.</li>
+      </ul>
+    </div>
+    <div class="call red" style="margin:0">
+      <span class="ct">Фразы, которые стоит заменить</span>
+      <ul style="margin-bottom:0">
+        <li><strong>Вместо:</strong> «Нет срочности у вас?»<br><strong>Лучше:</strong> «К какой дате вам нужно изделие?»</li>
+        <li><strong>Вместо:</strong> «Надумаете, звоните, пишите»<br><strong>Лучше:</strong> «Пришлю предложение сегодня до конца дня и позвоню в четверг в 11:00 — удобно?»</li>
+        <li><strong>Вместо отказа прислать портфолио:</strong><br><strong>Лучше:</strong> «С удовольствием отправлю подборку наших работ сегодня до 15:00 и завтра уточню, что вам понравилось».</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3>Рекомендации по итогам аудита звонков</h3>
+  <div class="grid2">
+    <div class="card" style="border-top:4px solid var(--red)">
+      <h4>Сначала — первый месяц</h4>
+      <ol style="font-size:13.3px;padding-left:20px;margin-bottom:0">
+        <li>Ввести единую структуру звонка: приветствие с именем, квалификация, вопросы о потребности, презентация решения, работа с сомнением, конкретный следующий шаг.</li>
+        <li>Научить менеджеров перехватывать инициативу и возвращать диалог вопросом. Например: «Понимаю. Чтобы предложить подходящий вариант, уточню: к какой дате нужно изделие?»</li>
+        <li>Закрывать разговор на следующий шаг с датой и временем: «Пришлю предложение сегодня до 15:00, позвоню завтра в 11:00». Если звонит ассистент — запросить контакт руководителя и согласовать время связи.</li>
+        <li>Подготовить единое объяснение цены: металл, камни, работа, размеры и другие факторы. Называть стоимость после расчёта по калькулятору, сверять её с информацией на сайте; не называть цифры «из головы».</li>
+        <li>Подготовить подборку из 10–15 фотографий работ по видам изделий и отправлять её в день запроса.</li>
+        <li>Подготовить ответ на звонок по артикулу: «Большинство изделий мы изготавливаем под заказ. Расскажите, что вы ищете?» Добавить такую пометку на сайт.</li>
+        <li>В тот же день фиксировать итог звонка в CRM и ставить задачу на следующий контакт.</li>
+      </ol>
+    </div>
+    <div class="card" style="border-top:4px solid var(--blue)">
+      <h4>Затем — 2–3 месяца</h4>
+      <ol start="8" style="font-size:13.3px;padding-left:20px;margin-bottom:0">
+        <li>Упростить объяснение подбора камней: начать с 3–4 вопросов (изделие, бюджет, цвет и размер камня), затем предложить 2–3 варианта в рамках бюджета.</li>
+        <li>Перевести входящие звонки на единый номер с записью в Битрикс24, чтобы разговоры можно было прослушивать и разбирать.</li>
+        <li>Настроить автоматические задачи на этапах сделки, в том числе напоминание перезвонить через заданный срок.</li>
+        <li>Ввести регулярный контроль качества: прослушивать не менее 5 звонков каждого менеджера в неделю и давать предметную обратную связь.</li>
+      </ol>
+    </div>
+  </div>
+
+  <div class="call amber">
+    <span class="ct">Интерпретация результатов</span>
+    Это экспресс-аудит небольшой выборки звонков. Выводы указывают на повторяющиеся поведенческие тенденции,
+    но не дают оснований вычислять точную конверсию, долю потерянных клиентов или эффективность каждого менеджера.
+    Для оценки динамики потребуется регулярная запись звонков, единая шкала контроля качества и сопоставление
+    с результатами в CRM.
+  </div>
+</section>
+
+<!-- ==================== BPMN AS IS ==================== -->
+<section id="bpmn-asis">
+  <div class="sec-head"><div class="sec-num">2</div><h2>BPMN — процесс AS IS</h2></div>
+  <p class="sec-sub">Фактический сквозной процесс от обращения клиента до выдачи заказа. Красным отмечены разрывы и узкие места.</p>
+
+  <div class="legend">
+    <span><i style="background:#fff;border:1.5px solid var(--navy-2)"></i> Операция</span>
+    <span><i style="background:var(--amber-l);border:1.5px solid var(--amber)"></i> Точка ветвления</span>
+    <span><i style="background:var(--red-l);border:1.5px dashed var(--red)"></i> Разрыв процесса</span>
+    <span><i style="background:var(--green-l);border:1.5px solid var(--green)"></i> Начало</span>
+    <span><i style="background:var(--red-l);border:1.5px solid var(--red)"></i> Завершение</span>
+  </div>
+
+  <div class="scroll-x">
+  <div class="bpmn" style="min-width:820px">
+    <div class="bpmn-top">Сквозной процесс «Дольче Вита» — AS IS <small>6 дорожек · 4 точки ветвления · 8 разрывов</small></div>
+
+    <div class="lane">
+      <div class="lane-label k"><span>Клиент</span></div>
+      <div class="lane-flow">
+        <div class="ev start">Клиент обращается в компанию</div>
+        <div class="arw">→</div>
+        <div class="gw">Клиент ответил?</div>
+        <div class="arw">→</div>
+        <div class="gw">Лид целевой?</div>
+        <div class="arw">→</div>
+        <div class="gw">Клиент согласен?</div>
+        <div class="arw">→</div>
+        <div class="gw">Клиент одобрил 3D-модель?</div>
+        <div class="ev end">Заказ завершён</div>
+      </div>
+    </div>
+
+    <div class="lane">
+      <div class="lane-label"><span>Менеджер по продажам</span></div>
+      <div class="lane-flow">
+        <div class="step">Принять обращение через канал</div>
+        <div class="arw">→</div>
+        <div class="step prob">Зафиксировать лид в Битрикс24</div>
+        <div class="arw">→</div>
+        <div class="step">Позвонить клиенту</div>
+        <div class="arw">→</div>
+        <div class="step">Отправить СМС или сообщение в мессенджер</div>
+        <div class="arw">→</div>
+        <div class="step">Квалификация лида</div>
+        <div class="arw">→</div>
+        <div class="step prob">Вежливый отказ или перенаправление</div>
+        <div class="arw">→</div>
+        <div class="step">Проверить прайсы и калькуляторы</div>
+        <div class="arw">→</div>
+        <div class="gw">Расчёт простой?</div>
+        <div class="arw">→</div>
+        <div class="step">Рассчитать самостоятельно</div>
+        <div class="arw">→</div>
+        <div class="step">Получить расчёт, сформировать КП</div>
+        <div class="arw">→</div>
+        <div class="step prob">Отправить КП клиенту</div>
+      </div>
+    </div>
+
+    <div class="lane">
+      <div class="lane-label"><span>Менеджер — работа с клиентом</span></div>
+      <div class="lane-flow">
+        <div class="step">Получить обратную связь от клиента</div>
+        <div class="arw">→</div>
+        <div class="step">Уточнить бюджет, предложить альтернативу</div>
+        <div class="arw">→</div>
+        <div class="step">Согласовать детали</div>
+        <div class="arw">→</div>
+        <div class="step">Пригласить клиента в шоурум</div>
+        <div class="arw">→</div>
+        <div class="step">Запросить паспортные данные</div>
+        <div class="arw">→</div>
+        <div class="step prob">Заполнить шаблон договора вручную</div>
+        <div class="arw">→</div>
+        <div class="step">Подписать, поставить печать, отсканировать</div>
+        <div class="arw">→</div>
+        <div class="step">Отправить договор клиенту</div>
+        <div class="arw">→</div>
+        <div class="step">Отправить ссылку на оплату</div>
+        <div class="arw">→</div>
+        <div class="step">Получить предоплату</div>
+        <div class="arw">→</div>
+        <div class="step">Пробить чек за предоплату</div>
+        <div class="arw">→</div>
+        <div class="step">Внести оплату в 1С</div>
+        <div class="arw">→</div>
+        <div class="step">Зафиксировать предоплату в Битриксе</div>
+      </div>
+    </div>
+
+    <div class="lane">
+      <div class="lane-label o"><span>Собственник Тигран</span></div>
+      <div class="lane-flow">
+        <div class="step prob">Рассчитать стоимость, сроки, скидку</div>
+        <div class="arw">→</div>
+        <div class="step prob">Получить ТЗ от менеджера</div>
+        <div class="arw">→</div>
+        <div class="step prob">Определить модельера, ювелира, подрядчика</div>
+        <div class="arw">→</div>
+        <div class="step">Распределить заказ</div>
+      </div>
+    </div>
+
+    <div class="lane">
+      <div class="lane-label g"><span>Геммолог / Зара</span></div>
+      <div class="lane-flow">
+        <div class="step prob">Получить запрос на подбор камня</div>
+        <div class="arw">→</div>
+        <div class="step prob">Предоставить информацию МОПу</div>
+        <div class="arw">→</div>
+        <div class="step prob">Получить запрос от менеджера</div>
+      </div>
+    </div>
+
+    <div class="lane">
+      <div class="lane-label p"><span>Производство</span></div>
+      <div class="lane-flow">
+        <div class="step">Составить ТЗ для ювелира</div>
+        <div class="arw">→</div>
+        <div class="step">Прикрепить фото, параметры, пожелания</div>
+        <div class="arw">→</div>
+        <div class="step">Получить ТЗ</div>
+        <div class="arw">→</div>
+        <div class="gw">Создать 3D-модель</div>
+        <div class="arw">→</div>
+        <div class="step">Отправить модель менеджеру</div>
+        <div class="arw">→</div>
+        <div class="step">Получить 3D-модель</div>
+        <div class="arw">→</div>
+        <div class="step">Передать правки модельеру</div>
+        <div class="arw">→</div>
+        <div class="step prob">Производство</div>
+        <div class="arw">→</div>
+        <div class="step prob">Пробирный надзор</div>
+        <div class="arw">→</div>
+        <div class="step prob">Периодически уточнять статус заказа</div>
+        <div class="arw">→</div>
+        <div class="step">Передать изделие менеджеру</div>
+      </div>
+    </div>
+
+    <div class="lane">
+      <div class="lane-label"><span>Выдача и завершение</span></div>
+      <div class="lane-flow">
+        <div class="step">Отправить клиенту на согласование</div>
+        <div class="arw">→</div>
+        <div class="step prob">Получить готовое изделие</div>
+        <div class="arw">→</div>
+        <div class="step prob">Проверить вес, размер, камни, качество</div>
+        <div class="arw">→</div>
+        <div class="step prob">Печать бирок</div>
+        <div class="arw">→</div>
+        <div class="step">Позвонить или написать клиенту</div>
+        <div class="arw">→</div>
+        <div class="step">Согласовать дату выдачи или доставки</div>
+        <div class="arw">→</div>
+        <div class="step">Показать изделие клиенту</div>
+        <div class="arw">→</div>
+        <div class="step">Получить вторую оплату</div>
+        <div class="arw">→</div>
+        <div class="step">Пробить чек за окончательный платёж</div>
+        <div class="arw">→</div>
+        <div class="step">Подписать акт приёма-передачи</div>
+        <div class="arw">→</div>
+        <div class="step prob">Закрыть сделку в Битриксе и 1С</div>
+      </div>
+    </div>
+  </div>
+  </div>
+
+  <div class="call red">
+    <span class="ct">Что показывают разрывы на схеме</span>
+    Обработка обращения, расчёт, контроль производства и проверка качества держатся на ручных действиях и одном
+    человеке. Лид фиксируется в CRM не всегда, расчёт сложных заказов идёт через собственника, а контроль статуса
+    производства менеджер ведёт вручную. Именно эти участки формируют потери на входе и на выходе сделки.
+  </div>
+</section>
+
+<!-- ==================== TO BE ==================== -->
+<section id="tobe">
+  <div class="sec-head"><div class="sec-num">3</div><h2>Отчёт «TO BE»</h2></div>
+  <p class="sec-sub">Целевая модель бизнес-процессов и ролей, устраняющая системные проблемы этапа «AS IS»</p>
+
+  <div class="call green">
+    <span class="ct">Логика модели</span>
+    Модель строится на четырёх ключевых изменениях и системных решениях, закрывающих остальные проблемы отчёта
+    «AS IS». Она снимает две главные боли компании: <strong>потеря лидов на входе</strong> и
+    <strong>потеря сделки на выходных менеджера</strong>.
+  </div>
+
+  <h3 id="tobe-changes">Четыре ключевых изменения</h3>
+  <div class="grid2">
+    <div class="card" style="border-top:4px solid var(--blue)">
+      <h4>1 · Разделение менеджеров на два уровня</h4>
+      <p style="font-size:13.5px;margin-bottom:8px"><strong>МОП 1-го уровня (колл-центр)</strong> — принимает входящие заявки, квалифицирует клиентов, передаёт на 2-й уровень. Может работать офлайн или онлайн, онлайн предпочтительнее.</p>
+      <p style="font-size:13.5px;margin-bottom:0"><strong>МОП 2-го уровня</strong> — принимает квалифицированного клиента и ведёт его до денег, работая с готовым коммерческим предложением.</p>
+    </div>
+    <div class="card" style="border-top:4px solid var(--violet)">
+      <h4>2 · График МОП 2-го уровня «2/2 парами»</h4>
+      <p style="font-size:13.5px;margin-bottom:8px">Формируются две пары: Пара 1 (сотрудники 1 и 2) и Пара 2 (сотрудники 3 и 4).</p>
+      <ul style="font-size:13.5px;margin-bottom:0">
+        <li>Первые два дня — сотрудник 1 (Пара 1) и сотрудник 3 (Пара 2)</li>
+        <li>Следующие два дня — сотрудник 2 (Пара 1) и сотрудник 4 (Пара 2)</li>
+        <li><strong>Лид передаётся на пару, а не на конкретного сотрудника.</strong> Пара ведёт клиента от начала до конца 7 дней в неделю</li>
+      </ul>
+    </div>
+    <div class="card" style="border-top:4px solid var(--green)">
+      <h4>3 · Коммуникация от имени компании</h4>
+      <p style="font-size:13.5px;margin-bottom:8px">Сотрудник отвечает не «я, сотрудник 1», а «я, сотрудник компании “Дольче Вита”».</p>
+      <p style="font-size:13.5px;margin-bottom:0">Привязка к личности менеджера убирается — клиент взаимодействует с компанией, а не с человеком. Это закрывает риск ухода клиентской базы вместе с сотрудником.</p>
+    </div>
+    <div class="card" style="border-top:4px solid var(--amber)">
+      <h4>4 · Разделение воронок в CRM</h4>
+      <ul style="font-size:13.5px;margin-bottom:0">
+        <li>Воронка сделки 1 — для первой пары</li>
+        <li>Воронка сделки 2 — для второй пары</li>
+        <li>Воронка рекламации — отдельная</li>
+        <li>Воронка ремонтов — отдельная</li>
+        <li>Воронка лидов — отдельная, для колл-центра</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3 id="tobe-org">Структура, роли и KPI</h3>
+  <div class="grid2">
+    <div class="card">
+      <h4>Целевая организационная структура</h4>
+      <div style="font-family:ui-monospace,Menlo,Consolas,monospace;font-size:13px;line-height:1.85;background:var(--gray-l);padding:16px 18px;border-radius:9px;border-left:3px solid var(--blue)">
+        <strong>Собственник</strong><br>
+        └── <strong>Руководитель ОП</strong> / старший менеджер<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;├── МОП 1-го уровня (колл-центр) — 1–2 сотрудника<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;├── МОП 2-го уровня — Пара 1 (2 сотрудника)<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;└── МОП 2-го уровня — Пара 2 (2 сотрудника)
+      </div>
+    </div>
+    <div class="card">
+      <h4>Принципы целевой модели</h4>
+      <ul style="font-size:13.5px;margin-bottom:0">
+        <li><strong>Разделение труда</strong> — квалификация и продажа это разные функции, роли и KPI</li>
+        <li><strong>Непрерывность</strong> — пара ведёт лид 7 дней в неделю, клиент не «зависает»</li>
+        <li><strong>Клиент у компании</strong> — коммуникация от имени компании, а не от личности</li>
+        <li><strong>Прозрачность</strong> — все процессы в CRM, данные в едином центре</li>
+        <li><strong>Управляемость</strong> — планы, KPI, отчётность, регулярные планёрки</li>
+        <li><strong>Масштабируемость</strong> — модель позволяет нанимать и обучать новых сотрудников без потери качества</li>
+      </ul>
+    </div>
+  </div>
+
+  <table>
+    <thead><tr><th style="width:26%">Роль</th><th style="width:40%">Основные функции</th><th>KPI</th></tr></thead>
+    <tbody>
+      <tr>
+        <td class="b">МОП 1-го уровня<br><span style="font-weight:400;font-size:12px;color:var(--gray)">колл-центр</span></td>
+        <td>Приём, квалификация, маршрутизация входящего трафика по единому чек-листу</td>
+        <td>Скорость ответа, конверсия «лид → КП», процент от продаж</td>
+      </tr>
+      <tr>
+        <td class="b">МОП 2-го уровня</td>
+        <td>Расчёт, договор, закрытие сделки, сопровождение заказа до выдачи</td>
+        <td>Конверсия в сделку, выполнение плана по марже и выручке</td>
+      </tr>
+      <tr>
+        <td class="b">Руководитель ОП<br><span style="font-weight:400;font-size:12px;color:var(--gray)">старший менеджер</span></td>
+        <td>Планы, KPI, обучение, контроль качества работы отдела</td>
+        <td>Выполнение плана отдела, рост конверсии</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3 id="tobe-sched">График пар и воронки</h3>
+  <h4>Как работает смена пар «2/2»</h4>
+  <div class="scroll-x">
+  <div class="sched">
+    <div class="h"></div>
+    <div class="h">День 1</div><div class="h">День 2</div><div class="h">День 3</div><div class="h">День 4</div>
+    <div class="h">День 5</div><div class="h">День 6</div><div class="h">День 7</div><div class="h">День 8</div>
+
+    <div class="rl">Сотрудник 1<br><span style="font-weight:400;font-size:10px">Пара 1</span></div>
+    <div class="cell on1">работа</div><div class="cell on1">работа</div>
+    <div class="cell off">—</div><div class="cell off">—</div>
+    <div class="cell on1">работа</div><div class="cell on1">работа</div>
+    <div class="cell off">—</div><div class="cell off">—</div>
+
+    <div class="rl">Сотрудник 2<br><span style="font-weight:400;font-size:10px">Пара 1</span></div>
+    <div class="cell off">—</div><div class="cell off">—</div>
+    <div class="cell on1">работа</div><div class="cell on1">работа</div>
+    <div class="cell off">—</div><div class="cell off">—</div>
+    <div class="cell on1">работа</div><div class="cell on1">работа</div>
+
+    <div class="rl">Сотрудник 3<br><span style="font-weight:400;font-size:10px">Пара 2</span></div>
+    <div class="cell on2">работа</div><div class="cell on2">работа</div>
+    <div class="cell off">—</div><div class="cell off">—</div>
+    <div class="cell on2">работа</div><div class="cell on2">работа</div>
+    <div class="cell off">—</div><div class="cell off">—</div>
+
+    <div class="rl">Сотрудник 4<br><span style="font-weight:400;font-size:10px">Пара 2</span></div>
+    <div class="cell off">—</div><div class="cell off">—</div>
+    <div class="cell on2">работа</div><div class="cell on2">работа</div>
+    <div class="cell off">—</div><div class="cell off">—</div>
+    <div class="cell on2">работа</div><div class="cell on2">работа</div>
+  </div>
+  </div>
+  <div class="call green" style="margin-top:6px">
+    <span class="ct">Результат графика</span>
+    Каждая пара присутствует 7 дней в неделю. Лид, поступивший на пару, никогда не «зависает» на выходные —
+    его подхватывает сменщик, который видит всю историю в CRM.
+  </div>
+
+  <h4>График работы по ролям</h4>
+  <table>
+    <thead><tr><th style="width:30%">Роль</th><th style="width:32%">График</th><th>Комментарий</th></tr></thead>
+    <tbody>
+      <tr><td class="b">МОП 1-го уровня</td><td>5/2 (1 сотрудник) или 2/2 (2 сотрудника)</td><td>Онлайн-формат предпочтительнее</td></tr>
+      <tr><td class="b">МОП 2-го уровня — Пара 1</td><td>2/2 парами</td><td>Сотрудник 1 + сотрудник 2</td></tr>
+      <tr><td class="b">МОП 2-го уровня — Пара 2</td><td>2/2 парами</td><td>Сотрудник 3 + сотрудник 4</td></tr>
+    </tbody>
+  </table>
+
+  <h4>Воронки в CRM</h4>
+  <table>
+    <thead><tr><th style="width:34%">Воронка</th><th style="width:38%">Назначение</th><th>Ответственный</th></tr></thead>
+    <tbody>
+      <tr><td class="b">Воронка колл-центра</td><td>Приём и квалификация входящих лидов</td><td>МОП 1-го уровня</td></tr>
+      <tr><td class="b">Воронка Пары 1</td><td>Ведение целевых лидов от квалификации до денег</td><td>Пара 1</td></tr>
+      <tr><td class="b">Воронка Пары 2</td><td>Ведение целевых лидов от квалификации до денег</td><td>Пара 2</td></tr>
+      <tr><td class="b">Воронка ремонтов</td><td>Ремонтные обращения</td><td>Администратор / МОП 2-го уровня</td></tr>
+      <tr><td class="b">Воронка рекламаций</td><td>Гарантийные обращения</td><td>Администратор / МОП 2-го уровня</td></tr>
+    </tbody>
+  </table>
+
+  <h4>Целевой путь клиента</h4>
+  <div class="card">
+    <p style="margin-bottom:6px"><strong>Как будет проходить сделка после внедрения модели</strong></p>
+    <ul style="margin-bottom:0;font-size:13.5px">
+      <li>Обращение по любому каналу попадает в воронку колл-центра в Битрикс24</li>
+      <li>МОП 1-го уровня мгновенно отвечает (SLA 1–5 минут), квалифицирует по чек-листу и определяет целевой лид или нет</li>
+      <li>Нецелевой лид — вежливый отказ по шаблону либо перенаправление в воронку ремонтов или рекламаций</li>
+      <li>Целевой лид автоматически распределяется на пару через карусель</li>
+      <li>МОП 2-го уровня принимает сделку (SLA 15 минут) и связывается с клиентом от имени компании</li>
+      <li>Расчёт — через калькулятор в CRM; сложные случаи уходят геммологу или руководителю (SLA 2 часа)</li>
+      <li>Договор — шаблон в CRM с автозаполнением и электронной подписью</li>
+      <li>Предоплата — стандарт 50%, фиксация в 1С, автоматическое уведомление в CRM</li>
+      <li>Передача в производство — автоматическая задача, ТЗ в CRM, уведомление руководителя производства</li>
+      <li>Производство — прозрачные статусы в CRM, клиент видит статус в личном кабинете</li>
+      <li>Выдача — вторая оплата, чек, акт, закрытие сделки в CRM и 1С</li>
+      <li>Постпродажа — автоматические задачи, поздравления, кросс-продажи, NPS-опрос</li>
+    </ul>
+  </div>
+
+  <h4>Решения по остальным проблемам «AS IS»</h4>
+  <table>
+    <thead><tr><th style="width:27%">Проблема AS IS</th><th style="width:40%">Решение TO BE</th><th>Инструмент / документ</th></tr></thead>
+    <tbody>
+      <tr><td>Нет плана продаж</td><td>Внедрить план по выручке и марже</td><td>Регламент планирования продаж</td></tr>
+      <tr><td>Нет KPI</td><td>KPI по конверсии, квалификации, работе в CRM</td><td>Матрица KPI</td></tr>
+      <tr><td>CRM неполная</td><td>Обязательные поля, интеграции</td><td>Регламент работы в Битрикс24</td></tr>
+      <tr><td>Лиды теряются</td><td>МОП 1-го уровня и автоматическое распределение</td><td>Воронка колл-центра, карусель</td></tr>
+      <tr><td>Долгий ответ новому клиенту</td><td>SLA 1–5 минут, колл-центр</td><td>Регламент обработки лида</td></tr>
+      <tr><td>Сделка теряется на выходных</td><td>Пары 2/2, лид передаётся на пару</td><td>График пар</td></tr>
+      <tr><td>Клиент привязан к менеджеру</td><td>Коммуникация от имени компании</td><td>Политика коммуникации</td></tr>
+      <tr><td>Нет регламентов</td><td>Должностные инструкции, чек-листы</td><td>Реестр документов</td></tr>
+      <tr><td>Мотивация только личная</td><td>Оклад + KPI + процент от общего плана</td><td>Положение о мотивации</td></tr>
+      <tr><td>Производство непрозрачно</td><td>Автоматические статусы, личный кабинет</td><td>Регламент производства</td></tr>
+      <tr><td>Нет управленческой отчётности</td><td>Дашборды, ежедневные и еженедельные отчёты</td><td>Регламент отчётности</td></tr>
+    </tbody>
+  </table>
+
+  <h4>IT и автоматизация</h4>
+  <table>
+    <thead><tr><th style="width:27%">Система</th><th style="width:40%">Функция</th><th>Интеграция</th></tr></thead>
+    <tbody>
+      <tr><td class="b">Битрикс24</td><td>Ядро CRM: лиды, сделки, задачи, аналитика</td><td>Телефония, мессенджеры, сайт, Avito, 1С</td></tr>
+      <tr><td class="b">1С</td><td>Оплаты, склад, бирки</td><td>Двусторонняя с Битрикс24</td></tr>
+      <tr><td class="b">Личный кабинет клиента</td><td>Отслеживание статуса заказа</td><td>Интеграция с CRM</td></tr>
+      <tr><td class="b">Калькулятор</td><td>Расчёт стоимости заказа</td><td>Встроен в CRM</td></tr>
+      <tr><td class="b">База поставщиков камней</td><td>Прайсы и наличие</td><td>Интеграция с CRM</td></tr>
+      <tr><td class="b">Дашборды</td><td>Аналитика и KPI</td><td>Битрикс24</td></tr>
+      <tr><td class="b">Автоматические задачи</td><td>Касания, постпродажа, напоминания</td><td>Битрикс24</td></tr>
+    </tbody>
+  </table>
+
+  <h4>Мотивация и KPI — принципы</h4>
+  <div class="grid3">
+    <div class="card tight">
+      <h4 style="margin-bottom:6px">Структура дохода</h4>
+      <p style="font-size:13.5px;margin-bottom:0">Оклад + KPI + процент от выполнения <strong>общего</strong> плана отдела</p>
+    </div>
+    <div class="card tight">
+      <h4 style="margin-bottom:6px">Командные показатели</h4>
+      <p style="font-size:13.5px;margin-bottom:0">Оценка строится по результату <strong>пары</strong>, а не отдельного сотрудника</p>
+    </div>
+    <div class="card tight">
+      <h4 style="margin-bottom:6px">Прозрачность</h4>
+      <p style="font-size:13.5px;margin-bottom:0">Каждый сотрудник видит свои цифры и цифры компании</p>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== BPMN TO BE ==================== -->
+<section id="bpmn-tobe">
+  <div class="sec-head"><div class="sec-num">4</div><h2>BPMN — процесс TO BE</h2></div>
+  <p class="sec-sub">Целевой сквозной процесс: автоматизация, единые стандарты, непрерывность работы с лидом</p>
+
+  <div class="legend">
+    <span><i style="background:#fff;border:1.5px solid var(--navy-2)"></i> Операция</span>
+    <span><i style="background:var(--green-l);border:1.5px solid var(--green)"></i> Устранённый разрыв</span>
+    <span><i style="background:var(--violet-l);border:1.5px solid var(--violet)"></i> Автоматизация</span>
+    <span><i style="background:var(--amber-l);border:1.5px solid var(--amber)"></i> Точка ветвления</span>
+    <span><i style="background:var(--green-l);border:1.5px solid var(--green);border-radius:20px"></i> Начало / завершение</span>
+  </div>
+
+  <div class="scroll-x">
+  <div class="bpmn" style="min-width:820px">
+    <div class="bpmn-top">Сквозной процесс «Дольче Вита» — TO BE <small>6 дорожек · SLA на входе · автоматическое распределение</small></div>
+
+    <div class="lane">
+      <div class="lane-label k"><span>Клиент</span></div>
+      <div class="lane-flow">
+        <div class="ev start">Клиент обращается в компанию</div>
+        <div class="arw">→</div>
+        <div class="gw">Лид целевой?</div>
+        <div class="arw">→</div>
+        <div class="gw">Клиент согласен?</div>
+        <div class="arw">→</div>
+        <div class="gw">Клиент одобрил 3D-модель?</div>
+        <div class="arw">→</div>
+        <div class="gw">Изделие соответствует ТЗ?</div>
+        <div class="arw">→</div>
+        <div class="ev end">Заказ завершён</div>
+      </div>
+    </div>
+
+    <div class="lane">
+      <div class="lane-label"><span>МОП 1-го уровня<br>(колл-центр)</span></div>
+      <div class="lane-flow">
+        <div class="step">Принять обращение через любой канал: звонок, Telegram, WhatsApp, VK, Avito, сайт</div>
+        <div class="arw">→</div>
+        <div class="step fix">Мгновенно ответить, SLA 1–5 минут</div>
+        <div class="arw">→</div>
+        <div class="step">Зафиксировать лид в Битрикс24</div>
+        <div class="arw">→</div>
+        <div class="step">Провести квалификацию по единому чек-листу</div>
+        <div class="arw">→</div>
+        <div class="step auto">Зафиксировать данные в обязательных полях CRM</div>
+        <div class="arw">→</div>
+        <div class="step">Задать вопросы: потребность, металл, камни, размер, бюджет, срочность</div>
+        <div class="arw">→</div>
+        <div class="step fix">Вежливый отказ по шаблону или перенаправление</div>
+        <div class="ev mid">Лид закрыт</div>
+      </div>
+    </div>
+
+    <div class="lane">
+      <div class="lane-label"><span>МОП 2-го уровня<br>(пара)</span></div>
+      <div class="lane-flow">
+        <div class="step">Сформировать предварительное ТЗ</div>
+        <div class="arw">→</div>
+        <div class="step auto">Передать лид на пару автоматически через карусель</div>
+        <div class="arw">→</div>
+        <div class="step auto">Получить уведомление о новом лиде</div>
+        <div class="arw">→</div>
+        <div class="step fix">Принять сделку в работу, SLA 15 минут</div>
+        <div class="arw">→</div>
+        <div class="step fix">Связаться с клиентом от имени компании</div>
+        <div class="arw">→</div>
+        <div class="step">Рассчитать стоимость: металл, камни, работа</div>
+        <div class="arw">→</div>
+        <div class="gw">Расчёт простой?</div>
+        <div class="arw">→</div>
+        <div class="step">Рассчитать самостоятельно</div>
+        <div class="arw">→</div>
+        <div class="step auto">Сформировать КП через шаблон в CRM</div>
+        <div class="arw">→</div>
+        <div class="step">Отправить КП клиенту</div>
+        <div class="arw">→</div>
+        <div class="step">Согласовать детали: дизайн, материалы, сроки</div>
+        <div class="arw">→</div>
+        <div class="step auto">Автоматические касания: напоминания, спецпредложения</div>
+      </div>
+    </div>
+
+    <div class="lane">
+      <div class="lane-label o"><span>Собственник<br>Тигран</span></div>
+      <div class="lane-flow">
+        <div class="gw">Кому направить запрос?</div>
+        <div class="arw">→</div>
+        <div class="step">Сложный расчёт, утвердить скидку</div>
+        <div class="arw">→</div>
+        <div class="step auto">Распределить заказ: модельер, ювелир, подрядчик</div>
+        <div class="arw">→</div>
+        <div class="step auto">Зафиксировать ответственного в CRM</div>
+      </div>
+    </div>
+
+    <div class="lane">
+      <div class="lane-label g"><span>Геммолог /<br>закупки камней</span></div>
+      <div class="lane-flow">
+        <div class="step fix">Подобрать камень из базы поставщиков, SLA 2 часа</div>
+      </div>
+    </div>
+
+    <div class="lane">
+      <div class="lane-label p"><span>Производство<br>3D, ювелир, товаровед</span></div>
+      <div class="lane-flow">
+        <div class="step auto">Сформировать ТЗ в Битрикс24 по шаблону</div>
+        <div class="arw">→</div>
+        <div class="step auto">Получить задачу в Битрикс24</div>
+        <div class="arw">→</div>
+        <div class="step">Создать 3D-модель</div>
+        <div class="arw">→</div>
+        <div class="step auto">Загрузить модель в CRM</div>
+        <div class="arw">→</div>
+        <div class="step">Получить 3D-модель</div>
+        <div class="arw">→</div>
+        <div class="step">Отправить клиенту на согласование через CRM</div>
+        <div class="arw">→</div>
+        <div class="step">Передать правки</div>
+        <div class="arw">→</div>
+        <div class="step">Получить заказ</div>
+        <div class="arw">→</div>
+        <div class="step fix">Производство со статусами в CRM</div>
+        <div class="arw">→</div>
+        <div class="step">Пробирный надзор</div>
+        <div class="arw">→</div>
+        <div class="step auto">Передать заказ менеджеру</div>
+      </div>
+    </div>
+
+    <div class="lane">
+      <div class="lane-label"><span>Договор, оплата,<br>выдача</span></div>
+      <div class="lane-flow">
+        <div class="step auto">Заполнить договор через шаблон в Битрикс24, автозаполнение</div>
+        <div class="arw">→</div>
+        <div class="step">Отправить договор клиенту: электронная подпись или скан</div>
+        <div class="arw">→</div>
+        <div class="step">Отправить ссылку на оплату</div>
+        <div class="arw">→</div>
+        <div class="step fix">Получить предоплату, стандарт 50%</div>
+        <div class="arw">→</div>
+        <div class="step auto">Автоматическая фиксация в 1С</div>
+        <div class="arw">→</div>
+        <div class="step auto">Получить оплату, пробить чек</div>
+        <div class="arw">→</div>
+        <div class="step fix">Получить готовое изделие</div>
+        <div class="arw">→</div>
+        <div class="step fix">Проверить по чек-листу: вес, размер, камни, качество, ТЗ</div>
+        <div class="arw">→</div>
+        <div class="step">Вернуть на доработку</div>
+        <div class="arw">→</div>
+        <div class="step fix">Печать бирок</div>
+        <div class="arw">→</div>
+        <div class="step">Согласовать дату выдачи или доставки</div>
+        <div class="arw">→</div>
+        <div class="step">Показать изделие клиенту</div>
+        <div class="arw">→</div>
+        <div class="step">Получить вторую оплату, 50%</div>
+        <div class="arw">→</div>
+        <div class="step">Подписать акт приёма-передачи</div>
+        <div class="arw">→</div>
+        <div class="step">Пробить чек</div>
+        <div class="arw">→</div>
+        <div class="step auto">Автоматический расчёт процента менеджеру</div>
+        <div class="arw">→</div>
+        <div class="step auto">Автозадача: кросс-продажа</div>
+        <div class="arw">→</div>
+        <div class="step auto">Провести NPS-опрос</div>
+        <div class="arw">→</div>
+        <div class="step auto">Собрать обратную связь</div>
+      </div>
+    </div>
+  </div>
+  </div>
+
+  <div class="call green">
+    <span class="ct">Что изменилось по сравнению с AS IS</span>
+    На входе появился барьер в виде колл-центра с SLA 1–5 минут, который не даёт лиду потеряться. Распределение идёт
+    автоматически на пару, а не на конкретного человека. Расчёт, договор, ТЗ, статусы производства, процент менеджера
+    и касания с клиентом переведены в автоматические действия внутри CRM. Ручными остаются только те операции,
+    где нужен человек: подбор камня, согласование дизайна и проверка качества по чек-листу.
+  </div>
+</section>
+
+<!-- ==================== COMPARE ==================== -->
+<section id="compare">
+  <div class="sec-head"><div class="sec-num">5</div><h2>Сравнение AS IS → TO BE</h2></div>
+  <p class="sec-sub">Ключевые изменения по каждому проблемному участку и ожидаемый эффект</p>
+
+  <h4>Сводная таблица изменений</h4>
+  <table>
+    <thead><tr><th style="width:29%">Проблема AS IS</th><th style="width:41%">Решение TO BE</th><th>Инструмент / документ</th></tr></thead>
+    <tbody>
+      <tr><td>Нет плана продаж и KPI</td><td>Оклад + KPI + процент от общего плана; план по выручке и марже</td><td>Регламент планирования, матрица KPI</td></tr>
+      <tr><td>Нет KPI</td><td>Показатели по конверсии, квалификации и работе в CRM для каждой роли</td><td>Матрица KPI</td></tr>
+      <tr><td>CRM неполная</td><td>Обязательные поля, интеграция с 1С, телефонией и мессенджерами</td><td>Регламент работы в Битрикс24</td></tr>
+      <tr><td>Лиды теряются на входе</td><td>Колл-центр и автоматическое распределение лидов на пару</td><td>Воронка колл-центра, карусель</td></tr>
+      <tr><td>Долгий ответ новому клиенту</td><td>SLA 1–5 минут на первый ответ</td><td>Регламент обработки лида</td></tr>
+      <tr><td>Сделка теряется на выходных</td><td>Пары 2/2, лид передаётся на пару, а не на сотрудника</td><td>График пар</td></tr>
+      <tr><td>Клиент привязан к менеджеру</td><td>Коммуникация от имени компании, единый стандарт общения</td><td>Политика коммуникации</td></tr>
+      <tr><td>Нет регламентов и инструкций</td><td>Должностные инструкции, чек-листы, стандарты процессов</td><td>Реестр документов</td></tr>
+      <tr><td>Мотивация только личная</td><td>Командные показатели пары и процент от общего плана</td><td>Положение о мотивации</td></tr>
+      <tr><td>Производство непрозрачно</td><td>Автоматические статусы в CRM, личный кабинет клиента</td><td>Регламент производства</td></tr>
+      <tr><td>Нет единого владельца заказа</td><td>Ответственный фиксируется в CRM, передача через систему</td><td>Регламент сопровождения</td></tr>
+      <tr><td>Нет управленческой отчётности</td><td>Дашборды, ежедневные и еженедельные отчёты</td><td>Регламент отчётности</td></tr>
+    </tbody>
+  </table>
+
+  <h4>Ожидаемые результаты</h4>
+  <table>
+    <thead><tr><th style="width:34%">Показатель</th><th style="width:29%">AS IS</th><th>TO BE (цель)</th></tr></thead>
+    <tbody>
+      <tr><td>Потеря лидов на входе</td><td><span class="bdg red">Высокая</span></td><td><span class="bdg green">Минимальная — SLA 1–5 мин</span></td></tr>
+      <tr><td>Потеря сделок на выходных</td><td><span class="bdg red">Высокая</span></td><td><span class="bdg green">Исключена — пары 2/2</span></td></tr>
+      <tr><td>Конверсия «лид → сделка»</td><td><span class="bdg gray">Не измеряется</span></td><td><span class="bdg blue">25–30%</span></td></tr>
+      <tr><td>Прозрачность процессов</td><td><span class="bdg red">Низкая</span></td><td><span class="bdg green">Высокая — всё в CRM</span></td></tr>
+      <tr><td>Управляемость</td><td><span class="bdg red">Ручная</span></td><td><span class="bdg green">Системная — план, KPI, отчётность</span></td></tr>
+      <tr><td>Клиентский опыт</td><td><span class="bdg amber">Зависит от менеджера</span></td><td><span class="bdg green">Стабильный, от компании</span></td></tr>
+      <tr><td>Масштабируемость</td><td><span class="bdg red">Ограничена</span></td><td><span class="bdg green">Высокая</span></td></tr>
+    </tbody>
+  </table>
+
+  <div class="call blue">
+    <span class="ct">Итог целевой модели</span>
+    Модель устраняет две главные боли — потерю лидов на входе и потерю сделок на выходных. Она делает процессы
+    прозрачными и управляемыми, создаёт основу для масштабирования, повышает конверсию, средний чек и выручку,
+    а также снижает зависимость результата от собственника и отдельных сотрудников.
+  </div>
+</section>
+
+<!-- ==================== REGISTRY ==================== -->
+<section id="registry">
+  <div class="sec-head"><div class="sec-num">6</div><h2>Реестр документов для стандартизации</h2></div>
+  <p class="sec-sub">44 документа в 9 блоках — от продукта и процессов продаж до CRM, производства и мотивации</p>
+
+  <div class="call amber">
+    <span class="ct">Назначение реестра</span>
+    Перечень внутренних документов, которые необходимо разработать и утвердить для перехода от «ручного»
+    управления к системе. Колонки «Стадия документа» и «Ссылка» заполняются по мере разработки.
+    Приоритет первого этапа — блоки «Продажи. Процессы», «Стандарты коммуникации» и «CRM и автоматизация».
+  </div>
+
+  <table>
+    <thead>
+      <tr>
+        <th style="width:4%">№</th>
+        <th style="width:29%">Название документа</th>
+        <th style="width:39%">Описание</th>
+        <th style="width:14%">Стадия</th>
+        <th>Ссылка</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="reg-sec"><td colspan="5">Блок 1 · Компания и продукт</td></tr>
+      <tr class="reg-row">
+        <td class="c">1.1</td>
+        <td>Положение о компании и продуктах</td>
+        <td>Описание компании, продуктовой линейки, сегментов, УТП и ключевых преимуществ</td>
+        <td><span class="bdg gray">Не начат</span></td><td></td>
+      </tr>
+      <tr class="reg-row">
+        <td class="c">1.2</td>
+        <td>Организационная структура и зоны ответственности</td>
+        <td>Схема подчинения, роли, зоны ответственности</td>
+        <td><span class="bdg gray">Не начат</span></td><td></td>
+      </tr>
+
+      <tr class="reg-sec"><td colspan="5">Блок 2 · Управление отделом продаж</td></tr>
+      <tr class="reg-row">
+        <td class="c">2.1</td>
+        <td>Положение об отделе продаж</td>
+        <td>Цели, задачи, структура и принципы работы отдела продаж</td>
+        <td><span class="bdg gray">Не начат</span></td><td></td>
+      </tr>
+      <tr class="reg-row">
+        <td class="c">2.2</td>
+        <td>Регламент планирования продаж</td>
+        <td>Как формируется план, кто утверждает, периодичность, декомпозиция</td>
+        <td><span class="bdg gray">Не начат</span></td><td></td>
+      </tr>
+      <tr class="reg-row">
+        <td class="c">2.3</td>
+        <td>Регламент управленческой отчётности отдела продаж</td>
+        <td>Состав, периодичность, ответственные, формы отчётности</td>
+        <td><span class="bdg gray">Не начат</span></td><td></td>
+      </tr>
+      <tr class="reg-row">
+        <td class="c">2.4</td>
+        <td>Регламент проведения планёрок</td>
+        <td>Время, участники, повестка, периодичность</td>
+        <td><span class="bdg gray">Не начат</span></td><td></td>
+      </tr>
+      <tr class="reg-row">
+        <td class="c">2.5</td>
+        <td>Таблица KPI коммерческого отдела</td>
+        <td>Показатели эффективности по ролям и уровням</td>
+        <td><span class="bdg gray">Не начат</span></td><td></td>
+      </tr>
+
+      <tr class="reg-sec"><td colspan="5">Блок 3 · Продажи. Процессы <span class="bdg red" style="margin-left:6px">Приоритет</span></td></tr>
+      <tr class="reg-row">
+        <td class="c">3.1</td>
+        <td>Регламент обработки входящих обращений</td>
+        <td>Приём, фиксация, SLA, маршрутизация входящего трафика</td>
+        <td><span class="bdg gray">Не начат</span></td><td></td>
+      </tr>
+      <tr class="reg-row">
+        <td class="c">3.2</td>
+        <td>Регламент квалификации клиента</td>
+        <td>Единый чек-лист квалификации, критерии целевого и нецелевого лида</td>
+        <td><span class="bdg gray">Не начат</span></td><td></td>
+      </tr>
+      <tr class="reg-row">
+        <td class="c">3.3</td>
+        <td>Регламент автоматического распределения лидов</td>
+        <td>Правила карусели и очереди, распределение на пары</td>
+        <td><span class="bdg gray">Не начат</span></td><td></td>
+      </tr>
+      <tr class="reg-row">
+        <td class="c">3.4</td>
+        <td>Регламент работы с калькулятором и составления КП</td>
+        <td>Расчёт стоимости, формирование КП, шаблоны</td>
+        <td><span class="bdg gray">Не начат</span></td><td></td>
+      </tr>
+      <tr class="reg-row">
+        <td class="c">3.5</td>
+        <td>Регламент выставления счёта и контроля оплаты</td>
+        <td>Способы оплаты, чеки, 1С, контроль предоплаты</td>
+        <td><span class="bdg gray">Не начат</span></td><td></td>
+      </tr>
+      <tr class="reg-row">
+        <td class="c">3.6</td>
+        <td>Регламент подготовки и заключения договора</td>
+        <td>Шаблон, поля, подписание, электронная подпись</td>
+        <td><span class="bdg gray">Не начат</span></td><td></td>
+      </tr>
+      <tr class="reg-row">
+        <td class="c">3.7</td>
+        <td>Регламент сопровождения заказа в производстве</td>
+        <td>Передача в производство, статусы, коммуникация</td>
+        <td><span class="bdg gray">Не начат</span></td><td></td>
+      </tr>
+      <tr class="reg-row">
+        <td class="c">3.8</td>
+        <td>Регламент выдачи заказа и финального расчёта</td>
+        <td>Проверка, выдача, вторая оплата, акт, закрытие сделки</td>
+        <td><span class="bdg gray">Не начат</span></td><td></td>
+      </tr>
+      <tr class="reg-row">
+        <td class="c">3.9</td>
+        <td>Регламент касаний с клиентом</td>
+        <td>Периодичность, каналы, шаблоны касаний</td>
+        <td><span class="bdg gray">Не начат</span></td><td></td>
+      </tr>
+      <tr class="reg-row">
+        <td class="c">3.10</td>
+        <td>Регламент постпродажи и повторных продаж</td>
+        <td>Поздравления, кросс-продажи, напоминания, NPS</td>
+        <td><span class="bdg gray">Не начат</span></td><td></td>
+      </tr>
+      <tr class="reg-row">
+        <td class="c">3.11</td>
+        <td>Регламент работы с отказами и реанимации клиентов</td>
+        <td>Алгоритм работы с отказами, возврат клиентов</td>
+        <td><span class="bdg gray">Не начат</span></td><td></td>
+      </tr>
+      <tr class="reg-row">
+        <td class="c">3.12</td>
+        <td>Регламент работы с рекламациями</td>
+        <td>Приём, сроки, ответственность, компенсации</td>
+        <td><span class="bdg gray">Не начат</span></td><td></td>
+      </tr>
+
+      <tr class="reg-sec"><td colspan="5">Блок 4 · Стандарты коммуникации <span class="bdg red" style="margin-left:6px">Приоритет</span></td></tr>
+      <tr class="reg-row">
+        <td class="c">4.1</td>
+        <td>Стандарт коммуникации с клиентом</td>
+        <td>Принципы общения, tone of voice, этика. Запрет «я», только «мы» — коммуникация от компании, а не от личности</td>
+        <td><span class="bdg gray">Не начат</span></td><td></td>
+      </tr>
+      <tr class="reg-row">
+        <td class="c">4.2</td>
+        <td>Скрипты продаж и работа с возражениями</td>
+        <td>Приветствие, квалификация, презентация, закрытие, типовые возражения</td>
+        <td><span class="bdg gray">Не начат</span></td><td></td>
+      </tr>
+      <tr class="reg-row">
+        <td class="c">4.3</td>
+        <td>Стандарт презентации условий сделки</td>
+        <td>Как презентовать цену, сроки, условия, скидки</td>
+        <td><span class="bdg gray">Не начат</span></td><td></td>
+      </tr>
+      <tr class="reg-row">
+        <td class="c">4.4</td>
+        <td>Регламент NPS-опроса</td>
+        <td>Периодичность, вопросы, анализ, действия по результатам</td>
+        <td><span class="bdg gray">Не начат</span></td><td></td>
+      </tr>
+
+      <tr class="reg-sec"><td colspan="5">Блок 5 · CRM и автоматизация <span class="bdg red" style="margin-left:6px">Приоритет</span></td></tr>
+      <tr class="reg-row">
+        <td class="c">5.1</td>
+        <td>Стандарт работы в CRM</td>
+        <td>Воронки «Продажи», «Пролонгации», «Ремонты», «Рекламации», «Колл-центр». Правила работы в каждой воронке, этапы, статусы, условия перехода, ответственные, перечень обязательных полей</td>
+        <td><span class="bdg gray">Не начат</span></td><td></td>
+      </tr>
+      <tr class="reg-row">
+        <td class="c">5.2</td>
+        <td>Регламент калькулятора расчёта и методика расчёта маржи</td>
+        <td>Поля, формулы, интеграция, правила использования; методика расчёта маржи по каждому заказу</td>
+        <td><span class="bdg gray">Не начат</span></td><td></td>
+      </tr>
+      <tr class="reg-row">
+        <td class="c">5.3</td>
+        <td>ТЗ на доработку CRM и регламент автоматических задач</td>
+        <td>Техническое задание на настройку CRM под TO BE; автоматизация касаний, постпродажи и напоминаний</td>
+        <td><span class="bdg gray">Не начат</span></td><td></td>
+      </tr>
+
+      <tr class="reg-sec"><td colspan="5">Блок 6 · Ценообразование</td></tr>
+      <tr class="reg-row">
+        <td class="c">6.1</td>
+        <td>Положение о ценообразовании</td>
+        <td>Принципы формирования цен, рентабельность, границы</td>
+        <td><span class="bdg gray">Не начат</span></td><td></td>
+      </tr>
+      <tr class="reg-row">
+        <td class="c">6.2</td>
+        <td>Матрица скидок и порядок согласования</td>
+        <td>Кто, когда и какие скидки может давать; порядок согласования</td>
+        <td><span class="bdg gray">Не начат</span></td><td></td>
+      </tr>
+
+      <tr class="reg-sec"><td colspan="5">Блок 7 · Производство и качество</td></tr>
+      <tr class="reg-row">
+        <td class="c">7.1</td>
+        <td>Регламент контроля качества готового изделия</td>
+        <td>Чек-лист проверки, ответственные, фиксация результатов</td>
+        <td><span class="bdg gray">Не начат</span></td><td></td>
+      </tr>
+      <tr class="reg-row">
+        <td class="c">7.2</td>
+        <td>Инструкция по биркам, журналам и товароучёту</td>
+        <td>Правила оформления бирок, ведения журналов, учёта</td>
+        <td><span class="bdg gray">Не начат</span></td><td></td>
+      </tr>
+
+      <tr class="reg-sec"><td colspan="5">Блок 8 · Персонал. Найм и адаптация <span class="bdg red" style="margin-left:6px">Приоритет</span></td></tr>
+      <tr class="reg-row">
+        <td class="c">8.1</td>
+        <td>Профиль должности МОП У1</td>
+        <td>Требования, компетенции, задачи</td>
+        <td><span class="bdg amber">В работе</span></td><td></td>
+      </tr>
+      <tr class="reg-row">
+        <td class="c">8.2</td>
+        <td>Профиль должности МОП У2</td>
+        <td>Требования, компетенции, задачи</td>
+        <td><span class="bdg amber">В работе</span></td><td></td>
+      </tr>
+      <tr class="reg-row">
+        <td class="c">8.3</td>
+        <td>Портрет кандидата: менеджер по продажам</td>
+        <td>Критерии отбора, личностные качества</td>
+        <td><span class="bdg gray">Не начат</span></td><td></td>
+      </tr>
+      <tr class="reg-row">
+        <td class="c">8.4</td>
+        <td>Стандарт проведения интервью: МОП</td>
+        <td>Структура интервью, вопросы, оценка</td>
+        <td><span class="bdg gray">Не начат</span></td><td></td>
+      </tr>
+      <tr class="reg-row">
+        <td class="c">8.5</td>
+        <td>Должностная инструкция МОП У1</td>
+        <td>Функции, права, ответственность, KPI</td>
+        <td><span class="bdg gray">Не начат</span></td><td></td>
+      </tr>
+      <tr class="reg-row">
+        <td class="c">8.6</td>
+        <td>Должностная инструкция МОП У2</td>
+        <td>Функции, права, ответственность, KPI</td>
+        <td><span class="bdg gray">Не начат</span></td><td></td>
+      </tr>
+      <tr class="reg-row">
+        <td class="c">8.7</td>
+        <td>Программа адаптации МОП</td>
+        <td>Онбординг, наставничество, сроки, чек-листы</td>
+        <td><span class="bdg gray">Не начат</span></td><td></td>
+      </tr>
+      <tr class="reg-row">
+        <td class="c">8.8</td>
+        <td>Аттестационный лист МОП</td>
+        <td>Критерии аттестации, периодичность, форма</td>
+        <td><span class="bdg gray">Не начат</span></td><td></td>
+      </tr>
+      <tr class="reg-row">
+        <td class="c">8.9</td>
+        <td>Вакансия на позицию МОП У1</td>
+        <td>Текст вакансии для публикации</td>
+        <td><span class="bdg amber">В работе</span></td><td></td>
+      </tr>
+      <tr class="reg-row">
+        <td class="c">8.10</td>
+        <td>Положение о подмене и взаимозаменяемости сотрудников</td>
+        <td>Правила подмены, работа пар, передача дел</td>
+        <td><span class="bdg gray">Не начат</span></td><td></td>
+      </tr>
+
+      <tr class="reg-sec"><td colspan="5">Блок 9 · Персонал. Работа и мотивация</td></tr>
+      <tr class="reg-row">
+        <td class="c">9.1</td>
+        <td>Алгоритм работы МОП (день / неделя / месяц)</td>
+        <td>Пошаговый алгоритм действий на каждый период</td>
+        <td><span class="bdg gray">Не начат</span></td><td></td>
+      </tr>
+      <tr class="reg-row">
+        <td class="c">9.2</td>
+        <td>Система мотивации менеджера по продажам (по уровням)</td>
+        <td>Оклад, KPI, процент, командные показатели</td>
+        <td><span class="bdg gray">Не начат</span></td><td></td>
+      </tr>
+      <tr class="reg-row">
+        <td class="c">9.3</td>
+        <td>Отчётность менеджера (день / неделя / месяц) и формы</td>
+        <td>Формы ежедневного, недельного и месячного отчёта</td>
+        <td><span class="bdg gray">Не начат</span></td><td></td>
+      </tr>
+      <tr class="reg-row">
+        <td class="c">9.4</td>
+        <td>Чек-лист аудита работы менеджера</td>
+        <td>Критерии оценки качества работы</td>
+        <td><span class="bdg gray">Не начат</span></td><td></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="legend">
+    <span><b>Статусы:</b></span>
+    <span><span class="bdg amber">В работе</span> — документ готовится</span>
+    <span><span class="bdg gray">Не начат</span> — запланирован к разработке</span>
+    <span><span class="bdg red">Приоритет</span> — первая волна внедрения</span>
+  </div>
+</section>
+
+<!-- ==================== RESULTS ==================== -->
+<section id="results">
+  <div class="sec-head"><div class="sec-num">7</div><h2>Результаты и риски</h2></div>
+  <p class="sec-sub">Что даёт переход к целевой модели и что может помешать внедрению</p>
+
+  <h4>Ключевые риски и способы их преодоления</h4>
+  <table>
+    <thead><tr><th style="width:36%">Риск</th><th>Способ преодоления</th></tr></thead>
+    <tbody>
+      <tr><td class="b">Сопротивление менеджеров изменениям</td><td>Вовлечение в проект, обучение, прозрачная и понятная мотивация</td></tr>
+      <tr><td class="b">Сложность найма МОП 1-го уровня</td><td>Онлайн-формат работы, гибкий график, понятный профиль должности</td></tr>
+      <tr><td class="b">Технические сбои CRM</td><td>Резервные каналы связи, поддержка IT, поэтапное внедрение интеграций</td></tr>
+      <tr><td class="b">Выгорание собственника</td><td>Делегирование, регламенты, передача операционных решений руководителю ОП</td></tr>
+      <tr><td class="b">Потеря ключевых сотрудников в период перемен</td><td>Индивидуальная работа по удержанию носителей премиального сегмента, поэтапный переход на новую мотивацию</td></tr>
+    </tbody>
+  </table>
+
+  <h4>Приоритетные направления внедрения</h4>
+  <div class="grid3">
+    <div class="card" style="border-top:4px solid var(--red)">
+      <h4 style="margin-bottom:8px">Первая волна</h4>
+      <ul style="font-size:13.5px;margin-bottom:0">
+        <li>Найм и вывод МОП 1-го уровня</li>
+        <li>Регламент обработки лида и SLA</li>
+        <li>Воронка колл-центра и карусель</li>
+        <li>Стандарт коммуникации от имени компании</li>
+      </ul>
+    </div>
+    <div class="card" style="border-top:4px solid var(--amber)">
+      <h4 style="margin-bottom:8px">Вторая волна</h4>
+      <ul style="font-size:13.5px;margin-bottom:0">
+        <li>Перестройка графика МОП 2-го уровня на пары</li>
+        <li>Обязательные поля и статусы в CRM</li>
+        <li>Калькулятор расчёта и прайс на камни</li>
+        <li>Регламенты договора, оплаты и выдачи</li>
+      </ul>
+    </div>
+    <div class="card" style="border-top:4px solid var(--green)">
+      <h4 style="margin-bottom:8px">Третья волна</h4>
+      <ul style="font-size:13.5px;margin-bottom:0">
+        <li>План продаж, KPI и новая мотивация</li>
+        <li>Интеграция Битрикс24 и 1С</li>
+        <li>Статусы производства и личный кабинет</li>
+        <li>Дашборды и управленческая отчётность</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="call violet">
+    <span class="ct">Что важно учесть при внедрении</span>
+    Модель работает только целиком: колл-центр без автоматического распределения лидов не даёт эффекта,
+    а пары без единых правил в CRM повторят текущую путаницу. Перед запуском критично получить выгрузки из
+    Битрикса и 1С за последний год — без базовых цифр по лидам, конверсии, чеку и марже нельзя ни поставить план,
+    ни объективно оценить результат изменений.
+  </div>
+</section>
+
+</main>
+</div>
+
+<footer>
+  <b>Дольче Вита</b> · Презентация проекта: диагностика AS IS и целевая модель TO BE<br>
+  Отдел продаж · BPMN-схемы процессов · Реестр из 44 документов для стандартизации
+</footer>
+
+</body>
+</html>
